@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cassert>      // assert
-#include <string>       // std::string
+#include <string>       // std::string & atof
+#include <cstring>      // memcpy
 #include <iostream>     // std::cout
 #include <sstream>      // std::stringstream
 #include <iomanip>      // setprecision
@@ -16,13 +17,15 @@ class Dvector
   public:
 
   Dvector();
-  Dvector(int taille, double val);
+  Dvector(int taille, double val = 0.0);
   Dvector(const Dvector & other);
   Dvector(string src);
   ~Dvector();
   void display(ostream& str);
   int size();
   void fillRandomly();
+  void resize(int taille, double new_ele = 0.0);
+
   double& operator[](int i);
   double& operator()(int i);
   Dvector& operator=(const Dvector &);
@@ -40,6 +43,7 @@ class Dvector
   double *vect;
   int taille;
 };
+
   Dvector operator+(const Dvector&, const double d);
   Dvector operator+(const double d, const Dvector&);
   Dvector operator-(const Dvector&, const double d);

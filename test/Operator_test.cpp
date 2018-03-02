@@ -1,4 +1,4 @@
-#include "Dvector.h"
+#include "Dvector_test.h"
 
 int main()
 {
@@ -10,6 +10,8 @@ int main()
     Dvector vect3(3, 3);
     // vect4 exemple poly
     Dvector vect4(3, 1);
+    // vect5 resize test
+    Dvector vect5(5, 3);
 
     //operateur += test
     std::stringstream str;
@@ -122,6 +124,30 @@ int main()
     str.str(std::string());
     str<<vect2;
     assert(str.str() == "2.0\n2.0\n");
+
+    // resize test larger
+    vect5.resize(10);
+    str.str(std::string());
+    str << vect5;
+    assert(str.str() == "3.0\n3.0\n3.0\n3.0\n3.0\n0.0\n0.0\n0.0\n0.0\n0.0\n");
+
+    // resize test larger
+    vect5.resize(3);
+    str.str(std::string());
+    str << vect5;
+    assert(str.str() == "3.0\n3.0\n3.0\n");
+
+    // resize test larger avec choix de la valeur des nouveaux elements
+    vect5.resize(8,2);
+    str.str(std::string());
+    str << vect5;
+    assert(str.str() == "3.0\n3.0\n3.0\n2.0\n2.0\n2.0\n2.0\n2.0\n");
+
+    // resize test meme taille avec choix de la valeur des nouveaux elements
+    vect5.resize(8, 9);
+    str.str(std::string());
+    str << vect5;
+    assert(str.str() == "3.0\n3.0\n3.0\n2.0\n2.0\n2.0\n2.0\n2.0\n");
 
     std::cout << "OK\n";
 }

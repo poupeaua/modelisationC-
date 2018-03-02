@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/Operator_test.dir/test/Operator_test.cpp.o  -o Operator_test -rdynamic 
