@@ -118,6 +118,10 @@ int main()
     //operateur == test
     assert(vect3 == vect3);
     assert(!(vect3 == vect4));
+    cin>>vect2;
+    str.str(std::string());
+    str<<vect2;
+    assert(str.str() == "2.0\n2.0\n");
 
     std::cout << "OK\n";
 }
