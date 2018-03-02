@@ -118,6 +118,240 @@ void Dvector::fillRandomly()
   }
 }
 
+/*implementation de l'operateur d'accession [] à un element du vecteur
+*/
+double& Dvector::operator[](int i)
+{
+  if ((i<0)||(i>taille)) {
+    exit(1);
+  }
+  return vect[i];
+}
+
+/*implementation de l'operateur d'accession () à un element du vecteur
+*/
+double& Dvector::operator()(int i)
+{
+  return vect[i];
+}
+
+/*implemenation de l'operateur d'affection avec memcpy
+*/
+
+Dvector& Dvector::operator=(const Dvector& dv)
+{
+  taille = dv.taille;
+  vect = new double[taille];
+  memcpy(vect, dv.vect, taille*sizeof(double));
+  return *this;
+}
+
+/*implemetation de l'operateur d'affection avec le constructeur par copie
+NON TESTE
+*/
+
+/*
+Dvector& Dvector::operator=(const Dvector& dv)
+{
+  return this(dv);
+}
+*/
+
+/*implementation de l'operateur += avec un autre vecteur
+*/
+Dvector& Dvector::operator+=(const Dvector& dv)
+{
+  if (taille!=dv.taille) {
+    exit(-1);//dimension incompatible
+  }
+  Dvector& vct = *this;
+  for (int i=0;i<taille;i++)
+    vct.vect[i] += dv.vect[i];
+  return vct;
+}
+
+/*implementation de l'operateur += avec un reel
+*/
+Dvector& Dvector::operator+=(const double d)
+{
+  Dvector& vct = *this;
+  for (int i=0;i<taille;i++)
+    vct.vect[i] += d;
+  return vct;
+}
+
+/*implementation de l'operateur *= avec un reel
+*/
+Dvector& Dvector::operator*=(const double d)
+{
+  Dvector& vct = *this;
+  for (int i=0;i<taille;i++)
+    vct.vect[i] *= d;
+  return vct;
+}
+
+/*implementation de l'operateur -= avec un autre vecteur
+*/
+Dvector& Dvector::operator-=(const Dvector& dv)
+{
+  if (taille!=dv.taille) {
+    exit(-1);//dimension incompatible
+  }
+  Dvector& vct = *this;
+  vct += -1*dv;
+  return vct;
+}
+
+/*implementation de l'operateur -= avec un reel
+*/
+Dvector& Dvector::operator-=(const double d)
+{
+  Dvector& vct = *this;
+  vct += -d;
+  return vct;
+}
+
+/*implementation de l'operateur /= avec un reel
+*/
+Dvector& Dvector::operator/=(const double d)
+{
+  if (d == 0) {
+    exit(-1);//dimension incompatible
+  }
+  Dvector& vct = *this;
+  vct *= 1/d;
+  return vct;
+}
+
+/*implementation de l'operateur + entre un reel et un vecteur
+*/
+Dvector operator+(const double d, const Dvector& v1)
+{
+  Dvector v0(v1);
+  return v0 += d;
+}
+
+Dvector operator+(const Dvector& v1, const double d)
+{
+  Dvector v0(v1);
+  return v0 += d;
+}
+
+/*implementation de l'operateur - entre un reel et un vecteur
+*/
+Dvector operator-(const double d, const Dvector& v1)
+{
+  Dvector v0(-1*v1);
+  return v0 += d;
+}
+
+Dvector operator-(const Dvector& v1, const double d)
+{
+  Dvector v0(v1);
+  return v0 -= d;
+}
+
+/*implementation de l'operateur * entre un reel et un vecteur
+*/
+Dvector operator*(const double d, const Dvector& v1)
+{
+  Dvector v0(v1);
+  return v0 *= d;
+}
+
+Dvector operator*(const Dvector& v1, const double d)
+{
+  Dvector v0(v1);
+  return v0 *= d;
+}
+
+/*implementation de l'operateur / entre un reel et un vecteur
+*/
+Dvector operator/(const double d, const Dvector& v1)
+{
+  Dvector v0(v1);
+  for (int i = 0;i<v0.size();i++)
+      v0[i] = 1/v0[i];
+  return v0 *= d;
+}
+
+Dvector operator/(const Dvector& v1, const double d)
+{
+  Dvector v0(v1);
+  return v0 /= d;
+}
+
+/*implementation de l'operateur + entre deux vecteurs
+*/
+Dvector operator+(const Dvector& v1, const Dvector& v2)
+{
+  Dvector v0(v1);
+  return v0 += v2;
+}
+
+/*implementation de l'operateur - entre deux vecteurs
+*/
+Dvector operator-(const Dvector& v1, const Dvector& v2)
+{
+  Dvector v0(v1);
+  return v0 -= v2;
+}
+
+/*implementation de l'operateur - unaire
+*/
+Dvector Dvector::operator-()
+{
+  Dvector vct(*this);
+  return vct*=-1;
+}
+
+/*implementation de l'operateur de flux <<
+*/
+ostream& operator<<(ostream &Out, Dvector &dv)
+{
+  for(int i=0;i<dv.size();i++)
+  {
+    // on peut mettre *(tmp + i) à la place de tmp[i]
+    if ((int)dv(i) == dv(i)) {
+      Out << setprecision(1) << fixed << dv[i] << endl;
+    } else {
+      // remet la percision par défaut
+      Out << setprecision(6) << dv[i] << endl;
+    }
+  }
+  return Out;
+}
+
+/*implementation de l'operateur de flux >>
+*/
+istream& operator>>(istream &in, Dvector &dv)
+{
+  for(int i=0;i<dv.size();i++)
+    in>>dv(i);
+}
+
+/*implementation de l'operateur ==
+*/
+
+bool Dvector::operator==(Dvector &dv)
+{
+  if (this->taille == dv.size()) {
+      int a = 0;
+      for (size_t i = 0; i < dv.size(); i++) {
+          if (dv(i) != (*this)(i)) {
+              a+=1;
+          }
+      }
+      if (a == 0) {
+         return true;
+      } else {
+         return false;
+      }
+  } else {
+      return false;
+  }
+
+}
 
 int main()
 {

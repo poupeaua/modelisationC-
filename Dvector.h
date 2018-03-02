@@ -23,10 +23,32 @@ class Dvector
   void display(ostream& str);
   int size();
   void fillRandomly();
-
+  double& operator[](int i);
+  double& operator()(int i);
+  Dvector& operator=(const Dvector &);
+  Dvector& operator+=(const Dvector&);
+  Dvector& operator+=(const double d);
+  Dvector& operator*=(const double d);
+  Dvector& operator-=(const Dvector&);
+  Dvector& operator-=(const double d);
+  Dvector& operator/=(const double d);
+  Dvector operator-(void);
+  bool operator==(Dvector &);
 
   private:
 
   double *vect;
   int taille;
 };
+  Dvector operator+(const Dvector&, const double d);
+  Dvector operator+(const double d, const Dvector&);
+  Dvector operator-(const Dvector&, const double d);
+  Dvector operator-(const double d, const Dvector&);
+  Dvector operator*(const Dvector&, const double d);
+  Dvector operator*(const double d, const Dvector&);
+  Dvector operator/(const Dvector&, const double d);
+  Dvector operator/(const double d, const Dvector&);
+  Dvector operator+(const Dvector&, const Dvector&);
+  Dvector operator-(const Dvector&, const Dvector&);
+  ostream& operator<<(ostream &Out, Dvector &);
+  istream& operator>>(istream &in, Dvector &);
