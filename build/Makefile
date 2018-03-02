@@ -114,6 +114,19 @@ Dvector_test/fast:
 	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/build
 .PHONY : Dvector_test/fast
 
+#=============================================================================
+# Target rules for targets named Operator_test
+
+# Build rule for target.
+Operator_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Operator_test
+.PHONY : Operator_test
+
+# fast build rule for target.
+Operator_test/fast:
+	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/build
+.PHONY : Operator_test/fast
+
 test/Dvector_test.o: test/Dvector_test.cpp.o
 .PHONY : test/Dvector_test.o
 
@@ -138,6 +151,30 @@ test/Dvector_test.cpp.s:
 	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/test/Dvector_test.cpp.s
 .PHONY : test/Dvector_test.cpp.s
 
+test/Operator_test.o: test/Operator_test.cpp.o
+.PHONY : test/Operator_test.o
+
+# target to build an object file
+test/Operator_test.cpp.o:
+	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.o
+.PHONY : test/Operator_test.cpp.o
+
+test/Operator_test.i: test/Operator_test.cpp.i
+.PHONY : test/Operator_test.i
+
+# target to preprocess a source file
+test/Operator_test.cpp.i:
+	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.i
+.PHONY : test/Operator_test.cpp.i
+
+test/Operator_test.s: test/Operator_test.cpp.s
+.PHONY : test/Operator_test.s
+
+# target to generate assembly for a file
+test/Operator_test.cpp.s:
+	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.s
+.PHONY : test/Operator_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -145,11 +182,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... Dvector_test"
+	@echo "... Operator_test"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test/Dvector_test.o"
 	@echo "... test/Dvector_test.i"
 	@echo "... test/Dvector_test.s"
+	@echo "... test/Operator_test.o"
+	@echo "... test/Operator_test.i"
+	@echo "... test/Operator_test.s"
 .PHONY : help
 
 

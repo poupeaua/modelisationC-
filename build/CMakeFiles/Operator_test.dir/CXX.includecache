@@ -32,11 +32,11 @@ time.h
 fstream
 -
 
-/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.cpp
-Dvector_test.h
-/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.h
-
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.h
 ../src/Dvector.cpp
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.cpp
+
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Operator_test.cpp
+Dvector_test.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.h
 

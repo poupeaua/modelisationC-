@@ -20,3 +20,8 @@ add_executable(
     Dvector_test
     test/Dvector_test.cpp
 )
+
+add_executable(
+    Operator_test
+    test/Operator_test.cpp
+)

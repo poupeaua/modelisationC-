@@ -1,5 +1,9 @@
 #include "Dvector.h"
 
+/*
+--------------------------- CONSTRUCTOR ----------------------------------------
+*/
+
 /* constructeur par défaut
 */
 Dvector::Dvector()
@@ -92,6 +96,11 @@ Dvector::Dvector(string src)
 }
 
 
+/*
+------------------------------ METHOD ------------------------------------------
+*/
+
+
 /* Destructeur libérant la memoire
 */
 Dvector::~Dvector()
@@ -140,6 +149,25 @@ void Dvector::fillRandomly()
   }
 }
 
+/*
+*/
+void Dvector::resize(int new_taille, double new_ele)
+{
+  vect = (double *) realloc(vect, new_taille * sizeof(double));
+  if (new_taille >= taille) {
+    for (int i = taille ; i < new_taille ; i++) {
+      vect[i] = new_ele;
+    }
+  }
+  this->taille = new_taille;
+}
+
+
+/*
+--------------------------- OPERATOR -------------------------------------------
+*/
+
+
 /*implementation de l'operateur d'accession [] à un element du vecteur
 */
 double& Dvector::operator[](int i)
@@ -150,6 +178,7 @@ double& Dvector::operator[](int i)
   return vect[i];
 }
 
+
 /*implementation de l'operateur d'accession () à un element du vecteur
 */
 double& Dvector::operator()(int i)
@@ -157,9 +186,9 @@ double& Dvector::operator()(int i)
   return vect[i];
 }
 
-/*implemenation de l'operateur d'affection avec memcpy
-*/
 
+/*implementation de l'operateur d'affection avec memcpy
+*/
 Dvector& Dvector::operator=(const Dvector& dv)
 {
   taille = dv.taille;
@@ -168,7 +197,8 @@ Dvector& Dvector::operator=(const Dvector& dv)
   return *this;
 }
 
-/*implemetation de l'operateur d'affection avec le constructeur par copie
+
+/*implementation de l'operateur d'affection avec le constructeur par copie
 NON TESTE
 */
 
@@ -178,6 +208,7 @@ Dvector& Dvector::operator=(const Dvector& dv)
   return this(dv);
 }
 */
+
 
 /*implementation de l'operateur += avec un autre vecteur
 */
@@ -192,6 +223,7 @@ Dvector& Dvector::operator+=(const Dvector& dv)
   return vct;
 }
 
+
 /*implementation de l'operateur += avec un reel
 */
 Dvector& Dvector::operator+=(const double d)
@@ -202,6 +234,7 @@ Dvector& Dvector::operator+=(const double d)
   return vct;
 }
 
+
 /*implementation de l'operateur *= avec un reel
 */
 Dvector& Dvector::operator*=(const double d)
@@ -211,6 +244,7 @@ Dvector& Dvector::operator*=(const double d)
     vct.vect[i] *= d;
   return vct;
 }
+
 
 /*implementation de l'operateur -= avec un autre vecteur
 */
@@ -224,6 +258,7 @@ Dvector& Dvector::operator-=(const Dvector& dv)
   return vct;
 }
 
+
 /*implementation de l'operateur -= avec un reel
 */
 Dvector& Dvector::operator-=(const double d)
@@ -232,6 +267,7 @@ Dvector& Dvector::operator-=(const double d)
   vct += -d;
   return vct;
 }
+
 
 /*implementation de l'operateur /= avec un reel
 */
@@ -245,7 +281,8 @@ Dvector& Dvector::operator/=(const double d)
   return vct;
 }
 
-/*implementation de l'operateur + entre un reel et un vecteur
+
+/*implementation de l'operateur + entre un reel
 */
 Dvector operator+(const double d, const Dvector& v1)
 {
@@ -259,8 +296,7 @@ Dvector operator+(const Dvector& v1, const double d)
   return v0 += d;
 }
 
-/*implementation de l'operateur - entre un reel et un vecteur
-*/
+
 Dvector operator-(const double d, const Dvector& v1)
 {
   Dvector v0(-1*v1);
@@ -272,6 +308,7 @@ Dvector operator-(const Dvector& v1, const double d)
   Dvector v0(v1);
   return v0 -= d;
 }
+
 
 /*implementation de l'operateur * entre un reel et un vecteur
 */
@@ -286,6 +323,7 @@ Dvector operator*(const Dvector& v1, const double d)
   Dvector v0(v1);
   return v0 *= d;
 }
+
 
 /*implementation de l'operateur / entre un reel et un vecteur
 */
@@ -303,6 +341,7 @@ Dvector operator/(const Dvector& v1, const double d)
   return v0 /= d;
 }
 
+
 /*implementation de l'operateur + entre deux vecteurs
 */
 Dvector operator+(const Dvector& v1, const Dvector& v2)
@@ -310,6 +349,7 @@ Dvector operator+(const Dvector& v1, const Dvector& v2)
   Dvector v0(v1);
   return v0 += v2;
 }
+
 
 /*implementation de l'operateur - entre deux vecteurs
 */
@@ -319,6 +359,7 @@ Dvector operator-(const Dvector& v1, const Dvector& v2)
   return v0 -= v2;
 }
 
+
 /*implementation de l'operateur - unaire
 */
 Dvector Dvector::operator-()
@@ -326,6 +367,7 @@ Dvector Dvector::operator-()
   Dvector vct(*this);
   return vct*=-1;
 }
+
 
 /*implementation de l'operateur de flux <<
 */
@@ -344,6 +386,7 @@ ostream& operator<<(ostream &Out, Dvector &dv)
   return Out;
 }
 
+
 /*implementation de l'operateur de flux >>
 */
 istream& operator>>(istream &in, Dvector &dv)
@@ -351,6 +394,7 @@ istream& operator>>(istream &in, Dvector &dv)
   for(int i=0;i<dv.size();i++)
     in>>dv(i);
 }
+
 
 /*implementation de l'operateur ==
 */
@@ -373,54 +417,4 @@ bool Dvector::operator==(Dvector &dv)
       return false;
   }
 
-}
-
-int main()
-{
-  // vect1 par défaut
-  Dvector vect1;
-  // vect2 option du constructeur principal
-  Dvector vect2(5);
-  // vect3 constructeur principal
-  Dvector vect3(3, 2.5);
-  // vect4 exemple poly
-  Dvector vect4(3, 2.0);
-  // vect5 constructeur copie
-  Dvector vect5(vect3);
-  // vect6 constructeur par lecture de fichier
-  Dvector vect6("test1.txt");
-
-
-  //vect1 test
-  vect1.display(cout);
-  printf("Taille vect1 = %d\n", vect1.size());
-  assert(vect1.size() == 2);
-
-
-  // vect 2 test
-  assert(vect2.size() == 5);
-  vect2.fillRandomly();
-  vect2.display(cout);
-
-
-  // vect3 test
-  assert( vect3.size() == 3);
-  std::stringstream str3;
-  vect3.display(str3);
-  assert(str3.str() == "2.5\n2.5\n2.5\n");
-
-
-  // vect4 test
-  assert(vect4.size() == 3);
-  std::stringstream str4;
-  vect4.display(str4);
-  assert(str4.str() == "2.0\n2.0\n2.0\n");
-
-
-  // vect5 test
-  std::stringstream str5;
-  vect5.display(str5);
-  assert(str5.str() == "2.5\n2.5\n2.5\n");
-
-  std::cout << "OK\n";
 }
