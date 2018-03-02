@@ -16,7 +16,7 @@ class Dvector
   public:
 
   Dvector();
-  Dvector(int taille, double val);
+  Dvector(int taille, double val = 0.0);
   Dvector(const Dvector & other);
   Dvector(string src);
   ~Dvector();

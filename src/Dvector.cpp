@@ -1,6 +1,5 @@
 #include "Dvector.h"
 
-
 /* constructeur par défaut
 */
 Dvector::Dvector()
@@ -20,7 +19,7 @@ Dvector::Dvector()
 /* constructeur précisant la taille et une option val
   permettant d'initialiser toute les coordonnées du vecteur à val
 */
-Dvector::Dvector(int taille, double val = 0.0)
+Dvector::Dvector(int taille, double val)
 {
   if (taille < 0) {
     cout << "ERROR : negative size." << endl;
@@ -55,22 +54,45 @@ Dvector::Dvector(const Dvector & other)
 Dvector::Dvector(string src)
 {
   string line;
-  ifstream myfile (src.c_str());
+  ifstream myfile(src.c_str());
+
+  /* premiere boucle pour compter le nombre d'elements
+  */
+  int nbr_element = 0;
   if (myfile.is_open())
   {
     while (getline(myfile,line))
     {
-      line.c_str();
+      nbr_element++;
     }
-    myfile.close();
   }
   else {
     cout << "ERROR : Unable to open file" << endl;
   }
+
+  /* deuxieme boucle pour inserer les elements dans le vecteurs
+  */
+  this->taille = nbr_element;
+  vect = new double[nbr_element];
+  int i = 0;
+  // ces deux lignes permette de retourner au debut du fichier (et donc de le relire depuis le debut)
+  myfile.clear();
+  myfile.seekg(0, ios::beg);
+  if (myfile.is_open())
+  {
+    while (getline(myfile,line))
+    {
+      vect[i] = atof(line.c_str());
+      i++;
+    }
+    myfile.close();
+  }
+  // cout << "i = " << i << " et nbr_element = " << nbr_element << endl;
+  assert(nbr_element == i);
 }
 
 
-/* Destructeur libérant la mémoire
+/* Destructeur libérant la memoire
 */
 Dvector::~Dvector()
 {
@@ -116,55 +138,4 @@ void Dvector::fillRandomly()
   {
     tmp[i] = (static_cast <float> (rand()))/ static_cast <float> (RAND_MAX);
   }
-}
-
-
-int main()
-{
-  // vect1 par défaut
-  Dvector vect1;
-  // vect2 option du constructeur principal
-  Dvector vect2(5);
-  // vect3 constructeur principal
-  Dvector vect3(3, 2.5);
-  // vect4 exemple poly
-  Dvector vect4(3, 2.0);
-  // vect5 constructeur copie
-  Dvector vect5(vect3);
-  // vect6 constructeur par lecture de fichier
-  Dvector vect6("test1.txt");
-
-
-  //vect1 test
-  vect1.display(cout);
-  printf("Taille vect1 = %d\n", vect1.size());
-  assert(vect1.size() == 2);
-
-
-  // vect 2 test
-  assert(vect2.size() == 5);
-  vect2.fillRandomly();
-  vect2.display(cout);
-
-
-  // vect3 test
-  assert( vect3.size() == 3);
-  std::stringstream str3;
-  vect3.display(str3);
-  assert(str3.str() == "2.5\n2.5\n2.5\n");
-
-
-  // vect4 test
-  assert(vect4.size() == 3);
-  std::stringstream str4;
-  vect4.display(str4);
-  assert(str4.str() == "2.0\n2.0\n2.0\n");
-
-
-  // vect5 test
-  std::stringstream str5;
-  vect5.display(str5);
-  assert(str5.str() == "2.5\n2.5\n2.5\n");
-
-  std::cout << "OK\n";
 }

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.cpp
+Dvector.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.h
+
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.h
+stdio.h
+-
+stdlib.h
+-
+cassert
+-
+string
+-
+iostream
+-
+sstream
+-
+iomanip
+-
+time.h
+-
+fstream
+-
+
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.cpp
+Dvector_test.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.h
+
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.h
+../src/Dvector.cpp
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.cpp
+
