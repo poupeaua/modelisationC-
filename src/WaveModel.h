@@ -8,6 +8,7 @@
 #include <iomanip>      // setprecision
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
+#include "Dvector.h"
 
 using namespace std;
 
@@ -15,20 +16,22 @@ class WaveModel
 {
   public:
 
+  virtual double& operator()(Dvector v, double t)=0;
   double getDirection();
   double getAlignement();
   int getIntensite();
   double getLongueurOnde();
   double getHauteurVague();
-  virtual double& operator()(double x, double y, double t);
-  WaveModel& operator=(const WaveModel&);
-  ~WaveModel();
-  WaveModel();
-  WaveModel(const WaveModel & other);
+  virtual ~WaveModel();
 
+  protected:
+  WaveModel(double direction, double alignement, int intensite,
+              double longueurOnde, double hauteurVague);
 
   private:
 
+  WaveModel(const WaveModel & other);
+  WaveModel& operator=(const WaveModel&);
   double direction;
   double alignement;
   int intensite;
