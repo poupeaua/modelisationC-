@@ -13,11 +13,26 @@
 using namespace std;
 
 
+/*
+Modèle des heigth object
+
+  L O N G U E U R
+L
+A
+R
+G
+E
+U
+R
+
+*/
+
 class Height
 {
   public:
 
-  Height(int longueur, int largeur, int valeurs[][]);
+  Height(int longueur, int largeur, int **height);
+  Height(int longueur, int largeur);
   Height(const Height & other);
   ~Height();
   int getLongueur();
@@ -28,7 +43,7 @@ class Height
   private:
   int longueur;
   int largeur;
-  int height[][];
+  int **height;
 };
 
 ostream& operator<<(ostream &Out, Dvector &dv);
