@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua
+CMAKE_SOURCE_DIR = /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build
+CMAKE_BINARY_DIR = /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -70,11 +70,21 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -102,6 +112,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Dvector
+
+# Build rule for target.
+Dvector: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Dvector
+.PHONY : Dvector
+
+# fast build rule for target.
+Dvector/fast:
+	$(MAKE) -f src/CMakeFiles/Dvector.dir/build.make src/CMakeFiles/Dvector.dir/build
+.PHONY : Dvector/fast
+
+#=============================================================================
+# Target rules for targets named Height
+
+# Build rule for target.
+Height: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Height
+.PHONY : Height
+
+# fast build rule for target.
+Height/fast:
+	$(MAKE) -f src/CMakeFiles/Height.dir/build.make src/CMakeFiles/Height.dir/build
+.PHONY : Height/fast
+
+#=============================================================================
 # Target rules for targets named Dvector_test
 
 # Build rule for target.
@@ -111,7 +147,7 @@ Dvector_test: cmake_check_build_system
 
 # fast build rule for target.
 Dvector_test/fast:
-	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/build
+	$(MAKE) -f test/CMakeFiles/Dvector_test.dir/build.make test/CMakeFiles/Dvector_test.dir/build
 .PHONY : Dvector_test/fast
 
 #=============================================================================
@@ -124,56 +160,8 @@ Operator_test: cmake_check_build_system
 
 # fast build rule for target.
 Operator_test/fast:
-	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/build
+	$(MAKE) -f test/CMakeFiles/Operator_test.dir/build.make test/CMakeFiles/Operator_test.dir/build
 .PHONY : Operator_test/fast
-
-test/Dvector_test.o: test/Dvector_test.cpp.o
-.PHONY : test/Dvector_test.o
-
-# target to build an object file
-test/Dvector_test.cpp.o:
-	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/test/Dvector_test.cpp.o
-.PHONY : test/Dvector_test.cpp.o
-
-test/Dvector_test.i: test/Dvector_test.cpp.i
-.PHONY : test/Dvector_test.i
-
-# target to preprocess a source file
-test/Dvector_test.cpp.i:
-	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/test/Dvector_test.cpp.i
-.PHONY : test/Dvector_test.cpp.i
-
-test/Dvector_test.s: test/Dvector_test.cpp.s
-.PHONY : test/Dvector_test.s
-
-# target to generate assembly for a file
-test/Dvector_test.cpp.s:
-	$(MAKE) -f CMakeFiles/Dvector_test.dir/build.make CMakeFiles/Dvector_test.dir/test/Dvector_test.cpp.s
-.PHONY : test/Dvector_test.cpp.s
-
-test/Operator_test.o: test/Operator_test.cpp.o
-.PHONY : test/Operator_test.o
-
-# target to build an object file
-test/Operator_test.cpp.o:
-	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.o
-.PHONY : test/Operator_test.cpp.o
-
-test/Operator_test.i: test/Operator_test.cpp.i
-.PHONY : test/Operator_test.i
-
-# target to preprocess a source file
-test/Operator_test.cpp.i:
-	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.i
-.PHONY : test/Operator_test.cpp.i
-
-test/Operator_test.s: test/Operator_test.cpp.s
-.PHONY : test/Operator_test.s
-
-# target to generate assembly for a file
-test/Operator_test.cpp.s:
-	$(MAKE) -f CMakeFiles/Operator_test.dir/build.make CMakeFiles/Operator_test.dir/test/Operator_test.cpp.s
-.PHONY : test/Operator_test.cpp.s
 
 # Help Target
 help:
@@ -181,16 +169,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... Dvector_test"
-	@echo "... Operator_test"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test/Dvector_test.o"
-	@echo "... test/Dvector_test.i"
-	@echo "... test/Dvector_test.s"
-	@echo "... test/Operator_test.o"
-	@echo "... test/Operator_test.i"
-	@echo "... test/Operator_test.s"
+	@echo "... test"
+	@echo "... Dvector"
+	@echo "... Height"
+	@echo "... Dvector_test"
+	@echo "... Operator_test"
 .PHONY : help
 
 

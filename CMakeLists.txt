@@ -1,27 +1,17 @@
+# -------------------- VERSION USED OF CMAKE ---------------------
+
 # recent cmake version used
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.11)
 
 # our project is called modelisation c++
 project(modelisationC++)
 
-# create variables with the files we want to compile
-set(SRCS
-    src/*
-    test/*
-    )
+# enable make test
+enable_testing()
 
-# for headers we want to use
-set(HEADERS
-    src/*
-    test/*
-    )
+set(CMAKE_CXX_FLAGS "-g -Wall -std=c++11")
 
-add_executable(
-    Dvector_test
-    test/Dvector_test.cpp
-)
-
-add_executable(
-    Operator_test
-    test/Operator_test.cpp
-)
+# add all the subdirectories needed to make the whole thing work
+add_subdirectory(src)
+add_subdirectory(test)
+# add_subdirectory(doc)

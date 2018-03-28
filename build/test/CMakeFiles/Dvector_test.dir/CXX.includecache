@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/Dvector.h
+stdio.h
+-
+stdlib.h
+-
+cassert
+-
+string
+-
+cstring
+-
+iostream
+-
+sstream
+-
+iomanip
+-
+time.h
+-
+fstream
+-
+
+/user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.cpp
+Dvector.h
+/user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector.h
+

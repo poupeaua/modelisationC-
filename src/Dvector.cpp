@@ -392,7 +392,8 @@ ostream& operator<<(ostream &Out, Dvector &dv)
 istream& operator>>(istream &in, Dvector &dv)
 {
   for(int i=0;i<dv.size();i++)
-    in>>dv(i);
+    in >> dv(i);
+  return in;
 }
 
 
@@ -403,7 +404,7 @@ bool Dvector::operator==(Dvector &dv)
 {
   if (this->taille == dv.size()) {
       int a = 0;
-      for (size_t i = 0; i < dv.size(); i++) {
+      for (int i = 0; i < dv.size(); i++) {
           if (dv(i) != (*this)(i)) {
               a+=1;
           }
