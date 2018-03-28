@@ -1,4 +1,4 @@
-# Install script for directory: /user/5/poupeaua/Documents/2A/modelisation/TP1_balloua_poupeaua/test
+# Install script for directory: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

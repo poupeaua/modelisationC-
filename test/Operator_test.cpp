@@ -13,6 +13,13 @@ int main()
     // vect5 resize test
     Dvector vect5(5, 3);
 
+    // test erreur 2) dans verifier.py a ete corrige
+    // Dvector v1(1);
+	  // v1(0) = 0.0;
+	  // const Dvector v2(1);
+	  // double val = v2(0);
+    // printf("%f\n", val);
+
     //operateur += test
     std::stringstream str;
     vect3 += vect4;

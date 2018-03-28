@@ -178,10 +178,20 @@ double& Dvector::operator[](int i)
   return vect[i];
 }
 
+const double& Dvector::operator[](int i) const
+{
+  return vect[i];
+}
+
 
 /*implementation de l'operateur d'accession () à un element du vecteur
 */
 double& Dvector::operator()(int i)
+{
+  return vect[i];
+}
+
+const double& Dvector::operator()(int i) const
 {
   return vect[i];
 }

@@ -26,7 +26,9 @@ class Dvector
   void fillRandomly();
   void resize(int taille, double new_ele = 0.0);
   double& operator[](int i);
+  const double& operator[](int i) const;
   double& operator()(int i);
+  const double& operator()(int i) const;
   Dvector& operator=(const Dvector &);
   Dvector& operator+=(const Dvector&);
   Dvector& operator+=(const double d);
