@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-c++"
+	BuildStamp="20180330-1353-Experimental"
+	Name="ensipc369"
+	Generator="ctest-2.8.12.2"
+	CompilerName="/usr/bin/c++"
+	OSName="Linux"
+	Hostname="ensipc369"
+	OSRelease="3.10.0-693.21.1.el7.x86_64"
+	OSVersion="#1 SMP Wed Mar 7 19:03:37 UTC 2018"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="60"
+	ProcessorCacheSize="6144"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="15830"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="3292.52"
+>
+<Configure>
+	<StartDateTime>Mar 30 15:53 CEST</StartDateTime>
+	<StartConfigureTime>1522418006</StartConfigureTime>
+<ConfigureCommand>"/usr/bin/cmake" "/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua"</ConfigureCommand>
+<Log>-- Configuring done
+-- Generating done
+-- Build files have been written to: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build
+</Log>
+	<ConfigureStatus>0</ConfigureStatus>
+	<EndDateTime>Mar 30 15:53 CEST</EndDateTime>
+	<EndConfigureTime>1522418008</EndConfigureTime>
+<ElapsedMinutes>0</ElapsedMinutes></Configure>
+</Site>

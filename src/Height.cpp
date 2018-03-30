@@ -2,44 +2,23 @@
 
 
 /**
- * Constructeur par defaut placant les valeurs contenues dans le tableau valeurs
- BEWARE longueur et largeur doivent correspondre au tableau valeur
+ * Constructeur par defaut placant des values (par défaut zero) partout
  **/
-Height::Height(int longueur, int largeur, int **valeurs)
+Height::Height(int nx, int ny, double value, double length, double width)
 {
-  /**
-  * rajouter les boucles if
-  **/
-  this->longueur = longueur;
-  this->largeur = largeur;
-  height = new int*[largeur];
-  for (int i = 0; i < largeur; i++)
+  this->nx = nx;
+  this->ny = ny;
+  Dvector height(nx*ny);
+  for (int i = 0 ; i < ny ; i++)
   {
-      height[i] = new int[longueur];
-      for (int j =0; j < longueur; j++)
-      {
-          height[i][j] = valeurs[i][j];
-      }
+    for (int j = 0 ; j < nx ; j++)
+    {
+      height[i*nx + j] = value;
+    }
   }
-}
-
-
-/**
- * Constructeur par defaut placant des zeros partout
- **/
-Height::Height(int longueur, int largeur)
-{
-  this->longueur = longueur;
-  this->largeur = largeur;
-  height = new int*[largeur];
-  for (int i = 0; i < largeur; i++)
-  {
-      height[i] = new int[longueur];
-      for (int j =0; j < longueur; j++)
-      {
-          height[i][j] = 0;
-      }
-  }
+  this->height = height;
+  this->width = width;
+  this->length = length;
 }
 
 
@@ -48,17 +27,44 @@ Height::Height(int longueur, int largeur)
  **/
 Height::Height(const Height &other)
 {
-  this->longueur = other.longueur;
-  this->largeur = other.largeur;
-  height = new int*[largeur];
-  for (int i = 0 ; i < largeur ; i++)
+  this->nx = other.nx;
+  this->ny = other.ny;
+  Dvector height(nx*ny);
+  for (int i = 0 ; i < ny ; i++)
   {
-    height[i] = new int[longueur];
-    for (int j = 0 ; j < longueur ; j++)
+    for (int j = 0 ; j < nx ; j++)
     {
-      height[i][j] = other.height[i][j];
+      height[i*nx + j] = other.height[i*nx + j];
     }
   }
+  this->height = height;
+  this->width = other.width;
+  this->length = other.length;
+}
+
+
+/**
+ * Constructeur placant les valeurs contenues dans le tableau valeurs
+ BEWARE length et width doivent correspondre au tableau valeur
+ **/
+Height::Height(int nx, int ny, double **valeurs, double length, double width)
+{
+  /**
+  * rajouter les boucles if
+  **/
+  this->nx = nx;
+  this->ny = ny;
+  Dvector height(nx*ny);
+  for (int i = 0; i < ny; i++)
+  {
+      for (int j =0; j < nx; j++)
+      {
+          height[i*nx + j] = valeurs[i][j];
+      }
+  }
+  this->height = height;
+  this->width = width;
+  this->length = length;
 }
 
 
@@ -67,9 +73,59 @@ Height::Height(const Height &other)
  **/
 Height::~Height()
 {
-  for (int i = 0 ; i < largeur ; i++)
+  /** no new so there are nothing to delete ! **/
+}
+
+
+/**
+ getter for nx
+**/
+int Height::getNx()
+{
+  return nx;
+}
+
+
+/**
+ getter for ny
+**/
+int Height::getNy()
+{
+  return ny;
+}
+
+/**
+ getter for Lx
+**/
+double Height::getLength()
+{
+  return length;
+}
+
+/**
+ getter for Lx
+**/
+double Height::getWidth()
+{
+  return this->width;
+}
+
+/**
+ operator () to access a element
+**/
+double& Height::operator()(int x, int y)
+{
+  return height(y*nx + x);
+}
+
+ostream& operator<<(ostream &Out, Height &h) {
+  for (int i = 0 ; i < h.getNy() ; i++)
   {
-    delete[] height[i];
+    for (int j = 0 ; j < h.getNx() ; j++)
+    {
+      Out << h(j, i) << " ";
+    }
+    Out << endl;
   }
-  delete[] height;
+  return Out;
 }

@@ -1,0 +1,9 @@
+Upload files:
+0	Build.xml
+1	Configure.xml
+2	Test.xml
+Using drop method: http
+	Upload file: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/Testing/20180330-1353/Build.xml to ensipc369___Linux-c++___20180330-1353-Experimental___XML___Build.xml
+   Error when uploading file: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/Testing/20180330-1353/Build.xml
+   Error message was: Could not resolve host: http; Name or service not known
+   Problems when submitting via HTTP

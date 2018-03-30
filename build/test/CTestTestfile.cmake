@@ -6,3 +6,4 @@
 # testing this directory and lists subdirectories to be tested as well.
 ADD_TEST(TP1 "Dvector_test")
 ADD_TEST(TP2 "Operator_test")
+ADD_TEST(TP3 "Height_test")

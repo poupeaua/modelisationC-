@@ -1,0 +1,69 @@
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B18D: operator delete(void*) (vg_replace_malloc.c:576)
+==703==    by 0x503D0BF: Height::~Height() (Height.cpp:70)
+==703==    by 0x400ED3: main (Height_test.cpp:15)
+==703==  Address 0xffefff360 is on thread 1's stack
+==703==  in frame #2, created by main (Height_test.cpp:3)
+==703== 
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0CF: Height::~Height() (Height.cpp:68)
+==703==    by 0x400ED3: main (Height_test.cpp:15)
+==703==  Address 0x5e22b20 is 0 bytes inside a block of size 200 free'd
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0B7: Height::~Height() (Height.cpp:70)
+==703==    by 0x400ED3: main (Height_test.cpp:15)
+==703==  Block was alloc'd at
+==703==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==703==    by 0x4E3893E: Dvector::operator=(Dvector const&) (Dvector.cpp:229)
+==703==    by 0x503CF2D: Height::Height(Height const&) (Height.cpp:38)
+==703==    by 0x400E8E: main (Height_test.cpp:15)
+==703== 
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B18D: operator delete(void*) (vg_replace_malloc.c:576)
+==703==    by 0x503D0BF: Height::~Height() (Height.cpp:70)
+==703==    by 0x400EDF: main (Height_test.cpp:13)
+==703==  Address 0xffefff340 is on thread 1's stack
+==703==  in frame #2, created by main (Height_test.cpp:3)
+==703== 
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0CF: Height::~Height() (Height.cpp:68)
+==703==    by 0x400EDF: main (Height_test.cpp:13)
+==703==  Address 0x5e228b0 is 0 bytes inside a block of size 200 free'd
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0B7: Height::~Height() (Height.cpp:70)
+==703==    by 0x400EDF: main (Height_test.cpp:13)
+==703==  Block was alloc'd at
+==703==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==703==    by 0x4E3893E: Dvector::operator=(Dvector const&) (Dvector.cpp:229)
+==703==    by 0x503CDF3: Height::Height(int, int, double) (Height.cpp:19)
+==703==    by 0x400E7B: main (Height_test.cpp:13)
+==703== 
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B18D: operator delete(void*) (vg_replace_malloc.c:576)
+==703==    by 0x503D0BF: Height::~Height() (Height.cpp:70)
+==703==    by 0x400EEB: main (Height_test.cpp:19)
+==703==  Address 0xffefff320 is on thread 1's stack
+==703==  in frame #2, created by main (Height_test.cpp:3)
+==703== 
+==703== Invalid free() / delete / delete[] / realloc()
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0CF: Height::~Height() (Height.cpp:68)
+==703==    by 0x400EEB: main (Height_test.cpp:19)
+==703==  Address 0x5e223f0 is 0 bytes inside a block of size 800 free'd
+==703==    at 0x4C2B63D: operator delete[](void*) (vg_replace_malloc.c:621)
+==703==    by 0x4E384BC: Dvector::~Dvector() (Dvector.cpp:108)
+==703==    by 0x503D0B7: Height::~Height() (Height.cpp:70)
+==703==    by 0x400EEB: main (Height_test.cpp:19)
+==703==  Block was alloc'd at
+==703==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==703==    by 0x4E3893E: Dvector::operator=(Dvector const&) (Dvector.cpp:229)
+==703==    by 0x503CDF3: Height::Height(int, int, double) (Height.cpp:19)
+==703==    by 0x400DCF: main (Height_test.cpp:5)
+==703== 

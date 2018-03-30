@@ -1,0 +1,45 @@
+==700== 16 bytes in 1 blocks are still reachable in loss record 1 of 7
+==700==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==700==    by 0x4E3809A: Dvector::Dvector() (Dvector.cpp:14)
+==700==    by 0x401767: main (Operator_test.cpp:6)
+==700== 
+==700== 16 bytes in 1 blocks are still reachable in loss record 2 of 7
+==700==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==700==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==700==    by 0x40177F: main (Operator_test.cpp:8)
+==700== 
+==700== 24 bytes in 1 blocks are still reachable in loss record 3 of 7
+==700==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==700==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==700==    by 0x4017AC: main (Operator_test.cpp:10)
+==700== 
+==700== 24 bytes in 1 blocks are still reachable in loss record 4 of 7
+==700==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==700==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==700==    by 0x4017C8: main (Operator_test.cpp:12)
+==700== 
+==700== 37 bytes in 1 blocks are still reachable in loss record 5 of 7
+==700==    at 0x4C2A203: operator new(unsigned long) (vg_replace_malloc.c:334)
+==700==    by 0x50F9CF8: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50FB390: char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50D95F7: std::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >::str() const (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x401866: main (Operator_test.cpp:27)
+==700== 
+==700== 40 bytes in 1 blocks are still reachable in loss record 6 of 7
+==700==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==700==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==700==    by 0x4017F5: main (Operator_test.cpp:14)
+==700== 
+==700== 537 bytes in 1 blocks are still reachable in loss record 7 of 7
+==700==    at 0x4C2A203: operator new(unsigned long) (vg_replace_malloc.c:334)
+==700==    by 0x50F9CF8: std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50FA90A: std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50FA9B3: std::string::reserve(unsigned long) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50D7675: std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50DBDE5: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50C7DF1: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_float<double>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, char, double) const (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50C7F0F: std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, double) const (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x50D3B14: std::ostream& std::ostream::_M_insert<double>(double) (in /usr/lib64/libstdc++.so.6.0.19)
+==700==    by 0x4E3857F: Dvector::display(std::ostream&) (Dvector.cpp:121)
+==700==    by 0x40184D: main (Operator_test.cpp:26)
+==700== 

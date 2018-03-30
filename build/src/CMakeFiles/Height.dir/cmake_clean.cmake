@@ -1,6 +1,5 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/Height.dir/Height.cpp.o"
-  "CMakeFiles/Height.dir/Dvector.cpp.o"
   "libHeight.pdb"
   "libHeight.so"
 )

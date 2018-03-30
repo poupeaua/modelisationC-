@@ -153,12 +153,21 @@ void Dvector::fillRandomly()
 */
 void Dvector::resize(int new_taille, double new_ele)
 {
-  vect = (double *) realloc(vect, new_taille * sizeof(double));
-  if (new_taille >= taille) {
+  double *new_vect = new double[new_taille];
+  // new_vect = (double *) realloc(vect, new_taille * sizeof(double));
+  for (int i = 0 ; i < min(taille, new_taille) ; i++) {
+    new_vect[i] = vect[i];
+  }
+
+  // delete[] this->vect;
+  if (new_taille > taille) {
     for (int i = taille ; i < new_taille ; i++) {
-      vect[i] = new_ele;
+      new_vect[i] = new_ele;
     }
   }
+
+  delete[] vect;
+  this->vect = new_vect;
   this->taille = new_taille;
 }
 
@@ -180,6 +189,9 @@ double& Dvector::operator[](int i)
 
 const double& Dvector::operator[](int i) const
 {
+  if ((i<0)||(i>taille)) {
+    exit(1);
+  }
   return vect[i];
 }
 
@@ -188,11 +200,18 @@ const double& Dvector::operator[](int i) const
 */
 double& Dvector::operator()(int i)
 {
+  if ((i<0)||(i>taille)) {
+    cout << taille << endl;
+    exit(1);
+  }
   return vect[i];
 }
 
 const double& Dvector::operator()(int i) const
 {
+  if ((i<0)||(i>taille)) {
+    exit(1);
+  }
   return vect[i];
 }
 
@@ -202,8 +221,16 @@ const double& Dvector::operator()(int i) const
 Dvector& Dvector::operator=(const Dvector& dv)
 {
   taille = dv.taille;
+  /*
+  BEWARE !!! => don't forget to delete[] before making a new vect
+  LONG DEBUG to find that !
+  */
+  delete[] vect;
   vect = new double[taille];
-  memcpy(vect, dv.vect, taille*sizeof(double));
+  // memcpy(vect, dv.vect, taille*sizeof(double));
+  for (int i = 0 ; i < taille ; i++) {
+    vect[i] = dv[i];
+  }
   return *this;
 }
 
