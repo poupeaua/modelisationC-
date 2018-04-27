@@ -27,7 +27,7 @@ Dvector::Dvector(int taille, double val)
 {
   if (taille < 0) {
     cout << "ERROR : negative size." << endl;
-    return;
+    exit(EXIT_FAILURE);
   }
   vect = new double[taille];
   for (int i = 0 ; i < taille ; i++)
@@ -72,6 +72,7 @@ Dvector::Dvector(string src)
   }
   else {
     cout << "ERROR : Unable to open file" << endl;
+    exit(EXIT_FAILURE);
   }
 
   /* deuxieme boucle pour inserer les elements dans le vecteurs
