@@ -9,6 +9,7 @@
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
 #include "Dvector.h"
+#include <cmath>
 
 using namespace std;
 
@@ -24,9 +25,10 @@ class GerstnerWave
 
     GerstnerWave(Dvector direction, double amplitude,
                 double frequence, double phase);
-
     GerstnerWave(const GerstnerWave & other);
+
     GerstnerWave& operator=(const GerstnerWave&);
+    double operator()(int x, int y, double t);
 
     private:
 
