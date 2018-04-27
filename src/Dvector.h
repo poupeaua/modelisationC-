@@ -1,3 +1,5 @@
+#ifndef DVECTOR_H
+#define DVECTOR_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <cassert>      // assert
@@ -8,6 +10,7 @@
 #include <iomanip>      // setprecision
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
+#endif
 
 using namespace std;
 
