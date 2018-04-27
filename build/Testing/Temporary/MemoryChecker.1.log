@@ -1,0 +1,35 @@
+==17993== 16 bytes in 1 blocks are definitely lost in loss record 1 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3809A: Dvector::Dvector() (Dvector.cpp:14)
+==17993==    by 0x4012A4: main (Dvector_test.cpp:6)
+==17993== 
+==17993== 24 bytes in 1 blocks are definitely lost in loss record 2 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x4012E9: main (Dvector_test.cpp:10)
+==17993== 
+==17993== 24 bytes in 1 blocks are definitely lost in loss record 3 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x401316: main (Dvector_test.cpp:12)
+==17993== 
+==17993== 24 bytes in 1 blocks are definitely lost in loss record 4 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E381DB: Dvector::Dvector(Dvector const&) (Dvector.cpp:47)
+==17993==    by 0x40132F: main (Dvector_test.cpp:14)
+==17993== 
+==17993== 40 bytes in 1 blocks are definitely lost in loss record 5 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x4012BC: main (Dvector_test.cpp:8)
+==17993== 
+==17993== 80 bytes in 1 blocks are definitely lost in loss record 6 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E38335: Dvector::Dvector(std::string) (Dvector.cpp:80)
+==17993==    by 0x401366: main (Dvector_test.cpp:16)
+==17993== 
+==17993== 133,896 bytes in 1 blocks are definitely lost in loss record 7 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E38335: Dvector::Dvector(std::string) (Dvector.cpp:80)
+==17993==    by 0x4013B5: main (Dvector_test.cpp:18)
+==17993== 

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-c++"
+	BuildStamp="20180413-0722-Experimental"
+	Name="ensipc369"
+	Generator="ctest-2.8.12.2"
+	CompilerName="/usr/bin/c++"
+	OSName="Linux"
+	Hostname="ensipc455"
+	OSRelease="3.10.0-693.21.1.el7.x86_64"
+	OSVersion="#1 SMP Wed Mar 7 19:03:37 UTC 2018"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="94"
+	ProcessorCacheSize="6144"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="31939"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="2606.62"
+>
+<DynamicAnalysis Checker="Valgrind">
+	<StartDateTime>Apr 13 09:23 CEST</StartDateTime>
+	<StartTestTime>1523604185</StartTestTime>
+	<TestList>
+		<Test>./test/TP1</Test>
+		<Test>./test/TP2</Test>
+		<Test>./test/TP3</Test>
+	</TestList>
+	<Test Status="passed">
+		<Name>TP1</Name>
+		<Path>./test</Path>
+		<FullName>./test/TP1</FullName>
+		<FullCommandLine>/usr/bin/valgrind &quot;--log-file=/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/Testing/Temporary/MemoryChecker.1.log&quot; &quot;-q&quot; &quot;--tool=memcheck&quot; &quot;--leak-check=yes&quot; &quot;--show-reachable=yes&quot; &quot;--num-callers=50&quot; &quot;/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/Dvector_test&quot;</FullCommandLine>
+		<Results>
+			<Defect type="Memory Leak">7</Defect>
+		</Results>
+	<Log>
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 16 bytes in 1 blocks are definitely lost in loss record 1 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3809A: Dvector::Dvector() (Dvector.cpp:14)
+==17993==    by 0x4012A4: main (Dvector_test.cpp:6)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 24 bytes in 1 blocks are definitely lost in loss record 2 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x4012E9: main (Dvector_test.cpp:10)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 24 bytes in 1 blocks are definitely lost in loss record 3 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x401316: main (Dvector_test.cpp:12)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 24 bytes in 1 blocks are definitely lost in loss record 4 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17993==    by 0x40132F: main (Dvector_test.cpp:14)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 40 bytes in 1 blocks are definitely lost in loss record 5 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17993==    by 0x4012BC: main (Dvector_test.cpp:8)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 80 bytes in 1 blocks are definitely lost in loss record 6 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E38335: Dvector::Dvector(std::string) (Dvector.cpp:80)
+==17993==    by 0x401366: main (Dvector_test.cpp:16)
+==17993== 
+&lt;b&gt;MLK&lt;/b&gt; ==17993== 133,896 bytes in 1 blocks are definitely lost in loss record 7 of 7
+==17993==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17993==    by 0x4E38335: Dvector::Dvector(std::string) (Dvector.cpp:80)
+==17993==    by 0x4013B5: main (Dvector_test.cpp:18)
+==17993== 
+OK
+
+	</Log>
+	</Test>
+	<Test Status="passed">
+		<Name>TP2</Name>
+		<Path>./test</Path>
+		<FullName>./test/TP2</FullName>
+		<FullCommandLine>/usr/bin/valgrind &quot;--log-file=/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/Testing/Temporary/MemoryChecker.2.log&quot; &quot;-q&quot; &quot;--tool=memcheck&quot; &quot;--leak-check=yes&quot; &quot;--show-reachable=yes&quot; &quot;--num-callers=50&quot; &quot;/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/Operator_test&quot;</FullCommandLine>
+		<Results>
+			<Defect type="Memory Leak">32</Defect>
+		</Results>
+	<Log>
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 16 bytes in 1 blocks are definitely lost in loss record 1 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17996==    by 0x40177F: main (Operator_test.cpp:8)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 2 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17996==    by 0x4017C8: main (Operator_test.cpp:12)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 3 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E64: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:354)
+==17996==    by 0x4E38B39: Dvector::operator-=(Dvector const&amp;amp;) (Dvector.cpp:294)
+==17996==    by 0x401A8F: main (Operator_test.cpp:42)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 4 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E8F: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:355)
+==17996==    by 0x4E38B39: Dvector::operator-=(Dvector const&amp;amp;) (Dvector.cpp:294)
+==17996==    by 0x401A8F: main (Operator_test.cpp:42)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 5 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38CC4: operator+(Dvector const&amp;amp;, double) (Dvector.cpp:332)
+==17996==    by 0x401D20: main (Operator_test.cpp:60)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 6 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38CEF: operator+(Dvector const&amp;amp;, double) (Dvector.cpp:333)
+==17996==    by 0x401D20: main (Operator_test.cpp:60)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 7 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38C3C: operator+(double, Dvector const&amp;amp;) (Dvector.cpp:326)
+==17996==    by 0x401E27: main (Operator_test.cpp:65)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 8 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38C67: operator+(double, Dvector const&amp;amp;) (Dvector.cpp:327)
+==17996==    by 0x401E27: main (Operator_test.cpp:65)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 9 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38DDC: operator-(Dvector const&amp;amp;, double) (Dvector.cpp:345)
+==17996==    by 0x401F1D: main (Operator_test.cpp:71)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 10 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E07: operator-(Dvector const&amp;amp;, double) (Dvector.cpp:346)
+==17996==    by 0x401F1D: main (Operator_test.cpp:71)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 11 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E64: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:354)
+==17996==    by 0x4E38D54: operator-(double, Dvector const&amp;amp;) (Dvector.cpp:339)
+==17996==    by 0x402024: main (Operator_test.cpp:76)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 12 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E8F: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:355)
+==17996==    by 0x4E38D54: operator-(double, Dvector const&amp;amp;) (Dvector.cpp:339)
+==17996==    by 0x402024: main (Operator_test.cpp:76)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 13 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38D7F: operator-(double, Dvector const&amp;amp;) (Dvector.cpp:340)
+==17996==    by 0x402024: main (Operator_test.cpp:76)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 14 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38EEC: operator*(Dvector const&amp;amp;, double) (Dvector.cpp:360)
+==17996==    by 0x40212B: main (Operator_test.cpp:82)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 15 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38F17: operator*(Dvector const&amp;amp;, double) (Dvector.cpp:361)
+==17996==    by 0x40212B: main (Operator_test.cpp:82)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 16 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E64: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:354)
+==17996==    by 0x402232: main (Operator_test.cpp:87)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 17 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E8F: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:355)
+==17996==    by 0x402232: main (Operator_test.cpp:87)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 18 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39058: operator/(Dvector const&amp;amp;, double) (Dvector.cpp:377)
+==17996==    by 0x402339: main (Operator_test.cpp:93)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 19 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39083: operator/(Dvector const&amp;amp;, double) (Dvector.cpp:378)
+==17996==    by 0x402339: main (Operator_test.cpp:93)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 20 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38F74: operator/(double, Dvector const&amp;amp;) (Dvector.cpp:369)
+==17996==    by 0x402440: main (Operator_test.cpp:98)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 21 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38FFB: operator/(double, Dvector const&amp;amp;) (Dvector.cpp:372)
+==17996==    by 0x402440: main (Operator_test.cpp:98)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 22 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E390DF: operator+(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:386)
+==17996==    by 0x402535: main (Operator_test.cpp:104)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 23 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39104: operator+(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:387)
+==17996==    by 0x402535: main (Operator_test.cpp:104)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 24 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17996==    by 0x40254E: main (Operator_test.cpp:104)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 25 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39160: operator-(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:395)
+==17996==    by 0x40262A: main (Operator_test.cpp:110)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 26 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E64: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:354)
+==17996==    by 0x4E38B39: Dvector::operator-=(Dvector const&amp;amp;) (Dvector.cpp:294)
+==17996==    by 0x4E39173: operator-(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:396)
+==17996==    by 0x40262A: main (Operator_test.cpp:110)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 27 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E38E8F: operator*(double, Dvector const&amp;amp;) (Dvector.cpp:355)
+==17996==    by 0x4E38B39: Dvector::operator-=(Dvector const&amp;amp;) (Dvector.cpp:294)
+==17996==    by 0x4E39173: operator-(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:396)
+==17996==    by 0x40262A: main (Operator_test.cpp:110)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 28 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39185: operator-(Dvector const&amp;amp;, Dvector const&amp;amp;) (Dvector.cpp:396)
+==17996==    by 0x40262A: main (Operator_test.cpp:110)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 29 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17996==    by 0x402643: main (Operator_test.cpp:110)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 30 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E391DD: Dvector::operator-() (Dvector.cpp:404)
+==17996==    by 0x402718: main (Operator_test.cpp:116)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 24 bytes in 1 blocks are definitely lost in loss record 31 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E381DB: Dvector::Dvector(Dvector const&amp;amp;) (Dvector.cpp:47)
+==17996==    by 0x4E39203: Dvector::operator-() (Dvector.cpp:405)
+==17996==    by 0x402718: main (Operator_test.cpp:116)
+==17996== 
+&lt;b&gt;MLK&lt;/b&gt; ==17996== 64 bytes in 1 blocks are definitely lost in loss record 32 of 32
+==17996==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17996==    by 0x4E386B0: Dvector::resize(int, double) (Dvector.cpp:156)
+==17996==    by 0x402CC7: main (Operator_test.cpp:156)
+==17996== 
+OK
+
+	</Log>
+	</Test>
+	<Test Status="passed">
+		<Name>TP3</Name>
+		<Path>./test</Path>
+		<FullName>./test/TP3</FullName>
+		<FullCommandLine>/usr/bin/valgrind &quot;--log-file=/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/Testing/Temporary/MemoryChecker.3.log&quot; &quot;-q&quot; &quot;--tool=memcheck&quot; &quot;--leak-check=yes&quot; &quot;--show-reachable=yes&quot; &quot;--num-callers=50&quot; &quot;/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/Height_test&quot;</FullCommandLine>
+		<Results>
+			<Defect type="Memory Leak">12</Defect>
+		</Results>
+	<Log>
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 32 bytes in 1 blocks are definitely lost in loss record 1 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D026: Height::Height(int, int, double, double, double) (Height.cpp:11)
+==17999==    by 0x400FC8: main (Height_test.cpp:19)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 32 bytes in 1 blocks are definitely lost in loss record 2 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D08D: Height::Height(int, int, double, double, double) (Height.cpp:19)
+==17999==    by 0x400FC8: main (Height_test.cpp:19)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 3 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D026: Height::Height(int, int, double, double, double) (Height.cpp:11)
+==17999==    by 0x400F27: main (Height_test.cpp:9)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 4 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D08D: Height::Height(int, int, double, double, double) (Height.cpp:19)
+==17999==    by 0x400F27: main (Height_test.cpp:9)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 5 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D149: Height::Height(Height const&amp;amp;) (Height.cpp:32)
+==17999==    by 0x400F40: main (Height_test.cpp:11)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 6 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D1DF: Height::Height(Height const&amp;amp;) (Height.cpp:40)
+==17999==    by 0x400F40: main (Height_test.cpp:11)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 7 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D026: Height::Height(int, int, double, double, double) (Height.cpp:11)
+==17999==    by 0x400F82: main (Height_test.cpp:14)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 8 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D08D: Height::Height(int, int, double, double, double) (Height.cpp:19)
+==17999==    by 0x400F82: main (Height_test.cpp:14)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 9 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D149: Height::Height(Height const&amp;amp;) (Height.cpp:32)
+==17999==    by 0x400F9B: main (Height_test.cpp:16)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 40 bytes in 1 blocks are definitely lost in loss record 10 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D1DF: Height::Height(Height const&amp;amp;) (Height.cpp:40)
+==17999==    by 0x400F9B: main (Height_test.cpp:16)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 72 bytes in 1 blocks are definitely lost in loss record 11 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3814A: Dvector::Dvector(int, double) (Dvector.cpp:32)
+==17999==    by 0x503D026: Height::Height(int, int, double, double, double) (Height.cpp:11)
+==17999==    by 0x400EE5: main (Height_test.cpp:6)
+==17999== 
+&lt;b&gt;MLK&lt;/b&gt; ==17999== 72 bytes in 1 blocks are definitely lost in loss record 12 of 12
+==17999==    at 0x4C2A8A8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==17999==    by 0x4E3891E: Dvector::operator=(Dvector const&amp;amp;) (Dvector.cpp:229)
+==17999==    by 0x503D08D: Height::Height(int, int, double, double, double) (Height.cpp:19)
+==17999==    by 0x400EE5: main (Height_test.cpp:6)
+==17999== 
+0 0 0 
+0 0 0 
+0 0 0 
+
+3 3 3 3 3 
+
+3 3 3 3 3 
+
+5 
+5 
+5 
+5 
+5 
+
+5 
+5 
+5 
+5 
+5 
+
+1
+
+	</Log>
+	</Test>
+	<DefectList>
+		<Defect Type="Memory Leak"/>
+	</DefectList>
+	<EndDateTime>Apr 13 09:23 CEST</EndDateTime>
+	<EndTestTime>1523604186</EndTestTime>
+<ElapsedMinutes>0</ElapsedMinutes>
+</DynamicAnalysis>
+</Site>

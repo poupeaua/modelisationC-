@@ -2,8 +2,8 @@
 
 int main() {
 
-  /* simple square with 
-  Height h1(3, 3)
+  /* simple square with */
+  Height h1(3, 3);
 
   /* one-dimentionnal height axis x*/
   Height h2(5, 1, 3.0);
