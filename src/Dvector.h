@@ -10,7 +10,7 @@
 #include <iomanip>      // setprecision
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
-#endif
+
 
 using namespace std;
 
@@ -60,3 +60,5 @@ class Dvector
   Dvector operator-(const Dvector&, const Dvector&);
   ostream& operator<<(ostream &Out, Dvector &);
   istream& operator>>(istream &in, Dvector &);
+
+#endif

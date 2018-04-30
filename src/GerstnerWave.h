@@ -1,6 +1,7 @@
 #ifndef GERSTNER_WAVE_H
 #define GERSTNER_WAVE_H
 #include <cmath>
+#include "Dvector.h"
 
 
 

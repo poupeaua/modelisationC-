@@ -1,9 +1,7 @@
 #ifndef HEIGHT_H
 #define HEIGHT_H
-#include "Dvector.h"
-#endif
 
-using namespace std;
+#include "Dvector.h"
 
 
 /*
@@ -49,3 +47,5 @@ class Height
 
 ostream& operator<<(ostream &Out, Height &h);
 istream& operator>>(istream &in, Height &h);
+
+#endif

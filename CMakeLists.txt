@@ -1,5 +1,6 @@
 # -------------------- VERSION USED OF CMAKE ---------------------
 
+# http://www.hannahdee.eu/cpp.html
 # recent cmake version used
 cmake_minimum_required(VERSION 2.8.11)
 

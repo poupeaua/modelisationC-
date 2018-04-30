@@ -1,6 +1,5 @@
 #include "Height.h"
 
-
 /**
  * Constructeur par defaut placant des values (par défaut zero) partout
  **/
