@@ -6,22 +6,27 @@
 
 using namespace std;
 
+/* class that inherits from WaveModel */
 class GerstnerWaveModel : public WaveModel
 {
   public:
 
-  // not obliged to write virtual but it is to remind that they are special meth
+  /* not obliged to write virtual but it is to remind that they are special */
   virtual double operator()(int x, int y, double t);
-  GerstnerWaveModel(Dvector direction, double alignement, double intensite,
-              double longueurOnde, double hauteurVague, GerstnerWave *list);
+  GerstnerWaveModel(Dvector windDirection, double averageAlignment,
+              double intensite, double longueurOnde, double hauteurVague,
+              GerstnerWave *list);
+  GerstnerWave *getListGerstnerWaves();
+  int getNbWaves();
   virtual ~GerstnerWaveModel();
+
 
   private:
 
-  // list of Gerstner Wave
-  GerstnerWave *ListGerstnerWave;
-  // number of wave in the list / model
-  int nb_ondes;
+  /* list of Gerstner Wave */
+  GerstnerWave *ListGerstnerWaves;
+  /* number of wave in the list / model */
+  int nbWaves;
 };
 
 #endif

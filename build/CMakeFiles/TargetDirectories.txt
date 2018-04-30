@@ -19,6 +19,8 @@
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/ExperimentalTest.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/ExperimentalUpdate.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/src/CMakeFiles/GerstnerWave.dir
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/src/CMakeFiles/GerstnerWaveModel.dir
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/CMakeFiles/GerstnerWaveModel_test.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/CMakeFiles/GerstnerWave_test.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/src/CMakeFiles/Height.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/CMakeFiles/Height_test.dir
@@ -33,3 +35,4 @@
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/NightlyTest.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/CMakeFiles/NightlyUpdate.dir
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/test/CMakeFiles/Operator_test.dir
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build/src/CMakeFiles/WaveModel.dir

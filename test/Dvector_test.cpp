@@ -12,10 +12,11 @@ int main()
   Dvector vect4(3, 2.0);
   // vect5 constructeur copie
   Dvector vect5(vect3);
+
   // vect6 constructeur par lecture de fichier
-  Dvector vect6("test1.txt");
+  Dvector vect6("../../test/test1.txt");
   // vect7 constructeur par lecture de fichire numéro 2
-  Dvector vect7("test2.txt");
+  Dvector vect7("../../test/test2.txt");
 
 
   //vect1 test

@@ -10,6 +10,7 @@
 #include <iomanip>      // setprecision
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
+#include <math.h>       // used for pow in norm method
 
 
 using namespace std;
@@ -26,6 +27,8 @@ class Dvector
   ~Dvector();
   void display(ostream& str);
   int size();
+  /* p-norm added for the TP3 */
+  double norm(int p);
   void fillRandomly();
   void resize(int taille, double new_ele = 0.0);
   double& operator[](int i);

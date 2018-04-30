@@ -128,12 +128,28 @@ void Dvector::display(ostream& str)
 }
 
 
-/* Retourne la taille du vecteur considere
+/*
   Methode Getter
 */
 int Dvector::size()
 {
   return this->taille;
+}
+
+
+/*
+  Retourne la p-norme du vecteur.
+  Si p = 2, c'est la norme Euclidienne => qu'on utilisera mais on permet
+  une souplesse au cas où.
+*/
+double Dvector::norm(int p)
+{
+  double norm = 0;
+  for (int i = 0 ; i < this->taille ; i++)
+  {
+    norm += pow(vect[i], p);
+  }
+  return pow(norm, 1/p);
 }
 
 

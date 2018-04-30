@@ -27,6 +27,8 @@ time.h
 -
 fstream
 -
+math.h
+-
 
 /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Operator_test.cpp
 Dvector.h

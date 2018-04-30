@@ -1,23 +1,43 @@
 #include "GerstnerWaveModel.h"
 
 
-double GerstnerWaveModel::operator()(int x, int y, double t) {
-  double total_h = 0;
-  for (int i = 0 ; i < nb_ondes ; i++)
+
+/*
+-------------------------------- CONSTRUCTORS ---------------------------------
+*/
+
+// Constructeur le plus simple pour un objet GerstnerWaveModel.
+
+
+GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection,
+            double averageAlignment, double intensite, double longueurOnde,
+            double hauteurVague, GerstnerWave *list) :
+
+            WaveModel(windDirection, averageAlignment, intensite, longueurOnde,
+                      hauteurVague)
+{
+  this->nbWaves = sizeof(list)/sizeof(GerstnerWave);
+  for (int i = 0 ; i < nbWaves ; i++)
   {
-      total_h += ListGerstnerWave[i](x, y, t);
+
   }
-  return total_h;
+  this->ListGerstnerWaves = list;
 }
 
 
-GerstnerWaveModel::GerstnerWaveModel(Dvector direction, double alignement,
-            double intensite, double longueurOnde, double hauteurVague,
-            GerstnerWave *list) :
+/*
+-------------------------------- METHODS ---------------------------------
+*/
 
-            WaveModel(direction, alignement, intensite, longueurOnde,
-                      hauteurVague)
-{
-  this->nb_ondes = sizeof(list)/sizeof(GerstnerWave);
-  this->ListGerstnerWave = list;
+/*!
+ * [GerstnerWaveModel::operator description]
+ * @return [description]
+ */
+double GerstnerWaveModel::operator()(int x, int y, double t) {
+  double total_h = 0;
+  for (int i = 0 ; i < nbWaves ; i++)
+  {
+      total_h += ListGerstnerWaves[i](x, y, t, getWindDirection(), getAverageAlignment());
+  }
+  return total_h;
 }

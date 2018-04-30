@@ -502,6 +502,19 @@ GerstnerWave/fast:
 .PHONY : GerstnerWave/fast
 
 #=============================================================================
+# Target rules for targets named GerstnerWaveModel
+
+# Build rule for target.
+GerstnerWaveModel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GerstnerWaveModel
+.PHONY : GerstnerWaveModel
+
+# fast build rule for target.
+GerstnerWaveModel/fast:
+	$(MAKE) -f src/CMakeFiles/GerstnerWaveModel.dir/build.make src/CMakeFiles/GerstnerWaveModel.dir/build
+.PHONY : GerstnerWaveModel/fast
+
+#=============================================================================
 # Target rules for targets named Height
 
 # Build rule for target.
@@ -515,6 +528,19 @@ Height/fast:
 .PHONY : Height/fast
 
 #=============================================================================
+# Target rules for targets named WaveModel
+
+# Build rule for target.
+WaveModel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 WaveModel
+.PHONY : WaveModel
+
+# fast build rule for target.
+WaveModel/fast:
+	$(MAKE) -f src/CMakeFiles/WaveModel.dir/build.make src/CMakeFiles/WaveModel.dir/build
+.PHONY : WaveModel/fast
+
+#=============================================================================
 # Target rules for targets named Dvector_test
 
 # Build rule for target.
@@ -526,6 +552,19 @@ Dvector_test: cmake_check_build_system
 Dvector_test/fast:
 	$(MAKE) -f test/CMakeFiles/Dvector_test.dir/build.make test/CMakeFiles/Dvector_test.dir/build
 .PHONY : Dvector_test/fast
+
+#=============================================================================
+# Target rules for targets named GerstnerWaveModel_test
+
+# Build rule for target.
+GerstnerWaveModel_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GerstnerWaveModel_test
+.PHONY : GerstnerWaveModel_test
+
+# fast build rule for target.
+GerstnerWaveModel_test/fast:
+	$(MAKE) -f test/CMakeFiles/GerstnerWaveModel_test.dir/build.make test/CMakeFiles/GerstnerWaveModel_test.dir/build
+.PHONY : GerstnerWaveModel_test/fast
 
 #=============================================================================
 # Target rules for targets named GerstnerWave_test
@@ -605,8 +644,11 @@ help:
 	@echo "... test"
 	@echo "... Dvector"
 	@echo "... GerstnerWave"
+	@echo "... GerstnerWaveModel"
 	@echo "... Height"
+	@echo "... WaveModel"
 	@echo "... Dvector_test"
+	@echo "... GerstnerWaveModel_test"
 	@echo "... GerstnerWave_test"
 	@echo "... Height_test"
 	@echo "... Operator_test"

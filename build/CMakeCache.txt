@@ -205,7 +205,13 @@ Dvector_LIB_DEPENDS:STATIC=
 GITCOMMAND:FILEPATH=/usr/bin/git
 
 //Dependencies for target
+GerstnerWaveModel_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
 GerstnerWave_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+GertsnerWaveModel_LIB_DEPENDS:STATIC=
 
 //Path to a program.
 HGCOMMAND:FILEPATH=/usr/bin/hg
@@ -237,6 +243,9 @@ SLURM_SRUN_COMMAND:FILEPATH=SLURM_SRUN_COMMAND-NOTFOUND
 
 //Path to a program.
 SVNCOMMAND:FILEPATH=/usr/bin/svn
+
+//Dependencies for target
+WaveModel_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 modelisationC++_BINARY_DIR:STATIC=/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build
