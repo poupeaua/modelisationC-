@@ -16,7 +16,7 @@ class WaveModel
   double getIntensite();
   double getLongueurOnde();
   double getHauteurVague();
-  virtual ~WaveModel();
+  virtual ~WaveModel()=0;
 
   protected:
 

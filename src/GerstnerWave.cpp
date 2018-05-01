@@ -5,6 +5,7 @@
 -------------------------------- CONSTRUCTORS ---------------------------------
 */
 
+
 /*!
  * [GerstnerWave::GerstnerWave Constructeur par défaut n'existe pas. Il est
  * nécessaire de passer par ce constructeur pour commencer.]
@@ -41,6 +42,7 @@ GerstnerWave::GerstnerWave(Dvector direction, double amplitude,
   this->phase = phase;
 }
 
+
 /*!
  * [GerstnerWave::GerstnerWave Constructeur par copie]
  * @param other [const GerstnerWave & est un autre objet GertsnerWave]
@@ -57,6 +59,7 @@ GerstnerWave::GerstnerWave(const GerstnerWave & other)
 ---------------------------------- METHODS ------------------------------------
 */
 
+
 /*!
  * [GerstnerWave::getAmplitude getter classique retournant l'amplitude de
  *  l'onde]
@@ -67,6 +70,7 @@ double GerstnerWave::getAmplitude()
   return this->amplitude;
 }
 
+
 /*!
  * [GerstnerWave::getDirection retourne la direction de l'onde]
  * @return [Dvector définissant le direction de l'onde (dimension 2)]
@@ -75,6 +79,7 @@ Dvector GerstnerWave::getDirection()
 {
   return this->direction;
 }
+
 
 /*!
  * [GerstnerWave::getFrequence getter classique pour la fréquence]
@@ -85,6 +90,7 @@ double GerstnerWave::getFrequence()
   return this->frequence;
 }
 
+
 /*!
  * [GerstnerWave::getPhase getter classique pour la phase]
  * @return [double définissant la phase de la vague]
@@ -93,6 +99,7 @@ double GerstnerWave::getPhase()
 {
   return this->phase;
 }
+
 
 /*!
  * [GerstnerWave destructeur]
@@ -106,8 +113,9 @@ GerstnerWave::~GerstnerWave()
 
 
 /*
---------------------------- OPERATOR -------------------------------------------
+---------------------------------- OPERATOR -----------------------------------
 */
+
 
 /*!
  * [GerstnerWave::operator = afin d'associer toutes les caractéristiques de
@@ -124,7 +132,13 @@ GerstnerWave& GerstnerWave::operator=(const GerstnerWave& gw)
 }
 
 
-
+/*!
+ * [GerstnerWave::operator () permet de calculer la hauteur d'un point de la
+ * surface via la position (x, y), le temps t ainsi que un Dvector
+ *  de dimension 2 indiquant la direction du vent ainsi que un double
+ *  définisant l'alignement moyen de la vague avec le vent]
+ * @return [double définissant la hauteur au point (x, y) à l'instant t]
+ */
 double GerstnerWave::operator()(int x, int y, double t,
                                 Dvector windDirection, double averageAlignment)
 {

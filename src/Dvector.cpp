@@ -4,8 +4,9 @@
 --------------------------- CONSTRUCTOR ----------------------------------------
 */
 
-/* constructeur par défaut
-*/
+/*!
+ * [Dvector::Dvector constructeur par défaut]
+ */
 Dvector::Dvector()
 {
   // créé un vecteur de taille 2 avec pour coordonnées (0, 0)
@@ -20,14 +21,18 @@ Dvector::Dvector()
 }
 
 
-/* constructeur précisant la taille et une option val
-  permettant d'initialiser toute les coordonnées du vecteur à val
-*/
+/*!
+ * [Dvector::Dvector constructeur précisant la taille et une option val
+   permettant d'initialiser toute les coordonnées du vecteur à val]
+ * @param taille [int définissant la taille du Dvector]
+ * @param val    [double valeur qui sera associé à tous les éléments du Dvector]
+ */
 Dvector::Dvector(int taille, double val)
 {
-  if (taille < 0) {
-    cout << "ERROR : negative size." << endl;
-    exit(EXIT_FAILURE);
+  if (taille <= 0) {
+    // cout << "ERROR : negative size." << endl;
+    // exit(EXIT_FAILURE)
+    throw ErreurAllocation();
   }
   vect = new double[taille];
   for (int i = 0 ; i < taille ; i++)
@@ -38,8 +43,11 @@ Dvector::Dvector(int taille, double val)
 }
 
 
-/* constructeur par copie
-*/
+/*!
+ * [Dvector::Dvector constructeur par copie]
+ * @param other [Dvector autre Dvector élément dont chaque caractéristique
+ *               sera copiée]
+ */
 Dvector::Dvector(const Dvector & other)
 {
   double *tmp = other.vect;
@@ -53,8 +61,12 @@ Dvector::Dvector(const Dvector & other)
 }
 
 
-/* constructeur utilisant un fichier pour lire les coordonnées
-*/
+/*!
+ * [Dvector::Dvector constructeur utilisant un fichier pour lire les
+ * coordonnées]
+ * @param src [string désignant le nom d'un fichier. Le contenu de ce fichier
+ *  sera ensuite copié dans le Dvector]
+ */
 Dvector::Dvector(string src)
 {
   string line;
@@ -71,12 +83,16 @@ Dvector::Dvector(string src)
     }
   }
   else {
-    cout << "ERROR : Unable to open file" << endl;
-    exit(EXIT_FAILURE);
+    // cout << "ERROR : Unable to open file" << endl;
+    // exit(EXIT_FAILURE);
+    throw runtime_error("Impossible d'ouvrir le fichier.");
   }
 
   /* deuxieme boucle pour inserer les elements dans le vecteurs
   */
+  if (nbr_element <= 0) {
+    throw ErreurAllocation();
+  }
   this->taille = nbr_element;
   vect = new double[nbr_element];
   int i = 0;
@@ -98,20 +114,26 @@ Dvector::Dvector(string src)
 
 
 /*
------------------------------- METHOD ------------------------------------------
+------------------------------------ METHOD -----------------------------------
 */
 
 
-/* Destructeur libérant la memoire
-*/
+/*!
+ * [Dvector Destructeur libérant la memoire]
+ */
 Dvector::~Dvector()
 {
   delete[] vect;
 }
 
 
-/* Methode permettant d'afficher le contenu d'un vecteur sur la sortie demandée
-*/
+
+/*!
+ * [Dvector::display Methode permettant d'afficher le contenu d'un vecteur
+ *  sur la sortie demandée]
+ * @param str [ostream& objet définissant sur quelle sortie le contenu du
+ *  Dvector sera copié]
+ */
 void Dvector::display(ostream& str)
 {
   double *tmp = this->vect;
@@ -128,20 +150,24 @@ void Dvector::display(ostream& str)
 }
 
 
-/*
-  Methode Getter
-*/
+/*!
+ * [Dvector::size Getter classique pour la taille du Dvector]
+ * @return [int définissant le taille du Dvector]
+ */
 int Dvector::size()
 {
   return this->taille;
 }
 
 
-/*
-  Retourne la p-norme du vecteur.
-  Si p = 2, c'est la norme Euclidienne => qu'on utilisera mais on permet
-  une souplesse au cas où.
-*/
+/*!
+ * [Dvector::norm Retourne la p-norme du Dvector.
+ * Si p = 2, c'est la norme Euclidienne => qu'on utilisera mais on permet
+ * une souplesse au cas où.]
+ * @param  p [int définissant ainsi la p-norme. La norme Euclidienne se définit
+ * pour p=2]
+ * @return   [p-norme du Dvector]
+ */
 double Dvector::norm(int p)
 {
   double norm = 0;
@@ -153,9 +179,10 @@ double Dvector::norm(int p)
 }
 
 
-/* Methode permettant de remplir toutes les coordonnées d'un vecteur avec
-des double compris entre 0 et 1
-*/
+/*!
+ * [Dvector::fillRandomly Methode permettant de remplir toutes les coordonnées
+ * d'un vecteur avec des double compris entre 0 et 1]
+ */
 void Dvector::fillRandomly()
 {
   srand(time(NULL));
@@ -166,8 +193,14 @@ void Dvector::fillRandomly()
   }
 }
 
-/*
-*/
+
+/*!
+ * [Dvector::resize Méthode permettant de redimensionner un Dvector]
+ * @param new_taille [int définissant la nouvelle taille du Dvector qui peut
+ *                    être plus grande ou plus petite que celle initiale]
+ * @param new_ele    [double définissant la valeur des nouveaux éléments
+ *                    dans le Dvector si la nouvelle taille est plus grande.]
+ */
 void Dvector::resize(int new_taille, double new_ele)
 {
   double *new_vect = new double[new_taille];
@@ -190,57 +223,76 @@ void Dvector::resize(int new_taille, double new_ele)
 
 
 /*
---------------------------- OPERATOR -------------------------------------------
+----------------------------------- OPERATOR ---------------------------------
 */
 
 
-/*implementation de l'operateur d'accession [] à un element du vecteur
-*/
+/*!
+ * [Dvector::operator[] opérateur d'accession [] à un élément du vecteur]
+ * @param  i [description]
+ * @return   [description]
+ */
 double& Dvector::operator[](int i)
 {
-  if ((i<0)||(i>taille)) {
-    exit(1);
+  if ((i<0)||(i>=taille)) {
+    // exit(1);
+    throw ErreurAcces();
   }
   return vect[i];
 }
 
+
+/*!
+ * [Dvector::operator[] opérateur d'accession [] à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 const double& Dvector::operator[](int i) const
 {
-  if ((i<0)||(i>taille)) {
-    exit(1);
+  if ((i<0)||(i>=taille)) {
+    // exit(1);
+    throw ErreurAcces();
   }
   return vect[i];
 }
 
 
-/*implementation de l'operateur d'accession () à un element du vecteur
-*/
+/*!
+ * [Dvector::operator[] opérateur d'accession () à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 double& Dvector::operator()(int i)
 {
-  if ((i<0)||(i>taille)) {
-    cout << taille << endl;
-    exit(1);
+  if ((i<0)||(i>=taille)) {
+    // exit(1);
+    throw ErreurAcces();
   }
   return vect[i];
 }
 
+
+/*!
+ * [Dvector::operator[] opérateur d'accession () à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 const double& Dvector::operator()(int i) const
 {
-  if ((i<0)||(i>taille)) {
-    exit(1);
+  if ((i<0)||(i>=taille)) {
+    // exit(1);
+    throw ErreurAcces();
   }
   return vect[i];
 }
 
 
-/*implementation de l'operateur d'affection avec memcpy
-*/
 Dvector& Dvector::operator=(const Dvector& dv)
 {
   taille = dv.taille;
   /*
   BEWARE !!! => don't forget to delete[] before making a new vect
-  LONG DEBUG to find that !
+  LONG Debug to find that !
   */
   delete[] vect;
   vect = new double[taille];
@@ -252,24 +304,11 @@ Dvector& Dvector::operator=(const Dvector& dv)
 }
 
 
-/*implementation de l'operateur d'affection avec le constructeur par copie
-NON TESTE
-*/
-
-/*
-Dvector& Dvector::operator=(const Dvector& dv)
-{
-  return this(dv);
-}
-*/
-
-
-/*implementation de l'operateur += avec un autre vecteur
-*/
 Dvector& Dvector::operator+=(const Dvector& dv)
 {
   if (taille!=dv.taille) {
-    exit(-1);//dimension incompatible
+    // exit(1);//dimension incompatible
+    throw ErreurAcces();
   }
   Dvector& vct = *this;
   for (int i=0;i<taille;i++)
@@ -305,7 +344,8 @@ Dvector& Dvector::operator*=(const double d)
 Dvector& Dvector::operator-=(const Dvector& dv)
 {
   if (taille!=dv.taille) {
-    exit(-1);//dimension incompatible
+    // exit(-1);//dimension incompatible
+    throw ErreurAcces();
   }
   Dvector& vct = *this;
   vct += -1*dv;
@@ -328,7 +368,8 @@ Dvector& Dvector::operator-=(const double d)
 Dvector& Dvector::operator/=(const double d)
 {
   if (d == 0) {
-    exit(-1);//dimension incompatible
+    // exit(-1);//dimension incompatible
+    throw domain_error("Division par zéro.");
   }
   Dvector& vct = *this;
   vct *= 1/d;
@@ -357,6 +398,7 @@ Dvector operator-(const double d, const Dvector& v1)
   return v0 += d;
 }
 
+
 Dvector operator-(const Dvector& v1, const double d)
 {
   Dvector v0(v1);
@@ -384,14 +426,21 @@ Dvector operator*(const Dvector& v1, const double d)
 Dvector operator/(const double d, const Dvector& v1)
 {
   Dvector v0(v1);
-  for (int i = 0;i<v0.size();i++)
+  for (int i = 0;i<v0.size();i++) {
+      if (v0[i] == 0) {
+        throw domain_error("Division par zéro.");
+      }
       v0[i] = 1/v0[i];
+  }
   return v0 *= d;
 }
 
 Dvector operator/(const Dvector& v1, const double d)
 {
   Dvector v0(v1);
+  if (d == 0) {
+    throw domain_error("Division par zéro.");
+  }
   return v0 /= d;
 }
 

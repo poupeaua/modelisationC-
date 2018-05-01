@@ -55,6 +55,65 @@ int main()
   vect6.display(str6);
   assert(str6.str() == "0.162182\n0.794285\n0.311215\n0.528533\n0.165649\n0.601982\n0.262971\n0.654079\n0.689214\n0.748152\n");
 
+
+  /*-------------------------  EXCEPTIONS TESTS ------------------------- */
+
+  stringstream str7;
+
+  /* test creer un Dvector de taille 0 */
+  try
+  {
+    Dvector vect8(0, 2.666);
+  }
+  catch (exception const& e)
+  {
+    /* il devrait etre ecrit la ligne suivante avec cerr pour un vrai prog */
+    // cerr << "ERREUR : " << e.what() << endl;
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  str7.str("");
+
+
+  /* test creer un Dvector de taille negative */
+  try
+  {
+    Dvector vect8(-5);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  str7.str("");
+
+
+  /* test creer un Dvector de taille non entiere */
+  try
+  {
+    Dvector vect8(5.99);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "");
+  str7.str("");
+
+
+  /* test ouvrir un fichier qui n'existe pas */
+  try
+  {
+    Dvector vect8("../../test/test.txt");
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier.\n");
+  str7.str("");
+
+
   cout << "OK" << endl;
 
 }

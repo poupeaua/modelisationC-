@@ -44,5 +44,97 @@ int main() {
   str6 << h2.getWidth() << endl;
   assert(str6.str() == "1\n");
 
+  /* access to elements tests */
+  double value = h1(0, 0);
+  assert(value == 0);
+  value += 5;
+  h1(1, 1) += value;
+  assert(h1(1, 1) == 5);
+
+
+  /* --------------------------- TESTS EXCEPTIONS ---------------------------*/
+
+  stringstream str7;
+
+  /* test longueur negative */
+  try
+  {
+    Height h1(-3, 3);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  str7.str("");
+
+
+  /* test largeur negative */
+  try
+  {
+    Height h1(3, -3);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  str7.str("");
+
+
+  /* test length negative */
+  try
+  {
+    Height h1(3, 3, 5.0, -7.6);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur paramètre length ou width négatif ou nul.\n");
+  str7.str("");
+
+
+  /* test width negative */
+  try
+  {
+    Height h1(3, 3, 5.0, 7.6, -9.3);
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur paramètre length ou width négatif ou nul.\n");
+  str7.str("");
+
+
+  /* test acces negatif */
+  try
+  {
+    Height h1(3, 3, 5.0, 7.6, 9.3);
+    h1(-1, 0) += 2;
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'accés aux données du Height.\n");
+  str7.str("");
+
+
+  /* test acces trop positif */
+  try
+  {
+    Height h1(3, 3, 5.0, 7.6, 9.3);
+    h1(3, 3) += 2;
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Erreur d'accés aux données du Height.\n");
+  str7.str("");
+
+
   cout << "OK" << endl;
 }

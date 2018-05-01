@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua
-BuildDirectory: /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build
+SourceDirectory: /home/alexandre/Documents/python/modelisationC-
+BuildDirectory: /home/alexandre/Documents/python/modelisationC-/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: ensipc148
+Site: vm
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-c++
@@ -33,9 +33,12 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua"
-MakeCommand: /usr/bin/gmake -i
+ConfigureCommand: "/usr/bin/cmake" "/home/alexandre/Documents/python/modelisationC-"
+MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
+
+# version control
+UpdateVersionOnly: 
 
 # CVS options
 # Default is "-d -P -A"
@@ -43,7 +46,7 @@ CVSCommand: CVSCOMMAND-NOTFOUND
 CVSUpdateOptions: -d -A -P
 
 # Subversion options
-SVNCommand: /usr/bin/svn
+SVNCommand: SVNCOMMAND-NOTFOUND
 SVNOptions: 
 SVNUpdateOptions: 
 
@@ -52,6 +55,13 @@ GITCommand: /usr/bin/git
 GITUpdateOptions: 
 GITUpdateCustom: 
 
+# Perforce options
+P4Command: P4COMMAND-NOTFOUND
+P4Client: 
+P4Options: 
+P4UpdateOptions: 
+P4UpdateCustom: 
+
 # Generic update command
 UpdateCommand: /usr/bin/git
 UpdateOptions: 
@@ -59,11 +69,14 @@ UpdateType: git
 
 # Compiler info
 Compiler: /usr/bin/c++
+CompilerVersion: 5.4.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
 ValgrindCommand: 
 ValgrindCommandOptions: 
+MemoryCheckType: 
+MemoryCheckSanitizerOptions: 
 MemoryCheckCommand: /usr/bin/valgrind
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
@@ -82,6 +95,10 @@ SlurmRunCommand: SLURM_SRUN_COMMAND-NOTFOUND
 # process will be summarily terminated.
 # Currently set to 25 minutes
 TimeOut: 1500
+
+# During parallel testing CTest will not start a new test if doing
+# so would cause the system load to exceed this value.
+TestLoad: 
 
 UseLaunchers: 
 CurlOptions: 

@@ -51,7 +51,7 @@ int main()
   utilisation d'une ecriture differente de :
   GerstnerWave *list = new GertsnerWave[3] => constructeur par défaut 3 fois
   En plus, utilisation de deux constructeur différents*/
-  Dvector direction3(7/6, 8.666);
+  Dvector direction3(2, 8.666);
   double amplitude3 = 56.15484;
   double phase3 = 4.56889;
   GerstnerWave *ListGerstnerWave = new GerstnerWave[3]{

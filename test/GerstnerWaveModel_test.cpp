@@ -2,7 +2,7 @@
 
 int main()
 {
-  /* ------------ INITIALISATION DE SIMPLE GERTSNER WAVE ----------------- */
+  /* ------------ INITIALISATION DE SIMPLES GERTSNER WAVES ----------------- */
 
   /* creation de la premiere onde */
   Dvector direction1(1, 1);
@@ -17,7 +17,7 @@ int main()
   GerstnerWave G2(direction2, amplitude2, phase2);
 
   /* creation de l troisieme vague */
-  Dvector direction3(7/6, 8.666);
+  Dvector direction3(2, 8.666);
   double amplitude3 = 56.15484;
   double phase3 = 4.56889;
   GerstnerWave G3(direction3, amplitude3, phase3);
@@ -27,10 +27,10 @@ int main()
 
 
 
-  /* ------------ CREATION DE L'OBJET GERTSNER WAVE MODEL ----------------- */
+  /* ------------ CREATION D'UN L'OBJET GERTSNER WAVE MODEL ---------------- */
 
   /* parametres necessaire pour creer un objet gerstner wave model */
-  Dvector windDirection(1/3, 0.6667);
+  Dvector windDirection(2, 2);
   double averageAlignment = 0.75;
   double intensite = 5.0;
   double longueurOnde = 6.0;

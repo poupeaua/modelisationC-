@@ -11,6 +11,7 @@
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
 #include <math.h>       // used for pow in norm method
+#include <exception>
 
 
 using namespace std;
@@ -44,6 +45,20 @@ class Dvector
   Dvector& operator/=(const double d);
   Dvector operator-(void);
   bool operator==(Dvector &);
+
+  class ErreurAllocation: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'allocation mémoire.";
+    }
+  };
+
+  class ErreurAcces: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'accés aux données du Dvector.";
+    }
+  };
 
   private:
 

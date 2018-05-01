@@ -36,6 +36,20 @@ class Height
   int getNy();
   double& operator()(int x, int y);
 
+  class ErreurAllocation: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'allocation mémoire.";
+    }
+  };
+
+  class ErreurAcces: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'accés aux données du Height.";
+    }
+  };
+
   private:
 
   double length; // Lx

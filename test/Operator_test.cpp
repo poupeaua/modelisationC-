@@ -158,5 +158,126 @@ int main()
     str << vect5;
     assert(str.str() == "3.0\n3.0\n3.0\n2.0\n2.0\n2.0\n2.0\n2.0\n");
 
+
+    /*-------------------------  EXCEPTIONS TESTS ------------------------- */
+
+    stringstream str7;
+
+    /* test accesseur () */
+    try
+    {
+      Dvector vect8(5, 3.9);
+      double value = vect8(5);
+      value *= 2;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Erreur d'accés aux données du Dvector.\n");
+    str7.str("");
+
+
+    /* test accesseur [] */
+    try
+    {
+      Dvector vect8(4, 2.3);
+      double value = vect8(-8);
+      value *= 2;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Erreur d'accés aux données du Dvector.\n");
+    str7.str("");
+
+
+    /* test accesseur [] */
+    try
+    {
+      Dvector vect8(4, 2.3);
+      double value = vect8(-8);
+      value *= 2;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Erreur d'accés aux données du Dvector.\n");
+    str7.str("");
+
+
+    /* test addition par Dvector de taille differentes */
+    try
+    {
+      Dvector vect8(4, 2);
+      Dvector vect9(5, 2);
+      vect8 += vect9;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Erreur d'accés aux données du Dvector.\n");
+    str7.str("");
+
+
+    /* test addition par Dvector de taille differentes */
+    try
+    {
+      Dvector vect8(4, 2);
+      Dvector vect9(5, 2);
+      vect8 -= vect9;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Erreur d'accés aux données du Dvector.\n");
+    str7.str("");
+
+
+    /* test division par 0 */
+    try
+    {
+      Dvector vect8(4, 2.3);
+      vect8 /= 0;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    str7.str("");
+
+
+    /* test division par 0 */
+    try
+    {
+      Dvector vect8(4, 2.3);
+      vect8 = vect8 / 0;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    str7.str("");
+
+
+    /* test division par 0 */
+    try
+    {
+      Dvector vect8(4);
+      vect8 = 1 / vect8;
+    }
+    catch (exception const& e)
+    {
+      str7 << "ERREUR : " << e.what() << endl;
+    }
+    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    str7.str("");
+
     std::cout << "OK\n";
 }
