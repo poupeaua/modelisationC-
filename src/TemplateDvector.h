@@ -86,6 +86,10 @@ class TemplateDvector
   TemplateDvector<T> operator+(const TemplateDvector<T>&, const TemplateDvector<T>&);
   template<typename T>
   TemplateDvector<T> operator-(const TemplateDvector<T>&, const TemplateDvector<T>&);
+  template<typename T>
+  ostream& operator<<(ostream &Out, TemplateDvector<T> &);
+  template<typename T>
+  istream& operator>>(istream &in, TemplateDvector<T> &);
 
 #include "TemplateDvectorMethods.h"
 

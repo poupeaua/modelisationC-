@@ -17,7 +17,6 @@ target_link_libraries(Operator_test Dvector)
 target_link_libraries(Height_test Height Dvector)
 target_link_libraries(GerstnerWave_test  GerstnerWave Dvector )
 target_link_libraries(GerstnerWaveModel_test GerstnerWaveModel GerstnerWave WaveModel Dvector)
-target_link_libraries(TemplateDvector_test TemplateDvector)
 
 #Tests
 add_test(TP1:Dvector_test Dvector_test)

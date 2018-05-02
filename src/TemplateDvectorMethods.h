@@ -57,12 +57,8 @@ void TemplateDvector<T>::display(ostream& str)
   for (int i = 0 ; i < this->taille ; i++)
   {
     // on peut mettre *(tmp + i) à la place de tmp[i]
-    if ((int)tmp[i] == tmp[i]) {
-      str << setprecision(1) << fixed << tmp[i] << endl;
-    } else {
-      // remet la percision par défaut
-      str << setprecision(6) << tmp[i] << endl;
-    }
+    // remet la percision par défaut
+    str << setprecision(6) << tmp[i] << endl;
   }
 }
 
@@ -304,4 +300,26 @@ TemplateDvector<T> TemplateDvector<T>::operator-()
 {
   TemplateDvector<T> vct(*this);
   return vct*=-1;
+}
+
+
+template<typename T>
+ostream& operator<<(ostream &Out, TemplateDvector<T> &dv)
+{
+  for(int i=0;i<dv.size();i++)
+  {
+    // on peut mettre *(tmp + i) à la place de tmp[i]
+    // remet la percision par défaut
+    Out << setprecision(6) << dv[i] << endl;
+  }
+  return Out;
+}
+
+
+template<typename T>
+istream& operator>>(istream &in, TemplateDvector<T> & dv)
+{
+  for(int i=0;i<dv.size();i++)
+    in >> dv(i);
+  return in;
 }
