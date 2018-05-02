@@ -4,12 +4,26 @@
 /* ---------------------------- CONSTRUCTORS ------------------------------- */
 
 
+/*!
+ * [WaveModel::WaveModel Constructeur d'un objet (abstrait) WaveModel]
+ * @param windDirection    [Dvector (dim = 2) indiquant la direction de vent]
+ * @param averageAlignment [double compris entre 0 et 1 correspondant au facteur
+ * d'alignement des vagues avec le vent]
+ * @param intensite        [double définissant l'intensité des vagues]
+ * @param longueurOnde     [double décrivant la longueur d'onde des vagues]
+ * @param hauteurVague     [double définissant la hauteur maximale des vagues]
+ */
 WaveModel::WaveModel(Dvector windDirection, double averageAlignment,
                   double intensite, double longueurOnde, double hauteurVague) {
   if (windDirection.size() != 2) {
-    cout << "ERROR : the length of the direction vector" << "direction has to"
-        " be equal to two" << endl;
-    exit(EXIT_FAILURE);
+    throw invalid_argument("Argument invalide : la direction du vent doit"
+      " être précisément de deux.");
+  } else if (averageAlignment > 1 || averageAlignment < 0) {
+    throw invalid_argument("Argument invalide : L'alignement moyen doit être"
+      " un double compris entre 0 et 1.");
+  } else if (intensite < 0 || longueurOnde < 0 || hauteurVague < 0) {
+    throw invalid_argument("Argument invalide : l'intensité, la longueur d'onde"
+      " ainsi que la hauteur des vagues doit être positive.");
   }
   this->windDirection = windDirection;
   this->averageAlignment = averageAlignment;
@@ -19,6 +33,10 @@ WaveModel::WaveModel(Dvector windDirection, double averageAlignment,
 }
 
 
+/*!
+ * [WaveModel::WaveModel Constructeur par copie]
+ * @param other [WaveModel other étant un autre objet WaveModel]
+ */
 WaveModel::WaveModel(const WaveModel &other) {
   this->windDirection = other.windDirection;
   this->averageAlignment = other.averageAlignment;

@@ -1,7 +1,7 @@
 #ifndef DVECTOR_H
 #define DVECTOR_H
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>      // classic include used everywhere
+#include <stdlib.h>     // classic include used everywhere
 #include <cassert>      // assert
 #include <string>       // std::string & atof
 #include <cstring>      // memcpy
@@ -11,7 +11,7 @@
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
 #include <math.h>       // used for pow in norm method
-#include <exception>
+#include <exception>    // used for exceptions
 
 
 using namespace std;

@@ -29,8 +29,17 @@
 GerstnerWave::GerstnerWave(Dvector direction, double amplitude,
             double phase, int ratioTypeFreq,  double D, double L)
 {
+  if (amplitude < 0 || phase < 0 || D < 0 || L < 0) {
+    throw invalid_argument("Argument invalide : L'amplitude, la distance au"
+        " sol ainsi que la tension de surface doivent être positifs.");
+  } else if ( direction.size() != 2){
+    throw invalid_argument("Argument invalide : La direction doit être de"
+        " dimension deux.");
+  }
   this->direction = direction;
   this->amplitude = amplitude;
+  /* calcul de la fréquence car on peut écrire un relation entre f et la norme
+  de la direction */
   double k = direction.norm(2);
   double frequence = sqrt(G*k);
   if (ratioTypeFreq == 2) {

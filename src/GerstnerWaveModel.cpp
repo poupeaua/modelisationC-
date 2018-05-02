@@ -20,12 +20,16 @@
  */
 GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection,
             double averageAlignment, double intensite, double longueurOnde,
-            double hauteurVague, GerstnerWave *list) :
+            double hauteurVague, GerstnerWave *list, int nbWaves) :
 
             WaveModel(windDirection, averageAlignment, intensite, longueurOnde,
                       hauteurVague)
 {
-  this->nbWaves = sizeof(list)/sizeof(GerstnerWave);
+  if (nbWaves <= 0) {
+    throw invalid_argument("Argument invalide : La tableau passer en argument"
+      " doit contenir au moins une GerstnerWave.");
+  }
+  this->nbWaves = nbWaves;
   this->ListGerstnerWaves = list;
 }
 
@@ -52,7 +56,8 @@ double GerstnerWaveModel::operator()(int x, int y, double t) {
   double total_h = 0;
   for (int i = 0 ; i < nbWaves ; i++)
   {
-      total_h += ListGerstnerWaves[i](x, y, t, getWindDirection(), getAverageAlignment());
+      total_h += ListGerstnerWaves[i](x, y, t, getWindDirection(),
+        getAverageAlignment());
   }
   return total_h;
 }

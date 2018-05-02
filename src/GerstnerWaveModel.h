@@ -15,7 +15,7 @@ class GerstnerWaveModel : public WaveModel
   virtual double operator()(int x, int y, double t);
   GerstnerWaveModel(Dvector windDirection, double averageAlignment,
               double intensite, double longueurOnde, double hauteurVague,
-              GerstnerWave *list);
+              GerstnerWave *list, int nbWaves);
   GerstnerWave *getListGerstnerWaves();
   int getNbWaves();
   virtual ~GerstnerWaveModel();
