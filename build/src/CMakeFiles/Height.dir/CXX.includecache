@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/alexandre/Documents/python/modelisationC-/src/Dvector.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.h
 stdio.h
 -
 stdlib.h
@@ -27,16 +27,18 @@ time.h
 -
 fstream
 -
-math.h
--
 exception
 -
+stdexcept
+-
+math.h
+-
 
-/home/alexandre/Documents/python/modelisationC-/src/Height.cpp
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Height.cpp
 Height.h
-/home/alexandre/Documents/python/modelisationC-/src/Height.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Height.h
 
-/home/alexandre/Documents/python/modelisationC-/src/Height.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Height.h
 Dvector.h
-/home/alexandre/Documents/python/modelisationC-/src/Dvector.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/src/Dvector.h
 

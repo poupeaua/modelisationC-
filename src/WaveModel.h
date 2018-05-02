@@ -4,8 +4,6 @@
 #include "Dvector.h"
 
 
-using namespace std;
-
 class WaveModel
 {
   public:

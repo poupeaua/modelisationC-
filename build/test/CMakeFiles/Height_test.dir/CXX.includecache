@@ -27,16 +27,18 @@ time.h
 -
 fstream
 -
-math.h
--
 exception
+-
+stdexcept
+-
+math.h
 -
 
 ../src/Height.h
 Dvector.h
 ../src/Dvector.h
 
-/home/alexandre/Documents/python/modelisationC-/test/Height_test.cpp
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Height_test.cpp
 Height.h
-/home/alexandre/Documents/python/modelisationC-/test/Height.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Height.h
 

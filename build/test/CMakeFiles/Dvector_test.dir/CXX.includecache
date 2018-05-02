@@ -27,12 +27,14 @@ time.h
 -
 fstream
 -
-math.h
--
 exception
 -
+stdexcept
+-
+math.h
+-
 
-/home/alexandre/Documents/python/modelisationC-/test/Dvector_test.cpp
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector_test.cpp
 Dvector.h
-/home/alexandre/Documents/python/modelisationC-/test/Dvector.h
+/user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/test/Dvector.h
 

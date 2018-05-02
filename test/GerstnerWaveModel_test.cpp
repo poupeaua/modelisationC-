@@ -60,13 +60,19 @@ int main()
   str1.str("");
 
   /* test de l'exception pour le tableau de GerstnerWave */
+  GerstnerWave *ListGerstnerWaves2 = new GerstnerWave[0];
+
   try
   {
-      GerstnerWave *ListGerstnerWaves = new GerstnerWave[0];
-    GerstnerWaveModel GWM1(windDirection, averageAlignment, intensite,
-                    longueurOnde, hauteurVague, ListGerstnerWaves, 0);
+    GerstnerWaveModel * GWM2 = new GerstnerWaveModel(windDirection,
+                    averageAlignment, intensite,
+                    longueurOnde, hauteurVague, ListGerstnerWaves2, 0);
+    delete[] GWM2; // just to make GWM2 be called once (avoid warning)
   }
   catch (exception const& e)
+  /* faire attention au free => corriger : pb d'avant est que comme on catch
+  on ne free pas en suivant, il a fallu donc sortir la création de la
+  ListGerstnerWaves2 en dehors du try ainsi que le delete[] associé */
   {
     str1 << "ERREUR : " << e.what() << endl;
   }
@@ -74,7 +80,7 @@ int main()
     " doit contenir au moins une GerstnerWave.\n");
   str1.str("");
 
-
+  delete[] ListGerstnerWaves2;
 
   /* ----------------- TEST EXCEPTIONS GENERAUX : WAVE MODEL --------------- */
 

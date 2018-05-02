@@ -44,7 +44,7 @@ GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection,
  */
 GerstnerWaveModel::~GerstnerWaveModel()
 {
-
+  delete[] ListGerstnerWaves;
 }
 
 /*!
