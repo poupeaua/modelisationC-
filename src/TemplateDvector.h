@@ -87,4 +87,6 @@ class TemplateDvector
   template<typename T>
   TemplateDvector<T> operator-(const TemplateDvector<T>&, const TemplateDvector<T>&);
 
+#include "TemplateDvectorMethods.h"
+
 #endif

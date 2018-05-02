@@ -3,7 +3,7 @@
 
 int  main() {
 
-  // TemplateDvector<double> tempVect1(2, 2.3);
+  TemplateDvector<double> tempVect1(2);
   // TemplateDvector<> tempVect2(2);
   // TemplateDvector<complex<double>> tempVect3(2);
 

@@ -1,5 +1,3 @@
-#include "TemplateDvector.h"
-
 
 template<typename T>
 TemplateDvector<T>::TemplateDvector()

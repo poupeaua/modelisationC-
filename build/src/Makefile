@@ -291,30 +291,6 @@ Height.cpp.s:
 	cd /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build && $(MAKE) -f src/CMakeFiles/Height.dir/build.make src/CMakeFiles/Height.dir/Height.cpp.s
 .PHONY : Height.cpp.s
 
-TemplateDvector.o: TemplateDvector.cpp.o
-.PHONY : TemplateDvector.o
-
-# target to build an object file
-TemplateDvector.cpp.o:
-	cd /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build && $(MAKE) -f src/CMakeFiles/TemplateDvector.dir/build.make src/CMakeFiles/TemplateDvector.dir/TemplateDvector.cpp.o
-.PHONY : TemplateDvector.cpp.o
-
-TemplateDvector.i: TemplateDvector.cpp.i
-.PHONY : TemplateDvector.i
-
-# target to preprocess a source file
-TemplateDvector.cpp.i:
-	cd /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build && $(MAKE) -f src/CMakeFiles/TemplateDvector.dir/build.make src/CMakeFiles/TemplateDvector.dir/TemplateDvector.cpp.i
-.PHONY : TemplateDvector.cpp.i
-
-TemplateDvector.s: TemplateDvector.cpp.s
-.PHONY : TemplateDvector.s
-
-# target to generate assembly for a file
-TemplateDvector.cpp.s:
-	cd /user/5/.base/poupeaua/home/Documents/2A/modelisation/TP1_balloua_poupeaua/build && $(MAKE) -f src/CMakeFiles/TemplateDvector.dir/build.make src/CMakeFiles/TemplateDvector.dir/TemplateDvector.cpp.s
-.PHONY : TemplateDvector.cpp.s
-
 WaveModel.o: WaveModel.cpp.o
 .PHONY : WaveModel.o
 
@@ -366,9 +342,6 @@ help:
 	@echo "... Height.o"
 	@echo "... Height.i"
 	@echo "... Height.s"
-	@echo "... TemplateDvector.o"
-	@echo "... TemplateDvector.i"
-	@echo "... TemplateDvector.s"
 	@echo "... WaveModel.o"
 	@echo "... WaveModel.i"
 	@echo "... WaveModel.s"
