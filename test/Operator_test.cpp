@@ -117,13 +117,14 @@ int main()
     str<<vect3;
     assert(str.str() == "5.0\n5.0\n5.0\n");
 
+    /*cin>>vect2;
+    str.str(std::string());
+    str<<vect2;
+    assert(str.str() == "2.0\n2.0\n");*/
+
     //operateur == test
     assert(vect3 == vect3);
     assert(!(vect3 == vect4));
-    cin>>vect2;
-    str.str(std::string());
-    str<<vect2;
-    assert(str.str() == "2.0\n2.0\n");
 
     // resize test larger
     vect5.resize(10);
