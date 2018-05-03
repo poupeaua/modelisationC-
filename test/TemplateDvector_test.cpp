@@ -13,7 +13,6 @@ int  main() {
   assert(str1.str() == "0\n0\n");
   str1.str("");
 
-
   /* test du par T par defaut (en double) */
   TemplateDvector<> tempVectDouble2(2);
 
@@ -21,24 +20,124 @@ int  main() {
   assert(str1.str() == "0\n0\n");
   str1.str("");
 
-
-
   /* ----------------------- T = COMPLEX TESTS ----------------------------- */
 
+  /* juste pour noter que l'on peut travailler en coordonnee polaire */
+  complex<double> testPolar = polar(2.0, 0.5);
+  str1 << testPolar;
+  assert(str1.str() == "(1.75517,0.958851)");
+  str1.str("");
 
-  /* test TemplateDvector en complexe classique */
-  complex<double> defaultComplex(2.0, 2.0);
-  TemplateDvector<complex<double>> tempVectComplex1(2, defaultComplex);
+  /* test constrcution de trois TemplateDvector en complexe classique */
+  complex<double> defaultComplex1(2.0, 2.0);
+  TemplateDvector<complex<double>> tempVectComplex1(2, defaultComplex1);
 
+  complex<double> defaultComplex3(1.665, -70.33);
+  TemplateDvector<complex<double>> tempVectComplex3(2, defaultComplex3);
+
+  complex<double> defaultComplex4(1.0, 1.0);
+  TemplateDvector<complex<double>> tempVectComplex4(2, defaultComplex4);
+
+  /* test constructeur par copie and operator == */
+  TemplateDvector<complex<double>> copie(tempVectComplex1);
+  assert(copie == tempVectComplex1);
+
+  /* test size */
+  assert(tempVectComplex1.size() == 2);
+
+  /* test display  and << operator*/
   tempVectComplex1.display(str1);
   assert(str1.str() == "(2,2)\n(2,2)\n");
   str1.str("");
+  str1 << tempVectComplex1;
+  assert(str1.str() == "(2,2)\n(2,2)\n");
+  str1.str("");
 
-  /* 
+  /* test operator access [] */
+  str1 << tempVectComplex1[1];
+  assert(str1.str() == "(2,2)");
+  str1.str("");
+
+  /* test operator access () */
+  str1 << tempVectComplex1(1);
+  assert(str1.str() == "(2,2)");
+  str1.str("");
+
+  /* test operator =  and operator == */
+  TemplateDvector<complex<double>> tempVectComplex2 = tempVectComplex1;
+  assert(tempVectComplex2 == tempVectComplex1);
+
+  /* test operator *= with a T*/
   complex<double> iComplex(0, 1.0); // i
   tempVectComplex1 *= iComplex;
   str1 << tempVectComplex1;
   assert(str1.str() == "(-2,2)\n(-2,2)\n");
+  str1.str("");
+
+  /* test operator += with a TemplateDvector object */
+  tempVectComplex1 += tempVectComplex3;
+  str1 << tempVectComplex1;
+  assert(str1.str() == "(-0.335,-68.33)\n(-0.335,-68.33)\n");
+  str1.str("");
+
+  /* test operator += with a T */
+  complex<double> tmpComplex(3.0, 68);
+  tempVectComplex1 += tmpComplex;
+  str1 << tempVectComplex1;
+  // cout << str1.str();
+  assert(str1.str() == "(2.665,-0.33)\n(2.665,-0.33)\n");
+  str1.str("");
+
+  /* test operator -= with a TemplateDvector object */
+  tempVectComplex1 -= tempVectComplex4;
+  str1 << tempVectComplex1;
+  assert(str1.str() == "(1.665,-1.33)\n(1.665,-1.33)\n");
+  str1.str("");
+
+  /* test operator -= with a T */
+  complex<double> tmpComplex2(1.0, -1.0);
+  tempVectComplex1 -= tmpComplex2;
+  str1 << tempVectComplex1;
+  // cout << str1.str();
+  assert(str1.str() == "(0.665,-0.33)\n(0.665,-0.33)\n");
+  str1.str("");
+
+  /* test operator /= with a T */
+  complex<double> tmpComplex3(0.5, 0.0);
+  tempVectComplex1 /= tmpComplex3;
+  str1 << tempVectComplex1;
+  cout << str1.str();
+  assert(str1.str() == "(1.33,-0.66)\n(1.33,-0.66)\n");
+  str1.str("");
+
+  /* test operator - */
+
+  /* test operator + TemplateDvector + T */
+  // tempVectComplex1 = tempVectComplex1 + tmpComplex3;
+  // str1 << tempVectComplex1;
+  // cout << str1.str();
+  // assert(str1.str() == "(1.33,-0.66)\n(1.33,-0.66)\n");
+  // str1.str("");
+
+
+  /* test operator + T + TemplateDvector */
+
+  /* test operator + TemplateDvector + TemplateDvector */
+
+  /* test operator - TemplateDvector - T */
+
+  /* test operator - T - TemplateDvector */
+
+  /* test operator - TemplateDvector - TemplateDvector */
+
+  /* test operator * TemplateDvector * T */
+
+  /* test operator * T * TemplateDvector */
+
+  /* test operator / TemplateDvector / T */
+
+  /* test operator / T / TemplateDvector */
+
 
 
   /* -------------------------- EXCEPTIONS TEST ---------------------------- */

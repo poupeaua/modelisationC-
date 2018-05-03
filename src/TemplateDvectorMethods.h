@@ -169,7 +169,7 @@ TemplateDvector<T>& TemplateDvector<T>::operator-=(const TemplateDvector<T>& dv)
     throw ErreurAcces();
   }
   TemplateDvector<T>& vct = *this;
-  vct += -1*dv;
+  vct += -1.0*dv;
   return vct;
 }
 
@@ -186,12 +186,23 @@ TemplateDvector<T>& TemplateDvector<T>::operator-=(const T d)
 template<typename T>
 TemplateDvector<T>& TemplateDvector<T>::operator/=(const T d)
 {
-  if (d == 0) {
-    //dimension incompatible
+  if (d == 0.0) {
     throw domain_error("Division par zéro.");
   }
   TemplateDvector<T>& vct = *this;
-  vct *= 1/d;
+  vct *= 1.0/d;
+  return vct;
+}
+
+/* specialization du la methode pour les complexes */
+template<>
+TemplateDvector<complex<double>>& TemplateDvector<complex<double>>::operator/=(const complex<double> d)
+{
+  if (d.real() == 0.0 && d.imag() == 0.0) {
+    throw domain_error("Division par zéro.");
+  }
+  TemplateDvector<complex<double>>& vct = *this;
+  vct *= 1.0/d;
   return vct;
 }
 
@@ -205,7 +216,7 @@ TemplateDvector<T> operator+(const double d, const TemplateDvector<T>& v1)
 
 
 template<typename T>
-TemplateDvector<T> operator+(const TemplateDvector<T>& v1, const double d)
+TemplateDvector<T> operator+(const TemplateDvector<T>& v1, const T d)
 {
   TemplateDvector<T> v0(v1);
   return v0 += d;
@@ -213,7 +224,7 @@ TemplateDvector<T> operator+(const TemplateDvector<T>& v1, const double d)
 
 
 template<typename T>
-TemplateDvector<T> operator-(const double d, const TemplateDvector<T>& v1)
+TemplateDvector<T> operator-(const T d, const TemplateDvector<T>& v1)
 {
   TemplateDvector<T> v0(-1*v1);
   return v0 += d;
@@ -221,7 +232,7 @@ TemplateDvector<T> operator-(const double d, const TemplateDvector<T>& v1)
 
 
 template<typename T>
-TemplateDvector<T> operator-(const TemplateDvector<T>& v1, const double d)
+TemplateDvector<T> operator-(const TemplateDvector<T>& v1, const T d)
 {
   TemplateDvector<T> v0(v1);
   return v0 -= d;
@@ -231,7 +242,7 @@ TemplateDvector<T> operator-(const TemplateDvector<T>& v1, const double d)
 /*implementation de l'operateur * entre un reel et un vecteur
 */
 template<typename T>
-TemplateDvector<T> operator*(const double d, const TemplateDvector<T>& v1)
+TemplateDvector<T> operator*(const T d, const TemplateDvector<T>& v1)
 {
   TemplateDvector<T> v0(v1);
   return v0 *= d;
@@ -239,7 +250,7 @@ TemplateDvector<T> operator*(const double d, const TemplateDvector<T>& v1)
 
 
 template<typename T>
-TemplateDvector<T> operator*(const TemplateDvector<T>& v1, const double d)
+TemplateDvector<T> operator*(const TemplateDvector<T>& v1, const T d)
 {
   TemplateDvector<T> v0(v1);
   return v0 *= d;
@@ -249,7 +260,7 @@ TemplateDvector<T> operator*(const TemplateDvector<T>& v1, const double d)
 /*implementation de l'operateur / entre un reel et un vecteur
 */
 template<typename T>
-TemplateDvector<T> operator/(const double d, const TemplateDvector<T>& v1)
+TemplateDvector<T> operator/(const T d, const TemplateDvector<T>& v1)
 {
   TemplateDvector<T> v0(v1);
   for (int i = 0;i<v0.size();i++) {
@@ -263,7 +274,7 @@ TemplateDvector<T> operator/(const double d, const TemplateDvector<T>& v1)
 
 
 template<typename T>
-TemplateDvector<T> operator/(const TemplateDvector<T>& v1, const double d)
+TemplateDvector<T> operator/(const TemplateDvector<T>& v1, const T d)
 {
   TemplateDvector<T> v0(v1);
   if (d == 0) {
@@ -322,4 +333,21 @@ istream& operator>>(istream &in, TemplateDvector<T> & dv)
   for(int i=0;i<dv.size();i++)
     in >> dv(i);
   return in;
+}
+
+
+template<typename T>
+bool TemplateDvector<T>::operator==(TemplateDvector<T> &dv)
+{
+  if (this->taille == dv.size()) {
+      for (int i = 0; i < dv.size(); i++) {
+          if (dv(i) != (*this)(i)) {
+              return false;
+          }
+      }
+      return true;
+  } else {
+      return false;
+  }
+
 }
