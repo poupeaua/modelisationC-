@@ -174,6 +174,17 @@ TemplateDvector<T>& TemplateDvector<T>::operator-=(const TemplateDvector<T>& dv)
 }
 
 
+/*implementation de l'operateur * entre un double pour l'operateur
+-= juste au dessus qui realise l'operation -1.0*dv
+*/
+template<typename T>
+TemplateDvector<T> operator*(const double d, const TemplateDvector<T>& v1)
+{
+  TemplateDvector<T> v0(v1);
+  return v0 *= d;
+}
+
+
 template<typename T>
 TemplateDvector<T>& TemplateDvector<T>::operator-=(const T d)
 {
@@ -208,7 +219,7 @@ TemplateDvector<complex<double>>& TemplateDvector<complex<double>>::operator/=(c
 
 
 template<typename T>
-TemplateDvector<T> operator+(const double d, const TemplateDvector<T>& v1)
+TemplateDvector<T> operator+(const T d, const TemplateDvector<T>& v1)
 {
   TemplateDvector<T> v0(v1);
   return v0 += d;
@@ -264,10 +275,25 @@ TemplateDvector<T> operator/(const T d, const TemplateDvector<T>& v1)
 {
   TemplateDvector<T> v0(v1);
   for (int i = 0;i<v0.size();i++) {
-      if (v0[i] == 0) {
+      if (v0[i] == 0.0) {
         throw domain_error("Division par zéro.");
       }
       v0[i] = 1/v0[i];
+  }
+  return v0 *= d;
+}
+
+
+/* specialisation de l'operateur / pour les nombres complexes */
+template<>
+TemplateDvector<complex<double>> operator/(const complex<double> d, const TemplateDvector<complex<double>>& v1)
+{
+  TemplateDvector<complex<double>> v0(v1);
+  for (int i = 0;i<v0.size();i++) {
+      if (v0[i].real() == 0.0 && v0[i].imag() == 0.0) {
+        throw domain_error("Division par zéro.");
+      }
+      v0[i] = 1.0/v0[i];
   }
   return v0 *= d;
 }
@@ -277,7 +303,19 @@ template<typename T>
 TemplateDvector<T> operator/(const TemplateDvector<T>& v1, const T d)
 {
   TemplateDvector<T> v0(v1);
-  if (d == 0) {
+  if (d == 0.0) {
+    throw domain_error("Division par zéro.");
+  }
+  return v0 /= d;
+}
+
+
+/* specialisation de l'operateur / pour les nombres complexes */
+template<>
+TemplateDvector<complex<double>> operator/(const TemplateDvector<complex<double>>& v1, const complex<double> d)
+{
+  TemplateDvector<complex<double>> v0(v1);
+  if (d.real() == 0 && d.imag() == 0) {
     throw domain_error("Division par zéro.");
   }
   return v0 /= d;

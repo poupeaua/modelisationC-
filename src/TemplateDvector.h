@@ -65,23 +65,23 @@ class TemplateDvector
   int taille;
 
 };
-
+  
   template<typename T>
-  TemplateDvector<T> operator+(const TemplateDvector<T>&, const double d);
+  TemplateDvector<T> operator+(const TemplateDvector<T>&, const T d);
   template<typename T>
-  TemplateDvector<T> operator+(const double d, const TemplateDvector<T>&);
+  TemplateDvector<T> operator+(const T d, const TemplateDvector<T>&);
   template<typename T>
-  TemplateDvector<T> operator-(const TemplateDvector<T>&, const double d);
+  TemplateDvector<T> operator-(const TemplateDvector<T>&, const T d);
   template<typename T>
   TemplateDvector<T> operator-(const double d, const TemplateDvector<T>&);
   template<typename T>
-  TemplateDvector<T> operator*(const TemplateDvector<T>&, const double d);
+  TemplateDvector<T> operator*(const TemplateDvector<T>&, const T d);
   template<typename T>
   TemplateDvector<T> operator*(const double d, const TemplateDvector<T>&);
   template<typename T>
-  TemplateDvector<T> operator/(const TemplateDvector<T>&, const double d);
+  TemplateDvector<T> operator/(const TemplateDvector<T>&, const T d);
   template<typename T>
-  TemplateDvector<T> operator/(const double d, const TemplateDvector<T>&);
+  TemplateDvector<T> operator/(const T d, const TemplateDvector<T>&);
   template<typename T>
   TemplateDvector<T> operator+(const TemplateDvector<T>&, const TemplateDvector<T>&);
   template<typename T>
