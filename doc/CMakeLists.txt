@@ -1,12 +1,12 @@
-# ------------------------ CMAKE SRC : Doc ------------------------ 
+# ------------------------ CMAKE SRC : Doc ------------------------
 
-# create new project
-project(Doc)
-
-# create a variable that contains every cpp file to compile
-set(SOURCES
-
+# add a target to generate API documentation with Doxygen
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+add_custom_target(doc
+${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+COMMENT "Generating API documentation with Doxygen" VERBATIM
 )
-
-# add every source file in the project
-add_library(${PROJECT_NAME}${SOURCES})
+endif(DOXYGEN_FOUND)
