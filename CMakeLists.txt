@@ -20,4 +20,4 @@ set( MEMORYCHECK_SUPPRESSIONS_FILE "${PROJECT_SOURCE_DIR}/valgrind_suppress.txt"
 # add all the subdirectories needed to make the whole thing work
 add_subdirectory(src)
 add_subdirectory(test)
-# add_subdirectory(doc)
+add_subdirectory(doc)

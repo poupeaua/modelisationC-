@@ -3,8 +3,6 @@
 #include "Dvector.h"
 
 
-using namespace std;
-
 /* global variable g*/
 double G = 9.81;
 

@@ -10,11 +10,12 @@
 #include <iomanip>      // setprecision
 #include <time.h>       // used for rand() random
 #include <fstream>      // used to read in a file
-#include <math.h>       // used for pow in norm method
-#include <exception>    // used for exceptions
-
+#include <exception>    // used for creating special exceptions
+#include <stdexcept>    // used to use classic exceptions such as domain_error
+#include <math.h>       // used for pow in norm method (TP3)
 
 using namespace std;
+
 
 class Dvector
 {

@@ -4,8 +4,6 @@
 #include "WaveModel.h"
 
 
-using namespace std;
-
 /* class that inherits from WaveModel */
 class GerstnerWaveModel : public WaveModel
 {

@@ -367,12 +367,12 @@ Dvector& Dvector::operator-=(const double d)
 */
 Dvector& Dvector::operator/=(const double d)
 {
-  if (d == 0) {
+  if (d == 0.0) {
     // exit(-1);//dimension incompatible
     throw domain_error("Division par zéro.");
   }
   Dvector& vct = *this;
-  vct *= 1/d;
+  vct *= 1.0/d;
   return vct;
 }
 
@@ -427,7 +427,7 @@ Dvector operator/(const double d, const Dvector& v1)
 {
   Dvector v0(v1);
   for (int i = 0;i<v0.size();i++) {
-      if (v0[i] == 0) {
+      if (v0[i] == 0.0) {
         throw domain_error("Division par zéro.");
       }
       v0[i] = 1/v0[i];
@@ -438,7 +438,7 @@ Dvector operator/(const double d, const Dvector& v1)
 Dvector operator/(const Dvector& v1, const double d)
 {
   Dvector v0(v1);
-  if (d == 0) {
+  if (d == 0.0) {
     throw domain_error("Division par zéro.");
   }
   return v0 /= d;
@@ -506,17 +506,12 @@ istream& operator>>(istream &in, Dvector &dv)
 bool Dvector::operator==(Dvector &dv)
 {
   if (this->taille == dv.size()) {
-      int a = 0;
       for (int i = 0; i < dv.size(); i++) {
           if (dv(i) != (*this)(i)) {
-              a+=1;
+            return false;
           }
       }
-      if (a == 0) {
-         return true;
-      } else {
-         return false;
-      }
+      return true;
   } else {
       return false;
   }

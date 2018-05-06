@@ -66,6 +66,7 @@ int main()
   assert(ListGerstnerWave[2].getFrequence() == sqrt(G*direction3.norm(2)));
   assert(ListGerstnerWave[2].getPhase() == 4.56889);
 
+  delete[] ListGerstnerWave;
 
   /* -------------------------- TEST EXCEPTIONS ---------------------------- */
 
