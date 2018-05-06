@@ -1,27 +1,23 @@
+# -------------------- VERSION USED OF CMAKE ---------------------
+
+# http://www.hannahdee.eu/cpp.html
 # recent cmake version used
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.11)
 
 # our project is called modelisation c++
 project(modelisationC++)
 
-# create variables with the files we want to compile
-set(SRCS
-    src/*
-    test/*
-    )
+# enable make test
+enable_testing()
+include(CTest)
 
-# for headers we want to use
-set(HEADERS
-    src/*
-    test/*
-    )
+set(CMAKE_CXX_FLAGS "-g -Wall -std=c++11")
 
-add_executable(
-    Dvector_test
-    test/Dvector_test.cpp
-)
+find_program( MEMORYCHECK_COMMAND valgrind )
+set( MEMORYCHECK_COMMAND_OPTIONS "--trace-children=yes --leak-check=full" )
+set( MEMORYCHECK_SUPPRESSIONS_FILE "${PROJECT_SOURCE_DIR}/valgrind_suppress.txt" )
 
-add_executable(
-    Operator_test
-    test/Operator_test.cpp
-)
+# add all the subdirectories needed to make the whole thing work
+add_subdirectory(src)
+add_subdirectory(test)
+# add_subdirectory(doc)

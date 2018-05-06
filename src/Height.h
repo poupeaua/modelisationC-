@@ -1,22 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <cassert>      // assert
-#include <string>       // std::string & atof
-#include <cstring>      // memcpy
-#include <iostream>     // std::cout
-#include <sstream>      // std::stringstream
-#include <iomanip>      // setprecision
-#include <time.h>       // used for rand() random
-#include <fstream>      // used to read in a file
-#include "Dvector.h"
+#ifndef HEIGHT_H
+#define HEIGHT_H
 
-using namespace std;
+#include "Dvector.h"
 
 
 /*
-Modèle des heigth object
+Model of heigth object
+Convention of axis x and y in informatics used
 
-  L O N G U E U R
+  L O N G U E U R  = x
 L
 A
 R
@@ -24,6 +16,8 @@ G
 E
 U
 R
+=
+y
 
 */
 
@@ -31,20 +25,41 @@ class Height
 {
   public:
 
-  Height(int longueur, int largeur, int **height);
-  Height(int longueur, int largeur);
+  Height(int nx, int ny, double value = 0.0, double length = 1.0, double width = 1.0);
   Height(const Height & other);
+  Height(int nx, int ny, double **height, double length = 1.0, double width = 1.0);
   ~Height();
-  int getLongueur();
-  int getLargeur();
-  double& operator()(Dvector v, double t);
-  Height& operator=(const Height&);
+  /* accessor */
+  double getLength();
+  double getWidth();
+  int getNx();
+  int getNy();
+  double& operator()(int x, int y);
+
+  class ErreurAllocation: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'allocation mémoire.";
+    }
+  };
+
+  class ErreurAcces: public exception {
+  public:
+    virtual const char* what(void) const throw () {
+      return "Erreur d'accés aux données du Height.";
+    }
+  };
 
   private:
-  int longueur;
-  int largeur;
-  int **height;
+
+  double length; // Lx
+  double width; // Ly
+  int nx;
+  int ny;
+  Dvector height;
 };
 
-ostream& operator<<(ostream &Out, Dvector &dv);
-istream& operator>>(istream &in, Dvector &dv);
+ostream& operator<<(ostream &Out, Height &h);
+istream& operator>>(istream &in, Height &h);
+
+#endif

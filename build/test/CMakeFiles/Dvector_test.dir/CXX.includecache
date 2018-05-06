@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/Dvector.h
+stdio.h
+-
+stdlib.h
+-
+cassert
+-
+string
+-
+cstring
+-
+iostream
+-
+sstream
+-
+iomanip
+-
+time.h
+-
+fstream
+-
+math.h
+-
+exception
+-
+
+/home/alexandre/Documents/python/modelisationC-/test/Dvector_test.cpp
+Dvector.h
+/home/alexandre/Documents/python/modelisationC-/test/Dvector.h
+

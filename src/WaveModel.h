@@ -1,14 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <cassert>      // assert
-#include <string>       // std::string & atof
-#include <cstring>      // memcpy
-#include <iostream>     // std::cout
-#include <sstream>      // std::stringstream
-#include <iomanip>      // setprecision
-#include <time.h>       // used for rand() random
-#include <fstream>      // used to read in a file
+#ifndef WAVE_MODEL_H
+#define WAVE_MODEL_H
+/* root abstract class so it has the main Dvector.h file */
 #include "Dvector.h"
+
 
 using namespace std;
 
@@ -16,25 +10,28 @@ class WaveModel
 {
   public:
 
-  virtual double& operator()(Dvector v, double t)=0;
-  double getDirection();
-  double getAlignement();
-  int getIntensite();
+  virtual double operator()(int x, int y, double t)=0;
+  Dvector getWindDirection();
+  double getAverageAlignment();
+  double getIntensite();
   double getLongueurOnde();
   double getHauteurVague();
-  virtual ~WaveModel();
+  virtual ~WaveModel()=0;
 
   protected:
-  WaveModel(double direction, double alignement, int intensite,
+
+  WaveModel(Dvector windDirection, double averageAlignment, double intensite,
               double longueurOnde, double hauteurVague);
 
   private:
 
   WaveModel(const WaveModel & other);
   WaveModel& operator=(const WaveModel&);
-  double direction;
-  double alignement;
-  int intensite;
+  Dvector windDirection;
+  double averageAlignment;
+  double intensite;
   double longueurOnde;
   double hauteurVague;
 };
+
+#endif
