@@ -118,7 +118,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'accés aux données du Height.\n");
+  assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
   str7.str("");
 
 
@@ -132,7 +132,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'accés aux données du Height.\n");
+  assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
   str7.str("");
 
 

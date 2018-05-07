@@ -1,4 +1,9 @@
+#include "ErreurAcces.h"
+#include "ErreurAllocation.h"
 
+/*!
+ * [TemplateDvector::TemplateDvector constructeur par défaut]
+ */
 template<typename T>
 TemplateDvector<T>::TemplateDvector()
 {
@@ -14,6 +19,12 @@ TemplateDvector<T>::TemplateDvector()
 }
 
 
+/*!
+ * [TemplateDvector::TemplateDvector constructeur précisant la taille et une option val
+   permettant d'initialiser toute les coordonnées du vecteur à val]
+ * @param taille [int définissant la taille du TemplateDvector]
+ * @param val    [double valeur qui sera associé à tous les éléments du TemplateDvector]
+ */
 template<typename T>
 TemplateDvector<T>::TemplateDvector(int taille, T val)
 {
@@ -29,6 +40,11 @@ TemplateDvector<T>::TemplateDvector(int taille, T val)
 }
 
 
+/*!
+ * [TemplateDvector::TemplateDvector constructeur par copie]
+ * @param other [TemplateDvector autre TemplateDvector élément dont chaque caractéristique
+ *               sera copiée]
+ */
 template<typename T>
 TemplateDvector<T>::TemplateDvector(const TemplateDvector<T> & other)
 {
@@ -43,6 +59,9 @@ TemplateDvector<T>::TemplateDvector(const TemplateDvector<T> & other)
 }
 
 
+/*!
+ * [TemplateDvector Destructeur libérant la memoire]
+ */
 template<typename T>
 TemplateDvector<T>::~TemplateDvector()
 {
@@ -50,6 +69,12 @@ TemplateDvector<T>::~TemplateDvector()
 }
 
 
+/*!
+ * [TemplateDvector::display Methode permettant d'afficher le contenu d'un vecteur
+ *  sur la sortie demandée]
+ * @param str [ostream& objet définissant sur quelle sortie le contenu du
+ *  TemplateDvector sera copié]
+ */
 template<typename T>
 void TemplateDvector<T>::display(ostream& str)
 {
@@ -63,6 +88,10 @@ void TemplateDvector<T>::display(ostream& str)
 }
 
 
+/*!
+ * [TemplateDvector::size Getter classique pour la taille du TemplateDvector]
+ * @return [int définissant le taille du TemplateDvector]
+ */
 template<typename T>
 int TemplateDvector<T>::size()
 {
@@ -70,6 +99,11 @@ int TemplateDvector<T>::size()
 }
 
 
+/*!
+ * [TemplateDvector::operator[] opérateur d'accession [] à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 template<typename T>
 T& TemplateDvector<T>::operator[](int i)
 {
@@ -80,6 +114,11 @@ T& TemplateDvector<T>::operator[](int i)
 }
 
 
+/*!
+ * [TemplateDvector::operator[] opérateur d'accession [] à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 template<typename T>
 const T& TemplateDvector<T>::operator[](int i) const
 {
@@ -90,6 +129,11 @@ const T& TemplateDvector<T>::operator[](int i) const
 }
 
 
+/*!
+ * [TemplateDvector::operator[] opérateur d'accession () à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 template<typename T>
 T& TemplateDvector<T>::operator()(int i)
 {
@@ -100,6 +144,11 @@ T& TemplateDvector<T>::operator()(int i)
 }
 
 
+/*!
+ * [TemplateDvector::operator[] opérateur d'accession () à un élément du vecteur]
+ * @param  i [int définissant l'indice]
+ * @return   [double représentant la valeur de l'objet à l'indice i]
+ */
 template<typename T>
 const T& TemplateDvector<T>::operator()(int i) const
 {

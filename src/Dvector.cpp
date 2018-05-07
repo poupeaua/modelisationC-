@@ -1,4 +1,6 @@
 #include "Dvector.h"
+#include "ErreurAcces.h"
+#include "ErreurAllocation.h"
 
 /*
 --------------------------- CONSTRUCTOR ----------------------------------------
