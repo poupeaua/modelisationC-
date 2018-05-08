@@ -21,34 +21,74 @@ y
 
 */
 
+
 class Height
 {
   public:
 
+  /*!
+   * [Height::Height Constructeur par défaut plaçant des valeurs (par défaut zero)]
+   * @param nx     [int définisant le nombre de discrétisation selon l'axe x]
+   * @param ny     [int définisant le nombre de discrétisation selon l'axe y]
+   * @param value  [double définissant la value à associer à chaque éléments de
+   *                l'attribut height de l'objet Height]
+   * @param length [double caractérisant la longueur physique de la surface]
+   * @param width  [double caractérisant la largeur physique de la surface]
+   */
   Height(int nx, int ny, double value = 0.0, double length = 1.0, double width = 1.0);
+
+  /*!
+   * [Height::Height Constructeur par copie]
+   * @param other [Height objet qui est utilisé pour la copie]
+   */
   Height(const Height & other);
+
+  /*!
+   * [Height::Height Constructeur placant les valeurs contenues dans le tableau
+   * valeurs BEWARE length et width doivent correspondre au tableau valeur]
+   * @param valeurs  [tableau de double définissant la value à associer à chaque
+   *                  éléments de l'attribut height de l'objet Height]
+   * @param length [double caractérisant la longueur physique de la surface]
+   * @param width  [double caractérisant la largeur physique de la surface]
+   */
   Height(int nx, int ny, double **height, double length = 1.0, double width = 1.0);
+
+  /*!
+   * [Height destructeur]
+   */
   ~Height();
-  /* accessor */
+
+  /*!
+   * [Height::getNx accesseur classique pour Lx]
+   * @return [double attribut Lx]
+   */
   double getLength();
+
+
+  /*!
+   * [Height::getNx accesseur classique pour Ly]
+   * @return [int attribut Ly]
+   */
   double getWidth();
+
+  /*!
+   * [Height::getNx accesseur classique pour nx]
+   * @return [int attribut nx]
+   */
   int getNx();
+
+  /*!
+   * [Height::getNx accesseur classique pour ny]
+   * @return [int attribut ny]
+   */
   int getNy();
+
+  /*!
+   * [Height::operator () permettant d'accéder à l'élément situer à la ligne x
+   * et à la colonne y]
+   * @return [double représentant la valeur au point x et y]
+   */
   double& operator()(int x, int y);
-
-  class ErreurAllocation: public exception {
-  public:
-    virtual const char* what(void) const throw () {
-      return "Erreur d'allocation mémoire.";
-    }
-  };
-
-  class ErreurAcces: public exception {
-  public:
-    virtual const char* what(void) const throw () {
-      return "Erreur d'accés aux données du Height.";
-    }
-  };
 
   private:
 

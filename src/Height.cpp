@@ -1,4 +1,6 @@
 #include "Height.h"
+#include "ErreurAcces.h"
+#include "ErreurAllocation.h"
 
 
 /*!

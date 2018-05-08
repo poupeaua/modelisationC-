@@ -47,6 +47,7 @@ GerstnerWaveModel::~GerstnerWaveModel()
   delete[] ListGerstnerWaves;
 }
 
+
 /*!
  * [GerstnerWaveModel::operator permettant de calculer la hauteur total z
  * au point (x, y) à l'instant t]
@@ -60,4 +61,22 @@ double GerstnerWaveModel::operator()(int x, int y, double t) {
         getAverageAlignment());
   }
   return total_h;
+}
+
+
+/*!
+ * [getListGerstnerWaves Getter classique pour accéder à l'attribut ListGerstnerWaves]
+ * @return [this->ListGerstnerWaves]
+ */
+GerstnerWave *GerstnerWaveModel::getListGerstnerWaves() {
+  return ListGerstnerWaves;
+}
+
+
+/*!
+ * [getNbWaves Getter classique pour accéder à l'attribut nbWaves]
+ * @return [this->nbWaves]
+ */
+int GerstnerWaveModel::getNbWaves() {
+  return nbWaves;
 }
