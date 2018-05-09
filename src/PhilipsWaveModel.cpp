@@ -81,13 +81,28 @@ double PhilipsWaveModel::operator()(int x, int y, double t) {
       champ_hauteur[y*nx + x] = p_gauche + p_droite;
     }
   }
-
-  for(int i = 0; i<nx; i++) {
-    ifft(ligne)
+  TemplateDvector<complex<double>> champ_reel = TemplateDvector<complex<double>>(nx * ny);
+  for(int i = 0; i<ny; i++) {
+    TemplateDvector<complex<double>> transform = TemplateDvector<complex<double>>(nx);
+    for (int j = 0; j<nx; j++) {
+      transform[j] = champ_hauteur[i*nx + j];
+    }
+    ifft(transform);
+    for (int j = 0; j < nx; j++) {
+      champ_hauteur[i*nx + j] = transform[j];
+    }
   }
-  for (int j = 0; j<Ly; j++){
-    ifft(colonne)
+  for(int j = 0; j<nx; j++) {
+    TemplateDvector<complex<double>> transform = TemplateDvector<complex<double>>(ny);
+    for (int i = 0; i<ny; i++) {
+      transform[i] = champ_hauteur[i*nx + j];
+    }
+    ifft(transform);
+    for (int i = 0; i < nx; i++) {
+      champ_hauteur[i*nx + j] = transform[i];
+    }
   }
+  return champ_reel[y*nx + x].real();
 }
 
 /*
@@ -105,7 +120,7 @@ void fft(TemplateDvector<complex<double>> x){
   } else {
     TemplateDvector<complex<double>> even = TemplateDvector<complex<double>>(x.size()/2);
     TemplateDvector<complex<double>> odd = TemplateDvector<complex<double>>(x.size()/2);
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       if (k%2) {
         even[k/2] = x[k];
       } else {
@@ -114,7 +129,7 @@ void fft(TemplateDvector<complex<double>> x){
     }
     fft(even);
     fft(odd);
-    for (size_t k = 0; k < x.size()/2; k++) {
+    for (int k = 0; k < x.size()/2; k++) {
       complex<double> t = odd[k] * exp(complex<double>(0,-2.*M_PI*k/x.size()));
       x[k] = even[k] + t;
       x[k+x.size()/2] = even[k] - t;
@@ -126,11 +141,11 @@ void ifft(TemplateDvector<complex<double>> x){
   if (x.size() <= 1) {
     //nothing to do
   } else {
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       x[k] = conj(x[k]);
     }
     fft(x);
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       x[k] = conj(x[k]);
     }
     x /= x.size();
