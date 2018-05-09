@@ -93,6 +93,23 @@ Height::~Height()
 
 
 /*!
+ * [setHeightTo Set all the elements in the mono-dimentionnal Dvector
+ * attribute named height to setHeight]
+ * @param setHeight [double setHeight]
+ */
+void Height::setHeightTo(double setHeight)
+{
+  for (int i = 0 ; i < ny ; i++)
+  {
+      for (int j = 0 ; j < nx ; j++)
+      {
+        height[i*nx + j] = setHeight;
+      }
+  }
+}
+
+
+/*!
  * [Height::getNx accesseur classique pour nx]
  * @return [int attribut nx]
  */

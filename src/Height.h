@@ -53,10 +53,22 @@ class Height
    */
   Height(int nx, int ny, double **height, double length = 1.0, double width = 1.0);
 
+
   /*!
    * [Height destructeur]
    */
   ~Height();
+
+
+  /*!
+   * [setHeightTo Set tous les éléments dans le tableau mono-dimentionnel Dvector
+   * attribut nommé height à setHeight. Fonction créée au TP4 pour faciliter
+   * l'implémentation de la méthode generateHeight.]
+   * @param setHeight [double setHeight valeur à placer dans tous les éléments
+   * du tableau.]
+   */
+  void setHeightTo(double setHeight);
+
 
   /*!
    * [Height::getNx accesseur classique pour Lx]
