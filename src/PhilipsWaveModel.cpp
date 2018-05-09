@@ -19,12 +19,13 @@
  * @param list             [list est un tableau d'objets GerstnerWave]
  */
 PhilipsWaveModel::PhilipsWaveModel(Dvector windDirection, double averageAlignment,
-            double intensite, double longueurOnde, double hauteurVague):
+            double intensite, double longueurOnde, double hauteurVague, int nx, int ny):
 
             WaveModel(windDirection, averageAlignment, intensite, longueurOnde,
                       hauteurVague)
 {
-
+  this->nx = nx;
+  this->ny = ny;
 }
 
 /*!
@@ -51,8 +52,10 @@ PhilipsWaveModel::~PhilipsWaveModel()
 }
 
 double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection) {
-  double expo = exp((-1/scalaire(k*longueurOnde, k*longueurOnde));
-  double scalaire = pow(,2) 
+  double expo = exp((-1/scalaire(k*longueurOnde, k*longueurOnde)));
+  double scal = scalaire(k, windDirection);
+  double dem = scalaire(k, k);
+  return intensite * expo * pow(scal,2)/dem;
 }
 
 /*!
@@ -61,14 +64,30 @@ double philips_model(Dvector k, double intensite, double longueurOnde, Dvector w
  * @return [double définissant la hauteur total de la vague]
  */
 double PhilipsWaveModel::operator()(int x, int y, double t) {
-  for(int i = 0; i<Lx; i++) {
+  TemplateDvector<complex<double>> champ_hauteur = TemplateDvector<complex<double>>(nx * ny);
+  std::default_random_engine generator;
+  std::normal_distribution<float> d(0, 1);
+  for (int y = 0; y<ny; y++) {
+    for (int x = 0; x<nx; x++) {
+      Dvector k = Dvector(2, x);
+      k[1] = y;
+      complex<double> p_gauche = {0,0};
+      complex<double> p_droite = {0,0};
+      double p1 = philips_model(k, getIntensite(), getLongueurOnde(), getWindDirection());
+      double p2 = philips_model(-k, getIntensite(), getLongueurOnde(), getWindDirection());
+      double sample = d(generator);
+      p_gauche = exp(complex<double>(0, getLongueurOnde()*t))*p1*(complex<double>(sample, sample))/sqrt(2);
+      p_droite = exp(complex<double>(0, getLongueurOnde()*t))*p2*(complex<double>(sample, -sample))/sqrt(2);
+      champ_hauteur[y*nx + x] = p_gauche + p_droite;
+    }
+  }
+
+  for(int i = 0; i<nx; i++) {
     ifft(ligne)
   }
   for (int j = 0; j<Ly; j++){
     ifft(colonne)
   }
-  Dvector k = Dvector(2, x);
-  k[1] = y;
 }
 
 /*
@@ -116,4 +135,4 @@ void ifft(TemplateDvector<complex<double>> x){
     }
     x /= x.size();
   }
-}
+};

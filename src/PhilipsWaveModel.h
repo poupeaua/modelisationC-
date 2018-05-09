@@ -4,6 +4,7 @@
 #include "TemplateDvector.h"
 #include "Dvector.h"
 #include <math.h>
+#include <random>
 
 
 /* class that inherits from WaveModel */
@@ -30,7 +31,7 @@ class PhilipsWaveModel : public WaveModel
    * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
    */
   PhilipsWaveModel(Dvector windDirection, double averageAlignment,
-              double intensite, double longueurOnde, double hauteurVague);
+              double intensite, double longueurOnde, double hauteurVague, int nx, int ny);
 
   /*!
    * [PhilipsWaveModel Destructeur pour PhilipsWaveModel]
@@ -53,6 +54,8 @@ class PhilipsWaveModel : public WaveModel
 
   private:
 
+  int nx;
+  int ny;
 
 };
 
