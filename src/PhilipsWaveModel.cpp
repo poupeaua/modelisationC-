@@ -82,12 +82,13 @@ double PhilipsWaveModel::operator()(int x, int y, double t) {
     }
   }
 
-  for(int i = 0; i<nx; i++) {
-    ifft(ligne)
-  }
-  for (int j = 0; j<Ly; j++){
-    ifft(colonne)
-  }
+  // for(int i = 0; i<nx; i++) {
+  //   ifft(ligne)
+  // }
+  // for (int j = 0; j<ny; j++){
+  //   ifft(colonne)
+  // }
+  return 0.0;
 }
 
 /*
@@ -105,7 +106,7 @@ void fft(TemplateDvector<complex<double>> x){
   } else {
     TemplateDvector<complex<double>> even = TemplateDvector<complex<double>>(x.size()/2);
     TemplateDvector<complex<double>> odd = TemplateDvector<complex<double>>(x.size()/2);
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       if (k%2) {
         even[k/2] = x[k];
       } else {
@@ -114,7 +115,7 @@ void fft(TemplateDvector<complex<double>> x){
     }
     fft(even);
     fft(odd);
-    for (size_t k = 0; k < x.size()/2; k++) {
+    for (int k = 0; k < x.size()/2; k++) {
       complex<double> t = odd[k] * exp(complex<double>(0,-2.*M_PI*k/x.size()));
       x[k] = even[k] + t;
       x[k+x.size()/2] = even[k] - t;
@@ -126,11 +127,11 @@ void ifft(TemplateDvector<complex<double>> x){
   if (x.size() <= 1) {
     //nothing to do
   } else {
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       x[k] = conj(x[k]);
     }
     fft(x);
-    for (size_t k = 0; k < x.size(); k++) {
+    for (int k = 0; k < x.size(); k++) {
       x[k] = conj(x[k]);
     }
     x /= x.size();
