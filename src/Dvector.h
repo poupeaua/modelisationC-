@@ -148,6 +148,7 @@ class Dvector
   Dvector operator/(const double d, const Dvector&);
   Dvector operator+(const Dvector&, const Dvector&);
   Dvector operator-(const Dvector&, const Dvector&);
+  double scalaire(Dvector v1, Dvector v2);
   ostream& operator<<(ostream &Out, Dvector &);
   istream& operator>>(istream &in, Dvector &);
 

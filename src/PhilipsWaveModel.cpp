@@ -50,7 +50,10 @@ PhilipsWaveModel::~PhilipsWaveModel()
   //nothing to do
 }
 
-double philips_model(int x, int y, double intensite, double longueurOnde, Dvector windDirection)
+double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection) {
+  double expo = exp((-1/scalaire(k*longueurOnde, k*longueurOnde));
+  double scalaire = pow(,2) 
+}
 
 /*!
  * [PhilipsWaveModel::operator permettant de calculer la hauteur total z
@@ -64,6 +67,8 @@ double PhilipsWaveModel::operator()(int x, int y, double t) {
   for (int j = 0; j<Ly; j++){
     ifft(colonne)
   }
+  Dvector k = Dvector(2, x);
+  k[1] = y;
 }
 
 /*

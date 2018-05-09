@@ -1,3 +1,8 @@
+/*
+temps a obtenir: 18 9
+                 7  3
+*/
+
 void multip_matrice(int **A, int **B, int **C, int n) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j<n; j++) {

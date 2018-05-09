@@ -31,6 +31,12 @@ GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection,
   }
   this->nbWaves = nbWaves;
   this->ListGerstnerWaves = list;
+  /*
+  this->ListGerstnerWave = new GestnerWave[nbWaves];
+  for (int i = 0; i<nbWaves; i++) {
+    this->ListGerstnerWave[i] = GestnerWave(windDirection, averageAlignement+-1; intensite; longueur, ...);
+}
+  */
 }
 
 

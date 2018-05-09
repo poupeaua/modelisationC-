@@ -2,7 +2,8 @@
 #define PHILIPS_WAVE_MODEL_H
 #include "WaveModel.h"
 #include "TemplateDvector.h"
-#include <cmath>
+#include "Dvector.h"
+#include <math.h>
 
 
 /* class that inherits from WaveModel */

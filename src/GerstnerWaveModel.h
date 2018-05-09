@@ -50,6 +50,18 @@ class GerstnerWaveModel : public WaveModel
    */
   virtual ~GerstnerWaveModel();
 
+  /*!
+   * [GerstnerWaveModel::operator = afin d'associer toutes les caractéristiques de
+   *  gw passée en paramètre à l'objet this]
+   * @return [*this]
+   */
+  GerstnerWaveModel& operator=(const GerstnerWaveModel&);
+
+  /*!
+   * [GerstnerWave::GerstnerWave Constructeur par copie]
+   * @param other [const GerstnerWave & est un autre objet GertsnerWave]
+   */
+  GerstnerWaveModel(const GerstnerWaveModel & other);
 
   private:
 

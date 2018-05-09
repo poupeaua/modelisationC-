@@ -464,7 +464,6 @@ Dvector operator-(const Dvector& v1, const Dvector& v2)
   return v0 -= v2;
 }
 
-
 /*implementation de l'operateur - unaire
 */
 Dvector Dvector::operator-()
@@ -473,6 +472,19 @@ Dvector Dvector::operator-()
   return vct*=-1;
 }
 
+/*implementation de l'operateur produit scalaire entre deux vecteurs
+*/
+double scalaire(Dvector v1, Dvector v2)
+{
+  if (v1.size()!=v2.size()) {
+    throw ErreurAcces();
+  }
+  double resultat = 0;
+  for (int i=0; v1.size(); i++) {
+    resultat += v1[i] * v2[i];
+  }
+  return resultat;
+}
 
 /*implementation de l'operateur de flux <<
 */

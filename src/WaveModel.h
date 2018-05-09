@@ -62,7 +62,7 @@ class WaveModel
   WaveModel(Dvector windDirection, double averageAlignment, double intensite,
               double longueurOnde, double hauteurVague);
 
-  private:
+  protected:
 
   /*!
    * [WaveModel::WaveModel Constructeur par copie]
@@ -70,7 +70,10 @@ class WaveModel
    */
   WaveModel(const WaveModel & other);
 
+  private:
+
   WaveModel& operator=(const WaveModel&);
+
   Dvector windDirection;
   double averageAlignment;
   double intensite;
