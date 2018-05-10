@@ -81,14 +81,28 @@ double PhilipsWaveModel::operator()(int x, int y, double t) {
       champ_hauteur[y*nx + x] = p_gauche + p_droite;
     }
   }
-
-  // for(int i = 0; i<nx; i++) {
-  //   ifft(ligne)
-  // }
-  // for (int j = 0; j<ny; j++){
-  //   ifft(colonne)
-  // }
-  return 0.0;
+  TemplateDvector<complex<double>> champ_reel = TemplateDvector<complex<double>>(nx * ny);
+  for(int i = 0; i<ny; i++) {
+    TemplateDvector<complex<double>> transform = TemplateDvector<complex<double>>(nx);
+    for (int j = 0; j<nx; j++) {
+      transform[j] = champ_hauteur[i*nx + j];
+    }
+    ifft(transform);
+    for (int j = 0; j < nx; j++) {
+      champ_hauteur[i*nx + j] = transform[j];
+    }
+  }
+  for(int j = 0; j<nx; j++) {
+    TemplateDvector<complex<double>> transform = TemplateDvector<complex<double>>(ny);
+    for (int i = 0; i<ny; i++) {
+      transform[i] = champ_hauteur[i*nx + j];
+    }
+    ifft(transform);
+    for (int i = 0; i < nx; i++) {
+      champ_hauteur[i*nx + j] = transform[i];
+    }
+  }
+  return champ_reel[y*nx + x].real();
 }
 
 /*
