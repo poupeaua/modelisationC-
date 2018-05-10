@@ -4,6 +4,8 @@
 #include "Height.h"
 #include "WaveModel.h"
 
+#include <ctime>    // needed to make the main_computation method (use clock_t)
+
 
 class Ocean
 {
@@ -20,12 +22,48 @@ class Ocean
    * @param ny       [int représentant le nombre de découpages discrets sur l'axe y]
    * @param height   [Height objet tableau mono-dimentionnel pour les hauteurs]
    * @param model    [WaveModel model utilisé]
-   * @param vertices [double * tableau dynamique de nombres en double précision
-   *                  permettant d'interfacer les vecteurs de calculs
-                      avec le système de visualisation.]
+   * @param windDirection    [Dvector (dim = 2) indiquant la direction de vent]
+   * @param averageAlignment [double compris entre 0 et 1 correspondant au facteur
+   *                          d'alignement des vagues avec le vent]
+   * @param intensite        [double définissant l'intensité des vagues]
+   * @param longueurOnde     [double décrivant la longueur d'onde des vagues]
+   * @param hauteurVague     [double définissant la hauteur maximale des vagues]
    */
-  Ocean(double temps, double length, double width, int nx, int ny,
-        Height* height, WaveModel* model, double *vertices);
+  Ocean(int nx, int ny, double length, double width, char * model,
+              Dvector windDirection,
+              double averageAlignment, double intensite, double longueurOnde,
+              double hauteurVague);
+
+  /*!
+   * [initializeOceanTypeGerstner Methode de construction pour mieux
+   * comprendre le fonctionnement de création de l'objet Ocean suivant le modèle,
+   *  icie celui de Gerstner.]
+   * @param windDirection    [Dvector (dim = 2) indiquant la direction de vent]
+   * @param averageAlignment [double compris entre 0 et 1 correspondant au facteur
+   *                          d'alignement des vagues avec le vent]
+   * @param intensite        [double définissant l'intensité des vagues]
+   * @param longueurOnde     [double décrivant la longueur d'onde des vagues]
+   * @param hauteurVague     [double définissant la hauteur maximale des vagues]
+   */
+  void initializeOceanTypeGerstner(Dvector windDirection,
+              double averageAlignment, double intensite, double longueurOnde,
+              double hauteurVague);
+
+
+  /*!
+   * [initializeOceanTypePhilips Methode de construction pour mieux
+   * comprendre le fonctionnement de création de l'objet Ocean suivant le modèle,
+   *  icie celui de Philips.]
+   * @param windDirection    [Dvector (dim = 2) indiquant la direction de vent]
+   * @param averageAlignment [double compris entre 0 et 1 correspondant au facteur
+   *                          d'alignement des vagues avec le vent]
+   * @param intensite        [double définissant l'intensité des vagues]
+   * @param longueurOnde     [double décrivant la longueur d'onde des vagues]
+   * @param hauteurVague     [double définissant la hauteur maximale des vagues]
+   */
+  void initializeOceanTypePhilips(Dvector windDirection,
+              double averageAlignment, double intensite, double longueurOnde,
+              double hauteurVague);
 
   /*!
    * [Destructeur classique]
@@ -41,13 +79,7 @@ class Ocean
   /*!
    * [compute Methode permettant de générer la hauteur en fonction du temps t]
    */
-  void compute();
-
-  /*!
-   * [gl_vertices Méthode qui convertit la houle en un tableau contenant les
-   * positions (x, y, h) pour la visualisation]
-   */
-  void gl_vertices();
+  void main_computation();
 
   /* ------------------------------- GETTER ---------------------------------*/
 
@@ -61,13 +93,13 @@ class Ocean
    * [getLength Getter classique pour la length Lx]
    * @return [Retourne l'attribut length]
    */
-  double getLength();
+  double get_lx();
 
   /*!
    * [getWidth description]
    * @return [Retourne l'attribut width]
    */
-  double getWidth();
+  double get_ly();
 
   /*!
    * [getNx description]
@@ -81,17 +113,30 @@ class Ocean
    */
   int getNy();
 
-  /*!
-   * [getHeight description]
-   * @return [Retourne l'attribut height]
-   */
-  Height* getHeight();
 
-  /*!
-   * [getModel description]
-   * @return [Retourne l'attribut model]
+  /* -------------------------- GIVEN METHODS ----------------------------- */
+
+  void init_gl_VertexArrayX(const int y, double* const vertices);
+
+  /** Initialise la grille dans la direction y
+   *  param[in]   x        abscisse de la ligne à parcourir
+   *  param[out]  vertices buffer contenant les coordonnées des noeuds
    */
-  WaveModel* getModel();
+  void init_gl_VertexArrayY(const int x, double* const vertices);
+
+  /** Convertit le champs de hauteur en tabeau directement utilisable
+   *  par OpenGL pour un y donné
+   *  param[in]   y        abscisse de la colonne à parcourir
+   *  param[out]  vertices buffer contenant les valeurs aux noeuds
+   */
+  void gl_VertexArrayX(const int y, double* const vertices);
+
+  /** Convertit le champs de hauteur en tabeau directement utilisable
+   *  par OpenGL pour un x donné
+   *  param[in]   x        abscisse de la ligne à parcourir
+   *  param[out]  vertices buffer contenant les valeurs aux noeuds
+   */
+  void gl_VertexArrayY(const int x, double* const vertices);
 
   private:
 
@@ -100,10 +145,10 @@ class Ocean
   double width; // Ly
   int nx;
   int ny;
-  Height *height;
-  WaveModel *model;
-  double *vertices;
+  Height H;
+  WaveModel *Model;
 
 };
+
 
 #endif

@@ -16,7 +16,6 @@
  * @param intensite        [intensite est un paramètre pour la classe mère]
  * @param longueurOnde     [longueurOnde est un paramètre pour la classe mère]
  * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
- * @param list             [list est un tableau d'objets GerstnerWave]
  */
 PhilipsWaveModel::PhilipsWaveModel(Dvector windDirection, double averageAlignment,
             double intensite, double longueurOnde, double hauteurVague, int nx, int ny):

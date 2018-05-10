@@ -26,6 +26,8 @@ class Height
 {
   public:
 
+  Height();
+
   /*!
    * [Height::Height Constructeur par défaut plaçant des valeurs (par défaut zero)]
    * @param nx     [int définisant le nombre de discrétisation selon l'axe x]

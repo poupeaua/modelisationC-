@@ -1,3 +1,6 @@
+#ifndef ADD_TO_OCEAN_H
+#define ADD_TO_OCEAN_H
+
 /** Initialise la grille dans la direction x
  *  param[in]   y        abscisse de la colonne à parcourir
  *  param[out]  vertices buffer contenant les coordonnées des noeuds
@@ -43,7 +46,9 @@ void Ocean::gl_VertexArrayX(const int y, double* const vertices) const {
  */
 void Ocean::gl_VertexArrayY(const int x, double* const vertices) const {
   for(int y=0 ; y<ny ; y++) {
-    vertices[3*y+1] = hauteur(y,x);
+    vertices[3*y+1] = hauteur(x, y);
   }
   vertices[3*ny+1]  = hauteur(0,x);
 }
+
+#endif
