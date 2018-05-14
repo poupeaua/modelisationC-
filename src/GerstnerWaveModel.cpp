@@ -58,8 +58,13 @@ GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection, double averageAlignm
     throw invalid_argument("Argument invalide : La liste passée en argument"
       " doit contenir au moins une GerstnerWave.");
   }
+  else if (nbWaves > 10)
+  {
+    throw invalid_argument("Argument invalide : La liste passée en argument"
+      " contient plus de 10 vagues GerstnerWave.");
+  }
   this->nbWaves = nbWaves;
-  GerstnerWave *tmp_list = new GerstnerWave[50];
+  GerstnerWave *tmp_list = new GerstnerWave[11];
   for (int i = 0; i<nbWaves; i++) {
     tmp_list[i] = list.front();
     list.pop_front();

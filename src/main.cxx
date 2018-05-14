@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
   /** @todo Initialiser du modèle*/
   char model[10] = "";
-  strcpy(model, "Philips");
+  strcpy(model, "Gerstner");
   Dvector windDirection(2, 1);
   double averageAlignment = 0.75;
   double intensite = 1.0;

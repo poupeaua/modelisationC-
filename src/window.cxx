@@ -42,6 +42,7 @@ namespace Window {
     gluLookAt(camera->getX(), camera->getY(), camera->getZ(),
         camera->getSightX(), camera->getSightY(), camera->getSightZ(),
         0, 1, 0);
+
     draw_ocean();
 
     draw_fps();
@@ -75,8 +76,8 @@ namespace Window {
 
   void draw_ocean() {
     // Réalise effectivement l'étape de calcul
-    printf("ok\n");
     ocean->main_computation();
+
 
     // Impose la couleur d'affichage de la grille
     glColor3ub(82, 184, 255);
