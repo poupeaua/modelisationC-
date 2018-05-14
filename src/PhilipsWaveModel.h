@@ -38,12 +38,12 @@ class PhilipsWaveModel : public WaveModel
    */
   virtual ~PhilipsWaveModel();
 
-  /*!
-   * [PhilipsWaveModel::operator = afin d'associer toutes les caractéristiques de
-   *  gw passée en paramètre à l'objet this]
-   * @return [*this]
-   */
-  PhilipsWaveModel& operator=(const PhilipsWaveModel&);
+  // /*!
+  //  * [PhilipsWaveModel::operator = afin d'associer toutes les caractéristiques de
+  //  *  gw passée en paramètre à l'objet this]
+  //  * @return [*this]
+  //  */
+  // PhilipsWaveModel& operator=(const PhilipsWaveModel&);
 
   /*!
    * [PhilipsWave::PhilipsWave Constructeur par copie]
@@ -51,13 +51,48 @@ class PhilipsWaveModel : public WaveModel
    */
    PhilipsWaveModel(const PhilipsWaveModel & other);
 
+   /*!
+    * [getNx Getter classique pour accéder à l'attribut Nx]
+    * @return [this->nx]
+    */
+   int getNx();
+
+
+   /*!
+    * [getNy Getter classique pour accéder à l'attribut Ny]
+    * @return [this->ny]
+    */
+   int getNy();
+
+   /*!
+    * [getTemps Getter classique pour accéder à l'attribut Temps]
+    * @return [this->nx]
+    */
+   double getTemps();
+
+
+   /*!
+    * [getCahmp_hauteur Getter classique pour accéder à l'attribut Champ_hauteur]
+    * @return [this->ny]
+    */
+   TemplateDvector<complex<double>> getChamp_hauteur();
+
+   /*!
+    * [PhilipsWaveModel::actualizeHeight actualise le champs des hauteurs si t != temps actuel]
+    * @param t [le temps de la boucle rendering]
+    */
+   void actualizeHeight(double t);
 
   private:
 
   int nx;
   int ny;
+  TemplateDvector<complex<double>> champ_hauteur;
+  double temps;
 
 };
+
+  double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection);
 
   void fft(TemplateDvector<complex<double>> x);
 

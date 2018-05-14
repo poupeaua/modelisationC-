@@ -480,7 +480,7 @@ double scalaire(Dvector v1, Dvector v2)
     throw runtime_error("Produit scalaire de deux Dvector de tailles différentes.");
   }
   double resultat = 0;
-  for (int i=0; v1.size(); i++) {
+  for (int i=0; i<v1.size(); i++) {
     resultat += v1[i] * v2[i];
   }
   return resultat;

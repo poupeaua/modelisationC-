@@ -137,7 +137,7 @@ Ocean::~Ocean()
  * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
  * hauteur]
  */
-void Ocean::generateHeight(double setHeight)
+Height Ocean::generateHeight(double setHeight)
 {
   /* method created just for this purpose */
   H.setHeightTo(setHeight);

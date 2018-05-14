@@ -41,16 +41,13 @@ int main(int argc, char** argv) {
 
   /** @todo Initialiser de l'océan */
   Ocean tmpOcean(nx, ny, length, width, model, windDirection, averageAlignment,
-                  intensite, longueurOnde, hauteurVague, tmph, nbWaves);
+                  intensite, longueurOnde, hauteurVague, tmph);
   /* extern ocean value used in windows.hxx */
   ocean = &tmpOcean;
-
   /* Initialisation de la fenêtre d'affichage */
   Window::init(WIDTH, HEIGHT, "Houle", argc, argv, "AZERTY", 50, 1);
-
   /* Execute la simulation */
   Window::launch();
-
   /* Libère la mémoire */
   Window::quit();
   delete ocean;
