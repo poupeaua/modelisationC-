@@ -4,6 +4,7 @@
 #include "Height.h"
 #include "WaveModel.h"
 
+#include <list>     // needed to create a list of GerstnerWaves init 
 #include <ctime>    // needed to make the main_computation method (use clock_t)
 
 
@@ -32,7 +33,7 @@ class Ocean
   Ocean(int nx, int ny, double length, double width, char * model,
               Dvector windDirection,
               double averageAlignment, double intensite, double longueurOnde,
-              double hauteurVague);
+              double hauteurVague, Height h);
 
   /*!
    * [initializeOceanTypeGerstner Methode de construction pour mieux

@@ -2,6 +2,8 @@
 #include "GerstnerWaveModel.h"
 #include "PhilipsWaveModel.h"
 
+/* PI constante utilise pour creer des gesrtner wave et des phases */
+#define PI  3.14159265358979323846
 
 /* ---------------------------- NEEDED METHODS --------------------------- */
 
@@ -25,7 +27,7 @@
 Ocean::Ocean(int nx, int ny, double length, double width, char * model,
               Dvector windDirection,
               double averageAlignment, double intensite, double longueurOnde,
-              double hauteurVague)
+              double hauteurVague, Height h)
 {
   if (length <= 0 || width <= 0 || nx <= 0 || ny <= 0) {
     throw domain_error(" Les attibuts length, width, nx et ny doivent être"
@@ -38,7 +40,7 @@ Ocean::Ocean(int nx, int ny, double length, double width, char * model,
   this-> length = length;
   this->width= width;
   /* initialize the H attribute in the Ocean object */
-  generateHeight(0.0);
+  H = h;
 
   if (strcmp(model, "Gerstner") == 0)
   {
@@ -76,15 +78,22 @@ void Ocean::initializeOceanTypeGerstner(Dvector windDirection,
             double averageAlignment, double intensite, double longueurOnde,
             double hauteurVague)
 {
-  int nbWaves = 1;
+  int nbWaves = 3;
+  list<GerstnerWave> ListGerstnerWaves;
+  for (int i = 0 ; i < nbWaves ; i++)
+  {
+    /* creation de la premiere onde GertsnerWave*/
+    Dvector direction(2);
+    direction(0) = 0.2;
+    direction(1) = 0.3;
+    double amplitude = i * 2.0;
+    double phase = i * (PI / 4);
+    GerstnerWave GW(direction, amplitude, phase);
+    /* add the GerstnerWave object GW at the end of the list */
+    ListGerstnerWaves.push_back(GW);
+  }
 
-  /* creation de la premiere onde GertsnerWave*/
-  Dvector direction1(2, 1.2);
-  double amplitude1 = 10;
-  double phase1 = 5.0;
-  GerstnerWave G1(direction1, amplitude1, phase1);
-
-  GerstnerWave *ListGerstnerWaves = new GerstnerWave[1]{G1};
+  // GerstnerWave *ListGerstnerWaves = new GerstnerWave[1]{G1};
 
   /* initialize a GerstnerWaveModel object */
   this->Model = new GerstnerWaveModel(windDirection, averageAlignment, intensite,
@@ -129,8 +138,7 @@ Ocean::~Ocean()
 Height Ocean::generateHeight(double setHeight)
 {
   /* method created just for this purpose */
-  H  = Height(nx, ny, setHeight, length, width);
-  return H;
+  H.setHeightTo(setHeight);
 }
 
 
@@ -139,9 +147,11 @@ Height Ocean::generateHeight(double setHeight)
  */
 void Ocean::main_computation()
 {
+  printf("rentree dans main coputa");
   clock_t temps_now = clock();
   /* change the attribute temps de Ocean */
   this->temps = ((double) temps_now - temps);
+  printf("ok bhui");
   /* compute height */
   for (int y = 0 ; y < ny ; y++)
   {
@@ -150,6 +160,7 @@ void Ocean::main_computation()
       /* access to the virtual operator to calculate the height according to
       the position (x, y) and the time t. Then place it into the attribute
       H. Here we work with DOUBLE. */
+      printf("%f", (*Model)(x, y, temps));
       H(x, y) = (*Model)(x, y, temps);
     }
   }
@@ -246,7 +257,7 @@ void Ocean::gl_VertexArrayX(const int y, double* const vertices) {
   for(int x=0 ; x<nx ; x++) {
     vertices[3*x+1] = pow(-1, x+y)*H(x, y);
   }
-  vertices[3*nx+1] = pow(-1, nx+y)*H(nx, y);
+  vertices[3*nx+1] = pow(-1, nx+y)*H(nx-1, y);
 }
 
 /** Convertit le champs de hauteur en tabeau directement utilisable
@@ -258,5 +269,5 @@ void Ocean::gl_VertexArrayY(const int x, double* const vertices) {
   for(int y=0 ; y<ny ; y++) {
     vertices[3*y+1] = H(0, y);
   }
-  vertices[3*ny+1]  = H(0,ny);
+  vertices[3*ny+1]  = H(0,ny-1);
 }

@@ -2,26 +2,23 @@
 #include "ErreurAcces.h"
 #include "ErreurAllocation.h"
 
-
+/*!
+ * [Height::Height Constructeur par défaut de Height. La valeur de tous les
+ * attributs sont choisis pour l'utilisateur.]
+ */
 Height::Height()
 {
-  this->nx = nx;
-  this->ny = ny;
-  Dvector height(nx*ny);
-  for (int i = 0 ; i < ny ; i++)
-  {
-    for (int j = 0 ; j < nx ; j++)
-    {
-      height[i*nx + j] = 0;
-    }
-  }
-  this->height = height;
-  this->width = width;
-  this->length = length;
+  int default_nx = 5;
+  int default_ny = 5;
+  double default_value = 0.0;
+  double default_length = 1000.0;
+  double default_width = 1000.0;
+  Height(default_nx, default_ny, default_value, default_length, default_width);
 }
 
 /*!
- * [Height::Height Constructeur par défaut plaçant des valeurs (par défaut zero)]
+ * [Height::Height Constructeur pour Height. L'utilisateur peut alors choisir
+ * la valeur des attributs.]
  * @param nx     [int définisant le nombre de discrétisation selon l'axe x]
  * @param ny     [int définisant le nombre de discrétisation selon l'axe y]
  * @param value  [double définissant la value à associer à chaque éléments de
@@ -174,11 +171,39 @@ double Height::getWidth()
 double& Height::operator()(int x, int y)
 {
   int indice = y*nx + x;
+  // cout << nx << endl;
+  // cout << ny << endl;
   if (indice < 0 || indice > nx*ny-1) {
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès avec l'opérateur () de Height.");
   }
   return height(indice);
 }
+
+
+Height& Height::operator=(Height &h)
+{
+  this->length = h.getLength(); // Lx
+  this->width = h.getWidth(); // Ly
+  this->nx = h.getNx();
+  this->ny = h.getNy();
+
+  /*
+  BEWARE !!! => don't forget to delete[] before making a new vect
+  LONG Debug to find that !
+  */
+
+  /* met à jour le nouvel attribut height */
+  this->height = Dvector(nx*ny);
+  for (int i = 0 ; i < ny ; i++)
+  {
+    for (int j = 0 ; j < nx ; j++)
+    {
+      height(i*nx + j) = h(j, i);
+    }
+  }
+  return *this;
+}
+
 
 
 /*!

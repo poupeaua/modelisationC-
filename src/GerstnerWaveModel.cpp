@@ -26,17 +26,45 @@ GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection,
                       hauteurVague)
 {
   if (nbWaves <= 0) {
-    throw invalid_argument("Argument invalide : La tableau passer en argument"
+    throw invalid_argument("Argument invalide : La tableau passé en argument"
       " doit contenir au moins une GerstnerWave.");
   }
   this->nbWaves = nbWaves;
   this->ListGerstnerWaves = list;
-  /*
-  this->ListGerstnerWave = new GestnerWave[nbWaves];
-  for (int i = 0; i<nbWaves; i++) {
-    this->ListGerstnerWave[i] = GestnerWave(windDirection, averageAlignement+-1; intensite; longueur, ...);
 }
-  */
+
+
+/*!
+ * [GerstnerWaveModel::GerstnerWaveModel Second constructeur principal pour la
+ * classe GerstnerWaveModel. Cette deuxième version utilise une liste
+ * de type STL list<GerstnerWave> pour la list de Gerstner Waves en entrée.]
+ * @param windDirection    [windDirection est un paramètre pour la classe mère
+ *  WaveModel]
+ * @param averageAlignment [averageAlignment est un paramètre pour la classe mère]
+ * @param intensite        [intensite est un paramètre pour la classe mère]
+ * @param longueurOnde     [longueurOnde est un paramètre pour la classe mère]
+ * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
+ * @param list             [list est une liste d'objets GerstnerWave
+ *                          de type <list> de STL]
+ */
+GerstnerWaveModel::GerstnerWaveModel(Dvector windDirection, double averageAlignment,
+            double intensite, double longueurOnde, double hauteurVague,
+            list<GerstnerWave> list, int nbWaves) :
+
+            WaveModel(windDirection, averageAlignment, intensite, longueurOnde,
+                      hauteurVague)
+{
+  if (nbWaves <= 0 || list.size() <= 0) {
+    throw invalid_argument("Argument invalide : La liste passée en argument"
+      " doit contenir au moins une GerstnerWave.");
+  }
+  this->nbWaves = nbWaves;
+  GerstnerWave *tmp_list = new GerstnerWave[50];
+  for (int i = 0; i<nbWaves; i++) {
+    tmp_list[i] = list.front();
+    list.pop_front();
+  }
+  this->ListGerstnerWaves = tmp_list;
 }
 
 

@@ -9,10 +9,10 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 100;
-  int ny = 100;
-  double length = 15.0;
-  double width = 15.0;
+  int nx = 250;
+  int ny = 250;
+  double length = 1000.0;
+  double width = 1000.0;
 
   /** @todo Initialiser du modèle*/
   char model[10] = "";
@@ -24,10 +24,12 @@ int main(int argc, char** argv) {
   double hauteurVague = 20.0;
 
   /** @todo Initialiser du champ de hauteur */
+  double hauteur_initiale = 0.0;
+  Height tmph(nx, ny, hauteur_initiale, length, width);
 
   /** @todo Initialiser de l'océan */
   Ocean tmpOcean(nx, ny, length, width, model, windDirection, averageAlignment,
-                  intensite, longueurOnde, hauteurVague);
+                  intensite, longueurOnde, hauteurVague, tmph);
   /* extern ocean value used in windows.hxx */
   ocean = &tmpOcean;
   /* Initialisation de la fenêtre d'affichage */
