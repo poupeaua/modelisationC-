@@ -27,13 +27,14 @@
 Ocean::Ocean(int nx, int ny, double length, double width, char * model,
               Dvector windDirection,
               double averageAlignment, double intensite, double longueurOnde,
-              double hauteurVague, Height h)
+              double hauteurVague, Height h, int nbWaves)
 {
   if (length <= 0 || width <= 0 || nx <= 0 || ny <= 0) {
     throw domain_error(" Les attibuts length, width, nx et ny doivent être"
                        " positifs ou nuls.");
   }
   clock_t temps = clock();
+  this->intensite = intensite; // defini la vitesse de la vague;
   this->temps = (double) (temps);
   this->nx = nx;
   this->ny = ny;
@@ -46,7 +47,7 @@ Ocean::Ocean(int nx, int ny, double length, double width, char * model,
   {
     /* in case the user want a Gerstner Model for the Ocean */
     initializeOceanTypeGerstner(windDirection, averageAlignment, intensite,
-                                longueurOnde, hauteurVague);
+                                longueurOnde, hauteurVague, nbWaves);
   }
   else if (strcmp(model, "Philips") == 0)
   {
@@ -76,17 +77,17 @@ Ocean::Ocean(int nx, int ny, double length, double width, char * model,
  */
 void Ocean::initializeOceanTypeGerstner(Dvector windDirection,
             double averageAlignment, double intensite, double longueurOnde,
-            double hauteurVague)
+            double hauteurVague, int nbWaves)
 {
-  int nbWaves = 3;
   list<GerstnerWave> ListGerstnerWaves;
-  for (int i = 0 ; i < nbWaves ; i++)
+  for (int i = 1 ; i <= nbWaves ; i++)
   {
     /* creation de la premiere onde GertsnerWave*/
     Dvector direction(2);
-    direction(0) = 0.2;
-    direction(1) = 0.3;
-    double amplitude = i * 2.0;
+    /* plus la longueur est petite plus la frequence est eleve et inversement */
+    direction(0) = 1.1*i / longueurOnde;
+    direction(1) = 0.5*i / longueurOnde;
+    double amplitude = hauteurVague;
     double phase = i * (PI / 4);
     GerstnerWave GW(direction, amplitude, phase);
     /* add the GerstnerWave object GW at the end of the list */
@@ -147,9 +148,10 @@ void Ocean::generateHeight(double setHeight)
  */
 void Ocean::main_computation()
 {
-  clock_t temps_now = clock();
+  // clock_t temps_now = clock();
   /* change the attribute temps de Ocean */
-  this->temps = ((double) temps_now - temps);
+  // this->temps = ((double) temps_now - temps);
+  this->temps = temps + 0.1 * intensite;
   /* compute height */
   for (int y = 0 ; y < ny ; y++)
   {

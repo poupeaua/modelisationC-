@@ -9,19 +9,20 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 250;
-  int ny = 250;
-  double length = 1000.0;
-  double width = 1000.0;
+  int nx = 100;
+  int ny = 100;
+  double length = 200.0;
+  double width = 200.0;
 
   /** @todo Initialiser du modèle*/
   char model[10] = "";
   strcpy(model, "Gerstner");
+  int nbWaves = 1;
   Dvector windDirection(2, 1);
   double averageAlignment = 0.75;
-  double intensite = 1.0;
-  double longueurOnde = 5.0;
-  double hauteurVague = 20.0;
+  double intensite = 0.5;
+  double longueurOnde = 10;
+  double hauteurVague = 2;
 
   /** @todo Initialiser du champ de hauteur */
   double hauteur_initiale = 0.0;
@@ -29,7 +30,7 @@ int main(int argc, char** argv) {
 
   /** @todo Initialiser de l'océan */
   Ocean tmpOcean(nx, ny, length, width, model, windDirection, averageAlignment,
-                  intensite, longueurOnde, hauteurVague, tmph);
+                  intensite, longueurOnde, hauteurVague, tmph, nbWaves);
   /* extern ocean value used in windows.hxx */
   ocean = &tmpOcean;
 
