@@ -34,7 +34,7 @@ Dvector::Dvector(int taille, double val)
   if (taille <= 0) {
     // cout << "ERROR : negative size." << endl;
     // exit(EXIT_FAILURE)
-    throw ErreurAllocation();
+    throw ErreurAllocation("Erreur d'allocation mémoire de Dvector.");
   }
   vect = new double[taille];
   for (int i = 0 ; i < taille ; i++)
@@ -87,13 +87,13 @@ Dvector::Dvector(string src)
   else {
     // cout << "ERROR : Unable to open file" << endl;
     // exit(EXIT_FAILURE);
-    throw runtime_error("Impossible d'ouvrir le fichier.");
+    throw runtime_error("Impossible d'ouvrir le fichier pour créer un Dvector.");
   }
 
   /* deuxieme boucle pour inserer les elements dans le vecteurs
   */
   if (nbr_element <= 0) {
-    throw ErreurAllocation();
+    throw ErreurAllocation("Erreur d'allocation mémoire de Dvector. Le nombre d'élément dans le fichier est nul.");
   }
   this->taille = nbr_element;
   vect = new double[nbr_element];
@@ -238,7 +238,7 @@ double& Dvector::operator[](int i)
 {
   if ((i<0)||(i>=taille)) {
     // exit(1);
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   return vect[i];
 }
@@ -253,7 +253,7 @@ const double& Dvector::operator[](int i) const
 {
   if ((i<0)||(i>=taille)) {
     // exit(1);
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   return vect[i];
 }
@@ -268,7 +268,7 @@ double& Dvector::operator()(int i)
 {
   if ((i<0)||(i>=taille)) {
     // exit(1);
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   return vect[i];
 }
@@ -283,7 +283,7 @@ const double& Dvector::operator()(int i) const
 {
   if ((i<0)||(i>=taille)) {
     // exit(1);
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   return vect[i];
 }
@@ -310,7 +310,7 @@ Dvector& Dvector::operator+=(const Dvector& dv)
 {
   if (taille!=dv.taille) {
     // exit(1);//dimension incompatible
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   Dvector& vct = *this;
   for (int i=0;i<taille;i++)
@@ -347,7 +347,7 @@ Dvector& Dvector::operator-=(const Dvector& dv)
 {
   if (taille!=dv.taille) {
     // exit(-1);//dimension incompatible
-    throw ErreurAcces();
+    throw ErreurAcces("Erreur d'accès à un élément de Dvector.");
   }
   Dvector& vct = *this;
   vct += -1*dv;
@@ -371,7 +371,7 @@ Dvector& Dvector::operator/=(const double d)
 {
   if (d == 0.0) {
     // exit(-1);//dimension incompatible
-    throw domain_error("Division par zéro.");
+    throw domain_error("Division par zéro d'un Dvector.");
   }
   Dvector& vct = *this;
   vct *= 1.0/d;
@@ -430,7 +430,7 @@ Dvector operator/(const double d, const Dvector& v1)
   Dvector v0(v1);
   for (int i = 0;i<v0.size();i++) {
       if (v0[i] == 0.0) {
-        throw domain_error("Division par zéro.");
+        throw domain_error("Division par zéro. Un élément de Dvector est nul.");
       }
       v0[i] = 1/v0[i];
   }
@@ -441,7 +441,7 @@ Dvector operator/(const Dvector& v1, const double d)
 {
   Dvector v0(v1);
   if (d == 0.0) {
-    throw domain_error("Division par zéro.");
+    throw domain_error("Division par zéro d'un Dvector.");
   }
   return v0 /= d;
 }
@@ -477,7 +477,7 @@ Dvector Dvector::operator-()
 double scalaire(Dvector v1, Dvector v2)
 {
   if (v1.size()!=v2.size()) {
-    throw ErreurAcces();
+    throw runtime_error("Produit scalaire de deux Dvector de tailles différentes.");
   }
   double resultat = 0;
   for (int i=0; v1.size(); i++) {

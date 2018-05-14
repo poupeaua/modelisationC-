@@ -13,6 +13,7 @@ include(CTest)
 
 set(CMAKE_CXX_FLAGS "-g -Wall -std=c++11")
 
+# Command to rum in order to check the memory leaks ctest -T memcheck
 find_program( MEMORYCHECK_COMMAND valgrind )
 set( MEMORYCHECK_COMMAND_OPTIONS "--trace-children=yes --leak-check=full" )
 set( MEMORYCHECK_SUPPRESSIONS_FILE "${PROJECT_SOURCE_DIR}/valgrind_suppress.txt")

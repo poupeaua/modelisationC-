@@ -9,19 +9,30 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 100;
-  int ny = 100;
-  double length = 200.0;
-  double width = 200.0;
+  int nx = 256; // multiple de 2 pour Philips
+  int ny = 256; // multiple de 2 pour Philips
+  double length = 500.0;
+  double width = 500.0;
 
   /** @todo Initialiser du modèle*/
+  if (argc <= 1 || argc > 2)
+  {
+    throw invalid_argument("./Main_Visualisation doit avoir un argument :"
+                           " Gerstner ou Philips");
+  }
   char model[10] = "";
-  strcpy(model, "Gerstner");
+  strcpy(model, argv[1]);
+  // number of waves (just for GerstnerWave)
   int nbWaves = 1;
-  Dvector windDirection(2, 1);
-  double averageAlignment = 0.75;
-  double intensite = 0.5;
+  // wind direction
+  Dvector windDirection(2, 1.5);
+  // average alignement number in [0, 1]
+  double averageAlignment = 0.5;
+  // change the speed of the wave (bigger jump for update in time)
+  double intensite = 0.8;
+  // change the frenquency of the wave
   double longueurOnde = 10;
+  // height of the wave
   double hauteurVague = 2;
 
   /** @todo Initialiser du champ de hauteur */

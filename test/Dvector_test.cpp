@@ -71,7 +71,7 @@ int main()
     // cerr << "ERREUR : " << e.what() << endl;
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Dvector.\n");
   str7.str("");
 
 
@@ -84,7 +84,7 @@ int main()
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Dvector.\n");
   str7.str("");
 
 
@@ -110,9 +110,9 @@ int main()
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier.\n");
+  assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier pour créer un Dvector.\n");
   str7.str("");
-
+  
 
   cout << "OK" << endl;
 

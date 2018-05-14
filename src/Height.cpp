@@ -29,7 +29,7 @@ Height::Height()
 Height::Height(int nx, int ny, double value, double length, double width)
 {
   if (nx <= 0 || ny <= 0) {
-    throw ErreurAllocation();
+    throw ErreurAllocation("Erreur d'allocation mémoire de Height.");
   } else if (length <= 0 || width <= 0) {
     throw invalid_argument("Erreur paramètre length ou width négatif ou nul.");
   }
@@ -174,7 +174,7 @@ double& Height::operator()(int x, int y)
   // cout << nx << endl;
   // cout << ny << endl;
   if (indice < 0 || indice > nx*ny-1) {
-    throw ErreurAcces("Erreur d'accès avec l'opérateur () de Height.");
+    throw ErreurAcces("Erreur d'accès à un élément de Height.");
   }
   return height(indice);
 }
