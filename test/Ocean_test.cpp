@@ -49,4 +49,27 @@ int main()
 
   /* ----------------------------  EXCEPTIONS  ---------------------------- */
 
+  stringstream str7;
+
+  /* test type de waves n'existe pas */
+  try
+  {
+    char char_model2[20] = "";
+    strcpy(char_model2, "TypeNotExist");
+
+    Ocean* ocean2 = new Ocean(nx, ny, length, width, char_model2, windDirection,
+                                  averageAlignment, intensite, longueurOnde,
+                                  hauteurVague, h, nbWaves);
+
+    double temps_actuel = ocean2->getTemps();
+    temps_actuel *= 2;
+  }
+  catch (exception const& e)
+  {
+    str7 << "ERREUR : " << e.what() << endl;
+  }
+  assert(str7.str() == "ERREUR : Le modèle choisi n'existe pas. Vous pouvez soit"
+                      " choisir Gerstner ou Philips. Entrez par exemple"
+                      " ./Main_Visualisation Gerstner\n");
+  str7.str("");
 }

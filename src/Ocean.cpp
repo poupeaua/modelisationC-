@@ -130,6 +130,7 @@ Ocean::~Ocean()
 {
   /* free the height attribute */
   /* free the model attribute */
+  delete (Model);
 }
 
 
@@ -137,7 +138,7 @@ Ocean::~Ocean()
  * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
  * hauteur]
  */
-Height Ocean::generateHeight(double setHeight)
+void Ocean::generateHeight(double setHeight)
 {
   /* method created just for this purpose */
   H.setHeightTo(setHeight);

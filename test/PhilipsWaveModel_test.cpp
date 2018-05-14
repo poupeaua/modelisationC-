@@ -15,11 +15,11 @@ int main()
   int ny = 64;
 
   /* initialize a GerstnerWaveModel object */
-  PhilipsWaveModel PWM1(windDirection, averageAlignment, intensite,
+  PhilipsWaveModel* PWM1 = new PhilipsWaveModel(windDirection, averageAlignment, intensite,
                   longueurOnde, hauteurVague, nx, ny);
 
   /*Tester si le renvoi de la hauteur est bon*/
-  double a = PWM1(31, 31, 1.5);
+  double a = (*PWM1)(31, 31, 1.5);
   cout<<a<<endl;
 
   /*---------------Test de la ifft et de la fft--------------------------*/
@@ -90,4 +90,6 @@ int main()
     }
   }
   assert(f2 == d2);
+
+  delete PWM1;
 }
