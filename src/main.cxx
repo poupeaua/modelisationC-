@@ -9,14 +9,14 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 250;
-  int ny = 250;
+  int nx = 256;
+  int ny = 256;
   double length = 1000.0;
   double width = 1000.0;
 
   /** @todo Initialiser du modèle*/
   char model[10] = "";
-  strcpy(model, "Gerstner");
+  strcpy(model, "Philips");
   Dvector windDirection(2, 1);
   double averageAlignment = 0.75;
   double intensite = 1.0;
