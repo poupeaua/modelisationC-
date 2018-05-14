@@ -20,7 +20,7 @@ target_link_libraries(Height_test Height Dvector)
 target_link_libraries(GerstnerWave_test  GerstnerWave Dvector)
 target_link_libraries(GerstnerWaveModel_test GerstnerWaveModel GerstnerWave
                       WaveModel Dvector)
-target_link_libraries(PhilipsWaveModel_test PhilipsWaveModel WaveModel)
+target_link_libraries(PhilipsWaveModel_test PhilipsWaveModel WaveModel Dvector)
 target_link_libraries(Ocean_test Ocean PhilipsWaveModel
                       GerstnerWaveModel WaveModel GerstnerWave Height Dvector)
 

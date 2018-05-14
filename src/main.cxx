@@ -30,13 +30,10 @@ int main(int argc, char** argv) {
                   intensite, longueurOnde, hauteurVague);
   /* extern ocean value used in windows.hxx */
   ocean = &tmpOcean;
-
   /* Initialisation de la fenêtre d'affichage */
   Window::init(WIDTH, HEIGHT, "Houle", argc, argv, "AZERTY", 50, 1);
-
   /* Execute la simulation */
   Window::launch();
-
   /* Libère la mémoire */
   Window::quit();
   delete ocean;

@@ -74,7 +74,7 @@ class Ocean
    * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
    * hauteur]
    */
-  void generateHeight(double setHeight = 0.0);
+  Height generateHeight(double setHeight = 0.0);
 
   /*!
    * [compute Methode permettant de générer la hauteur en fonction du temps t]

@@ -126,10 +126,11 @@ Ocean::~Ocean()
  * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
  * hauteur]
  */
-void Ocean::generateHeight(double setHeight)
+Height Ocean::generateHeight(double setHeight)
 {
   /* method created just for this purpose */
-  Height H(nx, ny, setHeight, length, width);
+  H  = Height(nx, ny, setHeight, length, width);
+  return H;
 }
 
 

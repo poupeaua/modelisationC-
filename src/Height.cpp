@@ -5,6 +5,19 @@
 
 Height::Height()
 {
+  this->nx = nx;
+  this->ny = ny;
+  Dvector height(nx*ny);
+  for (int i = 0 ; i < ny ; i++)
+  {
+    for (int j = 0 ; j < nx ; j++)
+    {
+      height[i*nx + j] = 0;
+    }
+  }
+  this->height = height;
+  this->width = width;
+  this->length = length;
 }
 
 /*!
