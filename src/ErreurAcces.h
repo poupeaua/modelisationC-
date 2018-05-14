@@ -6,9 +6,17 @@
 class ErreurAcces: public exception
 {
   public:
-    virtual const char* what(void) const throw () {
-      return "Erreur d'accés aux données.";
+    ErreurAcces(string const& phrase="") throw() {
+      m_phrase = phrase;;
     }
+
+    virtual const char* what() const throw () {
+      return m_phrase.c_str();
+    }
+
+
+  private:
+    string m_phrase; // description de l'erreur d'acces
 };
 
 #endif

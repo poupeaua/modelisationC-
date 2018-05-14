@@ -11,6 +11,13 @@ class GerstnerWave
     public:
 
     /*!
+     * [GerstnerWave::GerstnerWave Constructeur par défaut. Choisi alors une
+     * direction, une amplitude ainsi qu'une phase par défaut pour l'utilisateur.]
+     */
+    GerstnerWave();
+
+
+    /*!
      * [GerstnerWave::GerstnerWave Constructeur par défaut n'existe pas. Il est
      * nécessaire de passer par ce constructeur pour commencer.]
      * @param direction     [Dvector a deux dimensions pour décrire la direction

@@ -76,7 +76,7 @@ int main()
   {
     str1 << "ERREUR : " << e.what() << endl;
   }
-  assert(str1.str() == "ERREUR : Argument invalide : La tableau passer en argument"
+  assert(str1.str() == "ERREUR : Argument invalide : La tableau passé en argument"
     " doit contenir au moins une GerstnerWave.\n");
   str1.str("");
 

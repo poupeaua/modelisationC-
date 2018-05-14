@@ -26,7 +26,12 @@ class Height
 {
   public:
 
+  /*!
+   * [Height::Height Constructeur par défaut de Height. La valeur de tous les
+   * attributs sont choisis pour l'utilisateur.]
+   */
   Height();
+  
 
   /*!
    * [Height::Height Constructeur par défaut plaçant des valeurs (par défaut zero)]
@@ -103,6 +108,8 @@ class Height
    * @return [double représentant la valeur au point x et y]
    */
   double& operator()(int x, int y);
+
+  Height& operator=( Height &);
 
   private:
 

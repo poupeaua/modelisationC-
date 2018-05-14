@@ -44,6 +44,7 @@ namespace Window {
         0, 1, 0);
 
     draw_ocean();
+
     draw_fps();
 
     glutSwapBuffers();
@@ -77,6 +78,7 @@ namespace Window {
     // Réalise effectivement l'étape de calcul
     ocean->main_computation();
 
+
     // Impose la couleur d'affichage de la grille
     glColor3ub(82, 184, 255);
 
@@ -91,6 +93,7 @@ namespace Window {
       glDisableClientState(GL_VERTEX_ARRAY);
     }
 
+
     // Parcours la scène dans la direction y afin de récupérer
     // les lignes à afficher
     for(int y = 0 ; y < nyOcean ; y++) {
@@ -101,6 +104,7 @@ namespace Window {
       glDrawArrays(GL_LINE_STRIP, 0, nxOcean+1);
       glDisableClientState(GL_VERTEX_ARRAY);
     }
+
     glColor3ub(0, 0, 0);
   }
 
@@ -156,7 +160,6 @@ namespace Window {
     for(int y=0 ; y<nyOcean ; y++) {
       ocean->init_gl_VertexArrayX(y, vertexOceanX[y]);
     }
-
     // Réalise l'affichage
     glClearColor(1, 1, 1, 1);
     glutReshapeFunc(reshape);
@@ -167,6 +170,7 @@ namespace Window {
     glutKeyboardUpFunc(keyboardUp);
     glutWarpPointer(WIDTH/2, HEIGHT/2);
     glutMainLoop();
+
   }
 
   void mouseMove(int x, int y) {

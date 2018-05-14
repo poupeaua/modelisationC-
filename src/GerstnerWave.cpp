@@ -5,10 +5,22 @@
 -------------------------------- CONSTRUCTORS ---------------------------------
 */
 
+/*!
+ * [GerstnerWave::GerstnerWave Constructeur par défaut. Choisi alors une
+ * direction, une amplitude ainsi qu'une phase par défaut pour l'utilisateur.]
+ */
+GerstnerWave::GerstnerWave()
+{
+  Dvector default_direction(2, 1.0);
+  double default_amplitude = 10;
+  double default_phase = 3.14/2;
+  GerstnerWave(default_direction, default_amplitude, default_phase);
+}
+
 
 /*!
- * [GerstnerWave::GerstnerWave Constructeur par défaut n'existe pas. Il est
- * nécessaire de passer par ce constructeur pour commencer.]
+ * [GerstnerWave::GerstnerWave Constructeur le plus commun où l'utilisateur peut
+ * choisir la valeur des attributs pour décrire au mieux l'allure de la vague.]
  * @param direction     [Dvector a deux dimensions pour décrire la direction
  *  de la vague]
  * @param amplitude     [double qui défini la hauteur maximum de la vague]

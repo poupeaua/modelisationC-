@@ -3,6 +3,8 @@
 #include "GerstnerWave.h"
 #include "WaveModel.h"
 
+#include <list>     // needed for init for one of the constructors
+
 
 /* class that inherits from WaveModel */
 class GerstnerWaveModel : public WaveModel
@@ -19,7 +21,8 @@ class GerstnerWaveModel : public WaveModel
 
   /*!
    * [GerstnerWaveModel::GerstnerWaveModel Constructeur principal pour la
-   * classe GerstnerWaveModel.]
+   * classe GerstnerWaveModel. Cette permière version utilise un array [] pour
+   * la liste de Gerstner Waves en entrée (type de l'attribut de la classe).]
    * @param windDirection    [windDirection est un paramètre pour la classe mère
    *  WaveModel]
    * @param averageAlignment [averageAlignment est un paramètre pour la classe mère]
@@ -31,6 +34,23 @@ class GerstnerWaveModel : public WaveModel
   GerstnerWaveModel(Dvector windDirection, double averageAlignment,
               double intensite, double longueurOnde, double hauteurVague,
               GerstnerWave *list, int nbWaves);
+
+    /*!
+     * [GerstnerWaveModel::GerstnerWaveModel Second constructeur principal pour la
+     * classe GerstnerWaveModel. Cette deuxième version utilise une liste
+     * de type STL list<GerstnerWave> pour la list de Gerstner Waves en entrée.]
+     * @param windDirection    [windDirection est un paramètre pour la classe mère
+     *  WaveModel]
+     * @param averageAlignment [averageAlignment est un paramètre pour la classe mère]
+     * @param intensite        [intensite est un paramètre pour la classe mère]
+     * @param longueurOnde     [longueurOnde est un paramètre pour la classe mère]
+     * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
+     * @param list             [list est une liste d'objets GerstnerWave
+     *                          de type <list> de STL]
+     */
+    GerstnerWaveModel(Dvector windDirection, double averageAlignment,
+                double intensite, double longueurOnde, double hauteurVague,
+                list<GerstnerWave> list, int nbWaves);
 
   /*!
    * [getListGerstnerWaves Getter classique pour accéder à l'attribut ListGerstnerWaves]
