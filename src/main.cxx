@@ -9,8 +9,8 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 32;
-  int ny = 32;
+  int nx = 64;
+  int ny = 64;
   double length = 1000;
   double width = 1000;
 
@@ -37,9 +37,9 @@ int main(int argc, char** argv) {
 
   if (strcmp(model, "Philips") == 0) {
     Dvector windDirection(2, 1);
-    intensite = 0.5;
-    longueurOnde = 2.0;
-    hauteurVague = .5;
+    intensite = 0.4;
+    longueurOnde = 2;
+    hauteurVague = .4;
   }
 
   /** @todo Initialiser du champ de hauteur */

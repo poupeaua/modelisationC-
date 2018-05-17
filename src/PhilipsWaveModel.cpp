@@ -1,7 +1,7 @@
 #include "PhilipsWaveModel.h"
 #include <chrono>
 
-
+std::random_device rd{};
 /*
 -------------------------------- CONSTRUCTORS ---------------------------------
 */
@@ -108,15 +108,9 @@ void PhilipsWaveModel::actualizeHeight(double t){
         complex<double> p_droite = {0,0};
         double p1 = philipsModel(k, getHauteurVague(), getLongueurOnde(), getWindDirection(), vitesseVent);
         double p2 = philipsModel(-k, getHauteurVague(), getLongueurOnde(), getWindDirection(), vitesseVent);
-        // double tmp_random = rand()/RAND_MAX; // in ]0,1[
-        // cout << tmp_random;
-        // double generator = tmp_random;
-        // // double generator = (double) log(tmp_random) - log(1 - tmp_random);
-        std::random_device rd{};
         std::mt19937 gen{rd()};
         double samplei = d(gen);
         double sampler = d(gen);
-        //cout << samplei << sampler << endl;
         p_gauche = exp(complex<double>(0, getLongueurOnde()*t))*p1*(complex<double>(sampler, samplei))/sqrt(2);
         p_droite = exp(complex<double>(0, getLongueurOnde()*t))*p2*(complex<double>(sampler, -samplei))/sqrt(2);
         champ_hauteur[y*ny + x] = p_gauche + p_droite;
@@ -167,7 +161,8 @@ double philipsModel(Dvector k, double intensite, double longueurOnde, Dvector wi
  */
 double PhilipsWaveModel::operator()(int x, int y, double t) {
   actualizeHeight(t);
-  return champ_hauteur[y*ny + x].real();
+  //return champ_hauteur[y*ny + x].real();
+  return abs(champ_hauteur[y*ny + x]);
 }
 
 /*
