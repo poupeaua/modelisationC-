@@ -1,5 +1,5 @@
 #include "Dvector.h"
-
+#include <ctime>
 int main()
 {
   // vect1 par défaut
@@ -18,10 +18,8 @@ int main()
   // vect7 constructeur par lecture de fichire numéro 2
   Dvector vect7("../../test/test2.txt");
 
-
   //vect1 test
-  // vect1.display(cout);
-  // printf("Taille vect1 = %d\n", vect1.size());
+  vect1.display(cout);
   assert(vect1.size() == 2);
 
 
@@ -112,7 +110,7 @@ int main()
   }
   assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier pour créer un Dvector.\n");
   str7.str("");
-  
+
 
   cout << "OK" << endl;
 

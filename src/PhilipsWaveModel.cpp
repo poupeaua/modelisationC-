@@ -1,7 +1,7 @@
 #include "PhilipsWaveModel.h"
+#include <chrono>
 
-
-
+std::random_device rd{};
 /*
 -------------------------------- CONSTRUCTORS ---------------------------------
 */
@@ -18,7 +18,8 @@
  * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
  */
 PhilipsWaveModel::PhilipsWaveModel(Dvector windDirection, double averageAlignment,
-            double intensite, double longueurOnde, double hauteurVague, int nx, int ny):
+            double intensite, double longueurOnde, double hauteurVague,
+            int nx, int ny):
 
             WaveModel(windDirection, averageAlignment, intensite, longueurOnde,
                       hauteurVague)
@@ -26,6 +27,7 @@ PhilipsWaveModel::PhilipsWaveModel(Dvector windDirection, double averageAlignmen
   this->nx = nx;
   this->ny = ny;
   this->temps = -1;
+  this->vitesseVent = 5;
   this->champ_hauteur = TemplateDvector<complex<double>>(nx * ny);
 }
 
@@ -40,6 +42,7 @@ PhilipsWaveModel::PhilipsWaveModel(const PhilipsWaveModel & other):
     this->ny = other.ny;
     this->temps = other.temps;
     this->champ_hauteur = other.champ_hauteur;
+    this->vitesseVent = other.vitesseVent;
 }
 
 /*
@@ -96,7 +99,6 @@ TemplateDvector<complex<double>> PhilipsWaveModel::getChamp_hauteur(){
 void PhilipsWaveModel::actualizeHeight(double t){
   if(t!=temps) {
     this->temps = t;
-    std::default_random_engine generator;
     std::normal_distribution<float> d(0, 1);
     for (int y = 0; y<ny; y++) {
       for (int x = 0; x<nx; x++) {
@@ -104,10 +106,11 @@ void PhilipsWaveModel::actualizeHeight(double t){
         k[1] = y;
         complex<double> p_gauche = {0,0};
         complex<double> p_droite = {0,0};
-        double p1 = philips_model(k, getIntensite(), getLongueurOnde(), getWindDirection());
-        double p2 = philips_model(-k, getIntensite(), getLongueurOnde(), getWindDirection());
-        double samplei = d(generator);
-        double sampler = d(generator);
+        double p1 = philipsModel(k, getHauteurVague(), getLongueurOnde(), getWindDirection(), vitesseVent);
+        double p2 = philipsModel(-k, getHauteurVague(), getLongueurOnde(), getWindDirection(), vitesseVent);
+        std::mt19937 gen{rd()};
+        double samplei = d(gen);
+        double sampler = d(gen);
         p_gauche = exp(complex<double>(0, getLongueurOnde()*t))*p1*(complex<double>(sampler, samplei))/sqrt(2);
         p_droite = exp(complex<double>(0, getLongueurOnde()*t))*p2*(complex<double>(sampler, -samplei))/sqrt(2);
         champ_hauteur[y*ny + x] = p_gauche + p_droite;
@@ -137,15 +140,15 @@ void PhilipsWaveModel::actualizeHeight(double t){
 }
 
 /*!
- * [philips_model fonction auxiliaire simulant le modele de Philips]
+ * [philipsModel fonction auxiliaire simulant le modele de Philips]
  * @param  k             [vecteur]
  * @param  intensite     [intensite]
  * @param  longueurOnde  [longueur d'onde]
  * @param  windDirection [direction du vent]
  * @return               [Ph(k)]
  */
-double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection) {
-  double expo = exp((-1/scalaire(k*longueurOnde, k*longueurOnde)));
+double philipsModel(Dvector k, double intensite, double longueurOnde, Dvector windDirection, double vitesseVent) {
+  double expo = exp((-1/scalaire(k*vitesseVent, k*vitesseVent)));
   double scal = scalaire(k, windDirection);
   double dem = scalaire(k, k);
   return intensite * expo * pow(scal,2)/dem;
@@ -158,7 +161,8 @@ double philips_model(Dvector k, double intensite, double longueurOnde, Dvector w
  */
 double PhilipsWaveModel::operator()(int x, int y, double t) {
   actualizeHeight(t);
-  return champ_hauteur[y*ny + x].real();
+  //return champ_hauteur[y*ny + x].real();
+  return abs(champ_hauteur[y*ny + x]);
 }
 
 /*
@@ -193,6 +197,10 @@ void fft(TemplateDvector<complex<double>> x){
   }
 }
 
+/*!
+ * [ifft compute the ifft ]
+ * @param x [the parameter to transform, x shoud be a power of 2]
+ */
 void ifft(TemplateDvector<complex<double>> x){
   if (x.size() <= 1) {
     //nothing to do

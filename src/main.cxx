@@ -9,10 +9,10 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 100; // multiple de 2 pour Philips
-  int ny = 100; // multiple de 2 pour Philips
-  double length = 500.0;
-  double width = 500.0;
+  int nx;
+  int ny;
+  double length = 1000;
+  double width = 1000;
 
   /** @todo Initialiser du modèle*/
   if (argc <= 1 || argc > 2)
@@ -23,17 +23,41 @@ int main(int argc, char** argv) {
   char model[10] = "";
   strcpy(model, argv[1]);
   // number of waves (just for GerstnerWave)
-  int nbWaves = 1;
+  int nbWaves;
   // wind direction
-  Dvector windDirection(2, 1);
+  Dvector windDirection;
   // average alignement number in [0, 1]
-  double averageAlignment = 0.0;
+  double averageAlignment;
   // change the speed of the wave (bigger jump for update in time)
-  double intensite = 0.4;
+  double intensite;
   // height of the wave
-  double hauteurVague = 6;
+  double hauteurVague;
   // change the frenquency of the wave based on the amplitude
-  double longueurOnde = hauteurVague;
+  double longueurOnde;
+
+
+  if (strcmp(model, "Philips") == 0) {
+    /* differents parametres que l'utilisateur peut choisir pour Gerstner et Philips */
+    nx = 64; // multiple de 2
+    ny = 64; // multiple de 2
+    Dvector windDirection(2, 1);
+    averageAlignment = 0.5;
+    intensite = 0.8;
+    longueurOnde = 2;
+    hauteurVague = .4;
+  } else if (strcmp(model, "Gerstner") == 0) {
+    nx = 200;
+    ny = 200;
+    nbWaves = 1;
+    Dvector windDirection(2, 1);
+    averageAlignment = 0.0;
+    intensite = 0.4;
+    hauteurVague = 6;
+    longueurOnde = hauteurVague;
+  } else {
+    throw invalid_argument("Argument de type de vague inconnu. Arguments possible :"
+                           " Gerstner ou Philips");
+  }
 
   /** @todo Initialiser du champ de hauteur */
   double hauteur_initiale = 0.0;

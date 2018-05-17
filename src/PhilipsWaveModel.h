@@ -16,14 +16,6 @@ class PhilipsWaveModel : public WaveModel
 {
   public:
 
-  /* not obliged to write virtual but it is to remind that they are special */
-  /*!
-   * [PhilipsWaveModel::operator permettant de calculer la hauteur total z
-   * au point (x, y) à l'instant t]
-   * @return [double définissant la hauteur total de la vague]
-   */
-  virtual double operator()(int x, int y, double t);
-
   /*!
    * [PhilipsWaveModel::PhilipsWaveModel Constructeur principal pour la
    * classe PhilipsWaveModel.]
@@ -35,25 +27,19 @@ class PhilipsWaveModel : public WaveModel
    * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
    */
   PhilipsWaveModel(Dvector windDirection, double averageAlignment,
-              double intensite, double longueurOnde, double hauteurVague, int nx, int ny);
-
-  /*!
-   * [PhilipsWaveModel Destructeur pour PhilipsWaveModel]
-   */
-  virtual ~PhilipsWaveModel();
-
-  // /*!
-  //  * [PhilipsWaveModel::operator = afin d'associer toutes les caractéristiques de
-  //  *  gw passée en paramètre à l'objet this]
-  //  * @return [*this]
-  //  */
-  // PhilipsWaveModel& operator=(const PhilipsWaveModel&);
+              double intensite, double longueurOnde, double hauteurVague,
+              int nx, int ny);
 
   /*!
    * [PhilipsWave::PhilipsWave Constructeur par copie]
    * @param other [const PhilipsWave & est un autre objet GertsnerWave]
    */
    PhilipsWaveModel(const PhilipsWaveModel & other);
+
+  /*!
+   * [PhilipsWaveModel Destructeur pour PhilipsWaveModel]
+   */
+  virtual ~PhilipsWaveModel();
 
    /*!
     * [getNx Getter classique pour accéder à l'attribut Nx]
@@ -87,16 +73,31 @@ class PhilipsWaveModel : public WaveModel
     */
    void actualizeHeight(double t);
 
+   /* not obliged to write virtual but it is to remind that they are special */
+   /*!
+    * [PhilipsWaveModel::operator permettant de calculer la hauteur total z
+    * au point (x, y) à l'instant t]
+    * @return [double définissant la hauteur total de la vague]
+    */
+   virtual double operator()(int x, int y, double t);
+
+   /*!
+    * [PhilipsWaveModel::operator = afin d'associer toutes les caractéristiques de
+    *  gw passée en paramètre à l'objet this]
+    * @return [*this]
+    */
+   PhilipsWaveModel& operator=(const PhilipsWaveModel&);
+
   private:
 
   int nx;
   int ny;
   TemplateDvector<complex<double>> champ_hauteur;
   double temps;
-
+  double vitesseVent;
 };
 
-  double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection);
+  double philipsModel(Dvector k, double intensite, double longueurOnde, Dvector windDirection, double vitesseVent);
 
   void fft(TemplateDvector<complex<double>> x);
 
