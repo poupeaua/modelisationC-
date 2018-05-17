@@ -9,19 +9,19 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 256;
-  int ny = 256;
-  double length = 1000.0;
-  double width = 1000.0;
+  int nx = 32;
+  int ny = 32;
+  double length = 1000;
+  double width = 1000;
 
   /** @todo Initialiser du modèle*/
   char model[10] = "";
-  strcpy(model, "Gerstner");
+  strcpy(model, "Philips");
   Dvector windDirection(2, 1);
   double averageAlignment = 0.75;
-  double intensite = 1.0;
-  double longueurOnde = 5.0;
-  double hauteurVague = 20.0;
+  double intensite = 0.1;
+  double longueurOnde = 10.0;
+  double hauteurVague = 1.0;
 
   /** @todo Initialiser du champ de hauteur */
   double hauteur_initiale = 0.0;

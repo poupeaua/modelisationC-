@@ -1,9 +1,8 @@
 #include "Dvector.h"
-
+#include <ctime>
 int main()
 {
   // vect1 par défaut
-  Dvector vect1;
   // vect2 option du constructeur principal
   Dvector vect2(5);
   // vect3 constructeur principal
@@ -18,7 +17,16 @@ int main()
   // vect7 constructeur par lecture de fichire numéro 2
   Dvector vect7("../../test/test2.txt");
 
+  Dvector vect1 = Dvector( 500000000, 0);
+  float temps;
+    clock_t t1, t2;
 
+    t1 = clock();
+
+  vect2 = vect1;
+  t2 = clock();
+     temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+     printf("temps = %f\n", temps);
   //vect1 test
   // vect1.display(cout);
   // printf("Taille vect1 = %d\n", vect1.size());
