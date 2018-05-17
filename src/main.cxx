@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
   // number of waves (just for GerstnerWave)
   int nbWaves;
   // wind direction
-  Dvector windDirection;
+  Dvector windDirection(2);
   // average alignement number in [0, 1]
   double averageAlignment;
   // change the speed of the wave (bigger jump for update in time)
@@ -35,12 +35,12 @@ int main(int argc, char** argv) {
   // change the frenquency of the wave based on the amplitude
   double longueurOnde;
 
-
   if (strcmp(model, "Philips") == 0) {
     /* differents parametres que l'utilisateur peut choisir pour Gerstner et Philips */
     nx = 64; // multiple de 2
     ny = 64; // multiple de 2
-    Dvector windDirection(2, 1);
+    windDirection(0) = 1;
+    windDirection(1) = 1;
     averageAlignment = 0.5;
     intensite = 0.8;
     longueurOnde = 2;
@@ -49,7 +49,8 @@ int main(int argc, char** argv) {
     nx = 200;
     ny = 200;
     nbWaves = 1;
-    Dvector windDirection(2, 1);
+    windDirection(0) = 1;
+    windDirection(1) = 1;
     averageAlignment = 0.0;
     intensite = 0.4;
     hauteurVague = 6;
