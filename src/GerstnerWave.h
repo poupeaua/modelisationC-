@@ -6,6 +6,10 @@
 /* global variable g*/
 double G = 9.81;
 
+
+/*!
+ * [GerstnerWave Classe permettant de générer des objets vagues selon le modèle de Gertsner]
+ */
 class GerstnerWave
 {
     public:

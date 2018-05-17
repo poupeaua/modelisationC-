@@ -2,6 +2,8 @@
 #include "GerstnerWaveModel.h"
 #include "PhilipsWaveModel.h"
 
+#include <random>
+
 /* PI constante utilise pour creer des gesrtner wave et des phases */
 #define PI  3.14159265358979323846
 
@@ -83,13 +85,16 @@ void Ocean::initializeOceanTypeGerstner(Dvector windDirection,
   list<GerstnerWave> ListGerstnerWaves;
   for (int i = 1 ; i <= nbWaves ; i++)
   {
+    srand(time(NULL));
+    double a = 100;
+    double b = 0;
     /* creation de la premiere onde GertsnerWave*/
     Dvector direction(2);
     /* plus la longueur est petite plus la frequence est eleve et inversement */
-    direction(0) = 2.5 * i / longueurOnde;
-    direction(1) = 1.0 * i / longueurOnde;
+    direction(0) = (( rand()/(double)RAND_MAX ) * (b-a) + a) * i / longueurOnde;
+    direction(1) = (( rand()/(double)RAND_MAX ) * (b-a) + a) * i / longueurOnde;
     double amplitude = hauteurVague;
-    double phase = i * (PI / 4);
+    double phase = (( rand()/(double)RAND_MAX ) * (b-a) + a )* i * (PI);
     GerstnerWave GW(direction, amplitude, phase);
     /* add the GerstnerWave object GW at the end of the list */
     ListGerstnerWaves.push_back(GW);

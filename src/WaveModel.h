@@ -4,6 +4,9 @@
 #include "Dvector.h"
 
 
+/*!
+ * [WaveModel Classe abstraite permettant de créer des modèles de vagues.]
+ */
 class WaveModel
 {
   public:

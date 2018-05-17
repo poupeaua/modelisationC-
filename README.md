@@ -3,14 +3,14 @@ Projet de Anand Ballou et Alexandre Poupeau.
 1) HOW TO : Compiler le projet.
 
 Se rendre dans le dossier build/.
-Eventuellement lancer la command cmake ..
-Executer la command make.
+Eventuellement lancer la commande cmake ..
+Executer la commande make.
 (Ne pas hésiter à lancer la commande make clean en cas de bug)
 
 2) HOW TO : Lancer le programme principal.
 
 S'assurer d'avoir compilé le projet.
-Depuis le dossier build/, executer la command suivante ./src/Main_Visualization
+Depuis le dossier build/, éxécuter la command suivante ./src/Main_Visualization
 avec comme argument le modèle choisi.
 Exemple : "./src/Main_Visualization Gerstner" ou "./src/Main_Visualization Philips"
 

@@ -6,7 +6,11 @@
 #include <list>     // needed for init for one of the constructors
 
 
-/* class that inherits from WaveModel */
+/*!
+ * [GerstnerWaveModel Classe héritant de WaveModel et qui permet de générer des
+ * objets représentant les paramètres pour réaliser une simulation de vagues
+ * selon le modèle de Gertsner.]
+ */
 class GerstnerWaveModel : public WaveModel
 {
   public:

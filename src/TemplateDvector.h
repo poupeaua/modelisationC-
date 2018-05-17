@@ -19,6 +19,10 @@ using namespace std;
 
 
 /* initialise le template à T par défaut */
+/*!
+ * [TemplateDvector<T>  Extension de la classe Dvector permettant de réaliser
+ * des objets vecteurs de types différents.]
+ */
 template<typename T = double>
 class TemplateDvector
 {

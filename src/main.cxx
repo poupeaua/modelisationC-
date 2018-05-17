@@ -9,8 +9,8 @@ int mainwindow;
 
 int main(int argc, char** argv) {
   /** @todo Initialiser des paramètres de simulation */
-  int nx = 256; // multiple de 2 pour Philips
-  int ny = 256; // multiple de 2 pour Philips
+  int nx = 100; // multiple de 2 pour Philips
+  int ny = 100; // multiple de 2 pour Philips
   double length = 500.0;
   double width = 500.0;
 
@@ -25,15 +25,15 @@ int main(int argc, char** argv) {
   // number of waves (just for GerstnerWave)
   int nbWaves = 1;
   // wind direction
-  Dvector windDirection(2, 1.5);
+  Dvector windDirection(2, 1);
   // average alignement number in [0, 1]
-  double averageAlignment = 0.5;
+  double averageAlignment = 0.0;
   // change the speed of the wave (bigger jump for update in time)
-  double intensite = 0.8;
-  // change the frenquency of the wave
-  double longueurOnde = 10;
+  double intensite = 0.4;
   // height of the wave
-  double hauteurVague = 2;
+  double hauteurVague = 6;
+  // change the frenquency of the wave based on the amplitude
+  double longueurOnde = hauteurVague;
 
   /** @todo Initialiser du champ de hauteur */
   double hauteur_initiale = 0.0;
@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
   /** @todo Initialiser de l'océan */
   Ocean tmpOcean(nx, ny, length, width, model, windDirection, averageAlignment,
-                  intensite, longueurOnde, hauteurVague, tmph);
+                  intensite, longueurOnde, hauteurVague, tmph, nbWaves);
   /* extern ocean value used in windows.hxx */
   ocean = &tmpOcean;
   /* Initialisation de la fenêtre d'affichage */

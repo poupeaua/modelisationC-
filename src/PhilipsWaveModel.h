@@ -7,7 +7,11 @@
 #include <random>
 
 
-/* class that inherits from WaveModel */
+/*!
+ * [PhilipsWaveModel  Classe héritant de WaveModel et qui permet de générer des
+ * objets représentant les paramètres pour réaliser une simulation de vagues
+ * selon le modèle de Philips.]
+ */
 class PhilipsWaveModel : public WaveModel
 {
   public:

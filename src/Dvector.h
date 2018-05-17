@@ -16,6 +16,9 @@
 using namespace std;
 
 
+/*!
+ * [Dvector Classe qui permet de manipuler des vecteurs de double.]
+ */
 class Dvector
 {
 

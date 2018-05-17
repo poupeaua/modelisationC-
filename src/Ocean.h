@@ -8,6 +8,10 @@
 #include <ctime>    // needed to make the main_computation method (use clock_t)
 
 
+/*!
+ * [Ocean  Classe permettant de générer des objets ayant tous les paramètres
+ * afin de réaliser la simulation finale de l'océan.]
+ */
 class Ocean
 {
   public:

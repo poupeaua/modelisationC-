@@ -21,7 +21,10 @@ y
 
 */
 
-
+/*!
+ * [Height Classe permettant de générer un objet représentant la surface de
+ * l'océan étant comme un tableau 2D avec une hauteur par case.]
+ */
 class Height
 {
   public:
@@ -31,7 +34,7 @@ class Height
    * attributs sont choisis pour l'utilisateur.]
    */
   Height();
-  
+
 
   /*!
    * [Height::Height Constructeur par défaut plaçant des valeurs (par défaut zero)]
