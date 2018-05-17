@@ -65,7 +65,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Height.\n");
   str7.str("");
 
 
@@ -78,7 +78,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Height.\n");
   str7.str("");
 
 
@@ -118,7 +118,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+  assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Height.\n");
   str7.str("");
 
 
@@ -132,7 +132,7 @@ int main() {
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+  assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Height.\n");
   str7.str("");
 
 

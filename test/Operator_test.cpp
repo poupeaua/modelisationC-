@@ -161,6 +161,7 @@ int main()
 
     /*-------------------------  EXCEPTIONS TESTS ------------------------- */
 
+
     stringstream str7;
 
     /* test accesseur () */
@@ -174,7 +175,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+    assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Dvector.\n");
     str7.str("");
 
 
@@ -189,7 +190,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+    assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Dvector.\n");
     str7.str("");
 
 
@@ -204,7 +205,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+    assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Dvector.\n");
     str7.str("");
 
 
@@ -219,7 +220,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+    assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Dvector.\n");
     str7.str("");
 
 
@@ -234,7 +235,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Erreur d'accés aux données.\n");
+    assert(str7.str() == "ERREUR : Erreur d'accès à un élément de Dvector.\n");
     str7.str("");
 
 
@@ -248,7 +249,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    assert(str7.str() == "ERREUR : Division par zéro d'un Dvector.\n");
     str7.str("");
 
 
@@ -262,7 +263,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    assert(str7.str() == "ERREUR : Division par zéro d'un Dvector.\n");
     str7.str("");
 
 
@@ -276,7 +277,7 @@ int main()
     {
       str7 << "ERREUR : " << e.what() << endl;
     }
-    assert(str7.str() == "ERREUR : Division par zéro.\n");
+    assert(str7.str() == "ERREUR : Division par zéro. Un élément de Dvector est nul.\n");
     str7.str("");
 
     std::cout << "OK\n";

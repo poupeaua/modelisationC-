@@ -58,7 +58,8 @@ Ocean::Ocean(int nx, int ny, double length, double width, char * model,
   else
   {
     throw runtime_error("Le modèle choisi n'existe pas. Vous pouvez soit"
-                        " choisir Gerstner ou Philips.");
+                        " choisir Gerstner ou Philips. Entrez par exemple"
+                        " ./Main_Visualisation Gerstner");
   }
 }
 
@@ -85,8 +86,8 @@ void Ocean::initializeOceanTypeGerstner(Dvector windDirection,
     /* creation de la premiere onde GertsnerWave*/
     Dvector direction(2);
     /* plus la longueur est petite plus la frequence est eleve et inversement */
-    direction(0) = 1.1*i / longueurOnde;
-    direction(1) = 0.5*i / longueurOnde;
+    direction(0) = 2.5 * i / longueurOnde;
+    direction(1) = 1.0 * i / longueurOnde;
     double amplitude = hauteurVague;
     double phase = i * (PI / 4);
     GerstnerWave GW(direction, amplitude, phase);
@@ -129,6 +130,7 @@ Ocean::~Ocean()
 {
   /* free the height attribute */
   /* free the model attribute */
+  delete (Model);
 }
 
 
@@ -136,7 +138,7 @@ Ocean::~Ocean()
  * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
  * hauteur]
  */
-Height Ocean::generateHeight(double setHeight)
+void Ocean::generateHeight(double setHeight)
 {
   /* method created just for this purpose */
   H.setHeightTo(setHeight);

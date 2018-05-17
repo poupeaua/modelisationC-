@@ -7,6 +7,7 @@
 #include <random>
 
 
+
 /* class that inherits from WaveModel */
 class PhilipsWaveModel : public WaveModel
 {
@@ -31,7 +32,8 @@ class PhilipsWaveModel : public WaveModel
    * @param hauteurVague     [hauteurVague est un paramètre pour la classe mère]
    */
   PhilipsWaveModel(Dvector windDirection, double averageAlignment,
-              double intensite, double longueurOnde, double hauteurVague, int nx, int ny);
+              double intensite, double longueurOnde, double hauteurVague,
+              int nx, int ny);
 
   /*!
    * [PhilipsWaveModel Destructeur pour PhilipsWaveModel]
@@ -89,10 +91,11 @@ class PhilipsWaveModel : public WaveModel
   int ny;
   TemplateDvector<complex<double>> champ_hauteur;
   double temps;
+  double vitesseVent;
 
 };
 
-  double philips_model(Dvector k, double intensite, double longueurOnde, Dvector windDirection);
+  double philipsModel(Dvector k, double intensite, double longueurOnde, Dvector windDirection, double vitesseVent);
 
   void fft(TemplateDvector<complex<double>> x);
 

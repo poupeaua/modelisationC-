@@ -72,10 +72,10 @@ class Ocean
   ~Ocean();
 
   /*!
-   * [generateHeight Méthode permettant d'initialiser l'objet Heigth pour la
-   * hauteur]
+   * [generateHeight Méthode permettant de changer la hauteur de l'objet Height
+   * H, attribut de cette classe.]
    */
-  Height generateHeight(double setHeight = 0.0);
+   void generateHeight(double setHeight = 0.0);
 
   /*!
    * [compute Methode permettant de générer la hauteur en fonction du temps t]

@@ -3,6 +3,7 @@
 int main()
 {
   // vect1 par défaut
+  Dvector vect1;
   // vect2 option du constructeur principal
   Dvector vect2(5);
   // vect3 constructeur principal
@@ -17,19 +18,8 @@ int main()
   // vect7 constructeur par lecture de fichire numéro 2
   Dvector vect7("../../test/test2.txt");
 
-  Dvector vect1 = Dvector( 500000000, 0);
-  float temps;
-    clock_t t1, t2;
-
-    t1 = clock();
-
-  vect2 = vect1;
-  t2 = clock();
-     temps = (float)(t2-t1)/CLOCKS_PER_SEC;
-     printf("temps = %f\n", temps);
   //vect1 test
-  // vect1.display(cout);
-  // printf("Taille vect1 = %d\n", vect1.size());
+  vect1.display(cout);
   assert(vect1.size() == 2);
 
 
@@ -79,7 +69,7 @@ int main()
     // cerr << "ERREUR : " << e.what() << endl;
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Dvector.\n");
   str7.str("");
 
 
@@ -92,7 +82,7 @@ int main()
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire.\n");
+  assert(str7.str() == "ERREUR : Erreur d'allocation mémoire de Dvector.\n");
   str7.str("");
 
 
@@ -118,7 +108,7 @@ int main()
   {
     str7 << "ERREUR : " << e.what() << endl;
   }
-  assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier.\n");
+  assert(str7.str() == "ERREUR : Impossible d'ouvrir le fichier pour créer un Dvector.\n");
   str7.str("");
 
 
